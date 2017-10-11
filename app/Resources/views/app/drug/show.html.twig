@@ -1,0 +1,40 @@
+{% extends 'app/appBase.html.twig' %}
+
+{% block body %}
+    <h1>Drug</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ drug.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ drug.name }}</td>
+            </tr>
+            <tr>
+                <th>Mainsubstance</th>
+                <td>{{ drug.mainSubstance }}</td>
+            </tr>
+            <tr>
+                <th>Contraindication</th>
+                <td>{{ drug.contraindication }}</td>
+            </tr>
+            <tr>
+                <th>Substanceamount</th>
+                <td>{{ drug.substanceAmount }}</td>
+            </tr>
+            <tr>
+                <th>Recommendeddosage</th>
+                <td>{{ drug.recommendedDosage }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('app_drug_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}

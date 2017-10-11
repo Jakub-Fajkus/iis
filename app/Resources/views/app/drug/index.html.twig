@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'app/appBase.html.twig' %}
 
 {% block body %}
     <h1>Drugs list</h1>
@@ -18,7 +18,7 @@
         <tbody>
         {% for drug in drugs %}
             <tr>
-                <td><a href="{{ path('admin_drug_show', { 'id': drug.id }) }}">{{ drug.id }}</a></td>
+                <td><a href="{{ path('app_drug_show', { 'id': drug.id }) }}">{{ drug.id }}</a></td>
                 <td>{{ drug.name }}</td>
                 <td>{{ drug.mainSubstance }}</td>
                 <td>{{ drug.contraindication }}</td>
@@ -27,10 +27,7 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('admin_drug_show', { 'id': drug.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('admin_drug_edit', { 'id': drug.id }) }}">edit</a>
+                            <a href="{{ path('app_drug_show', { 'id': drug.id }) }}">show</a>
                         </li>
                     </ul>
                 </td>
@@ -38,10 +35,4 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('admin_drug_new') }}">Create a new drug</a>
-        </li>
-    </ul>
 {% endblock %}

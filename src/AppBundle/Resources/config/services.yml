@@ -1,0 +1,12 @@
+services:
+#    admin.example:
+#        class: AdminBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
+
+
+    app.menu_builder:
+        class: AppBundle\Menu\AppMenuBuilder
+        arguments: ["@knp_menu.factory"]
+        tags:
+            - { name: knp_menu.menu_builder, method: createAppMenu,   alias: "app" } # The alias is what is used to retrieve the menu
+            - { name: knp_menu.menu_builder, method: createAdminMenu, alias: "admin" } # The alias is what is used to retrieve the menu

@@ -1,15 +1,12 @@
-admin_employee:
-    resource: "@AdminBundle/Controller/EmployeeController.php"
-    type:     annotation
-
 admin:
     resource: "@AdminBundle/Controller/"
     type:     annotation
     prefix:   /admin/
 
 app:
-    resource: '@AppBundle/Controller/'
-    type: annotation
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+    prefix:   /
 
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"

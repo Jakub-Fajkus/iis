@@ -28,9 +28,9 @@ class EmployeeController extends Controller
 
         $employees = $em->getRepository(Employee::class)->findAll();
 
-        return $this->render('employee/index.html.twig', array(
+        return $this->render('admin/employee/index.html.twig', [
             'employees' => $employees,
-        ));
+        ]);
     }
 
     /**
@@ -48,13 +48,13 @@ class EmployeeController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $this->get('fos_user.user_manager')->updateUser($employee);
 
-            return $this->redirectToRoute('admin_employee_show', array('id' => $employee->getId()));
+            return $this->redirectToRoute('admin_employee_show', ['id' => $employee->getId()]);
         }
 
-        return $this->render('employee/new.html.twig', array(
+        return $this->render('admin/employee/new.html.twig', [
             'employee' => $employee,
             'form' => $form->createView(),
-        ));
+        ]);
     }
 
     /**
@@ -67,10 +67,10 @@ class EmployeeController extends Controller
     {
         $deleteForm = $this->createDeleteForm($employee);
 
-        return $this->render('employee/show.html.twig', array(
+        return $this->render('admin/employee/show.html.twig', [
             'employee' => $employee,
             'delete_form' => $deleteForm->createView(),
-        ));
+        ]);
     }
 
     /**
@@ -90,11 +90,11 @@ class EmployeeController extends Controller
             return $this->redirectToRoute('admin_employee_edit', array('id' => $employee->getId()));
         }
 
-        return $this->render('employee/edit.html.twig', array(
+        return $this->render('admin/employee/edit.html.twig', [
             'employee' => $employee,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-        ));
+        ]);
     }
 
     /**
@@ -127,7 +127,7 @@ class EmployeeController extends Controller
     private function createDeleteForm(Employee $employee)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('admin_employee_delete', array('id' => $employee->getId())))
+            ->setAction($this->generateUrl('admin_employee_delete', ['id' => $employee->getId()]))
             ->setMethod('DELETE')
             ->getForm()
         ;

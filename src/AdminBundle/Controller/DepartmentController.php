@@ -28,7 +28,7 @@ class DepartmentController extends Controller
 
         $departments = $em->getRepository('AppBundle:Department')->findAll();
 
-        return $this->render('department/index.html.twig', array(
+        return $this->render('admin/department/index.html.twig', array(
             'departments' => $departments,
         ));
     }
@@ -54,7 +54,7 @@ class DepartmentController extends Controller
             return $this->redirectToRoute('admin_department_show', array('id' => $department->getId()));
         }
 
-        return $this->render('department/new.html.twig', array(
+        return $this->render('admin/department/new.html.twig', array(
             'department' => $department,
             'form' => $form->createView(),
         ));
@@ -70,7 +70,7 @@ class DepartmentController extends Controller
     {
         $deleteForm = $this->createDeleteForm($department);
 
-        return $this->render('department/show.html.twig', array(
+        return $this->render('admin/department/show.html.twig', array(
             'department' => $department,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -94,7 +94,7 @@ class DepartmentController extends Controller
             return $this->redirectToRoute('admin_department_edit', array('id' => $department->getId()));
         }
 
-        return $this->render('department/edit.html.twig', array(
+        return $this->render('admin/department/edit.html.twig', array(
             'department' => $department,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

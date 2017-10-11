@@ -28,7 +28,7 @@ class DrugController extends Controller
 
         $drugs = $em->getRepository('AppBundle:Drug')->findAll();
 
-        return $this->render('drug/index.html.twig', [
+        return $this->render('admin/drug/index.html.twig', [
             'drugs' => $drugs,
         ]);
     }
@@ -53,7 +53,7 @@ class DrugController extends Controller
             return $this->redirectToRoute('admin_drug_show', ['id' => $drug->getId()]);
         }
 
-        return $this->render('drug/new.html.twig', [
+        return $this->render('admin/drug/new.html.twig', [
             'drug' => $drug,
             'form' => $form->createView(),
         ]);
@@ -69,7 +69,7 @@ class DrugController extends Controller
     {
         $deleteForm = $this->createDeleteForm($drug);
 
-        return $this->render('drug/show.html.twig', [
+        return $this->render('admin/drug/show.html.twig', [
             'drug' => $drug,
             'delete_form' => $deleteForm->createView(),
         ]);
@@ -93,7 +93,7 @@ class DrugController extends Controller
             return $this->redirectToRoute('admin_drug_edit', ['id' => $drug->getId()]);
         }
 
-        return $this->render('drug/edit.html.twig', [
+        return $this->render('admin/drug/edit.html.twig', [
             'drug' => $drug,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
