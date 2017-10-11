@@ -6,51 +6,14 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\PersistentCollection;
 
-/** //todo: inherit the fos user
+/**
  * Doctor
  *
  * @ORM\Table(name="doctor")
  * @ORM\Entity
  */
-class Doctor
+class Doctor extends Employee
 {
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $id;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="username", type="string", length=30, nullable=false, unique=true)
-     */
-    private $username;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="name", type="string", length=40, nullable=false)
-     */
-    private $name;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="surname", type="string", length=40, nullable=false)
-     */
-    private $surname;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="telephone", type="string", length=20, nullable=false)
-     */
-    private $telephone;
-
     /**
      * @var Collection
      *
@@ -71,5 +34,59 @@ class Doctor
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Hospitalization", mappedBy="doctor")
      */
     private $hospitalizations;
+
+    /**
+     * @return Collection
+     */
+    public function getEmployments(): ?Collection
+    {
+        return $this->employments;
+    }
+
+    /**
+     * @param Collection $employments
+     * @return Doctor
+     */
+    public function setEmployments(Collection $employments): Doctor
+    {
+        $this->employments = $employments;
+        return $this;
+    }
+
+    /**
+     * @return Collection
+     */
+    public function getExaminations(): ?Collection
+    {
+        return $this->examinations;
+    }
+
+    /**
+     * @param Collection $examinations
+     * @return Doctor
+     */
+    public function setExaminations(Collection $examinations): Doctor
+    {
+        $this->examinations = $examinations;
+        return $this;
+    }
+
+    /**
+     * @return Collection
+     */
+    public function getHospitalizations(): ?Collection
+    {
+        return $this->hospitalizations;
+    }
+
+    /**
+     * @param Collection $hospitalizations
+     * @return Doctor
+     */
+    public function setHospitalizations(Collection $hospitalizations): Doctor
+    {
+        $this->hospitalizations = $hospitalizations;
+        return $this;
+    }
 }
 
