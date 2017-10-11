@@ -19,7 +19,7 @@ class EmployeeController extends Controller
     /**
      * Lists all employee entities.
      *
-     * @Route("/", name="employee_index")
+     * @Route("/", name="admin_employee_index")
      * @Method("GET")
      */
     public function indexAction()
@@ -36,7 +36,7 @@ class EmployeeController extends Controller
     /**
      * Creates a new employee entity.
      *
-     * @Route("/new", name="employee_new")
+     * @Route("/new", name="admin_employee_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
@@ -50,7 +50,7 @@ class EmployeeController extends Controller
             $em->persist($employee);
             $em->flush();
 
-            return $this->redirectToRoute('employee_show', array('id' => $employee->getId()));
+            return $this->redirectToRoute('admin_employee_show', array('id' => $employee->getId()));
         }
 
         return $this->render('employee/new.html.twig', array(
@@ -62,7 +62,7 @@ class EmployeeController extends Controller
     /**
      * Finds and displays a employee entity.
      *
-     * @Route("/{id}", name="employee_show")
+     * @Route("/{id}", name="admin_employee_show")
      * @Method("GET")
      */
     public function showAction(Employee $employee)
@@ -78,7 +78,7 @@ class EmployeeController extends Controller
     /**
      * Displays a form to edit an existing employee entity.
      *
-     * @Route("/{id}/edit", name="employee_edit")
+     * @Route("/{id}/edit", name="admin_employee_edit")
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, Employee $employee)
@@ -90,7 +90,7 @@ class EmployeeController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('employee_edit', array('id' => $employee->getId()));
+            return $this->redirectToRoute('admin_employee_edit', array('id' => $employee->getId()));
         }
 
         return $this->render('employee/edit.html.twig', array(
@@ -103,7 +103,7 @@ class EmployeeController extends Controller
     /**
      * Deletes a employee entity.
      *
-     * @Route("/{id}", name="employee_delete")
+     * @Route("/{id}", name="admin_employee_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, Employee $employee)
@@ -117,7 +117,7 @@ class EmployeeController extends Controller
             $em->flush();
         }
 
-        return $this->redirectToRoute('employee_index');
+        return $this->redirectToRoute('admin_employee_index');
     }
 
     /**
@@ -130,7 +130,7 @@ class EmployeeController extends Controller
     private function createDeleteForm(Employee $employee)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('employee_delete', array('id' => $employee->getId())))
+            ->setAction($this->generateUrl('admin_employee_delete', array('id' => $employee->getId())))
             ->setMethod('DELETE')
             ->getForm()
         ;
