@@ -42,12 +42,7 @@ class DepartmentController extends Controller
     public function newAction(Request $request)
     {
         $department = new Department();
-
-        if ($request->getMethod() === 'POST') {
-            $form = $this->createForm(DepartmentType::class, $department);
-        } else {
-            $form = $this->createForm(DepartmentType::class);
-        }
+        $form = $this->createForm(DepartmentType::class, $department);
 
         $form->handleRequest($request);
 

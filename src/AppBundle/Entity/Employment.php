@@ -56,7 +56,7 @@ class Employment
     /**
      * @var Department
      *
-     * @ORM\ManyToOne(targetEntity="Department", inversedBy="emoloyments")
+     * @ORM\ManyToOne(targetEntity="Department", inversedBy="employments")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="department_id", referencedColumnName="id")
      * })

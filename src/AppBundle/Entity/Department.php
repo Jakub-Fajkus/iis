@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -49,7 +50,7 @@ class Department
      *
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Employment", mappedBy="department")
      */
-    private $emoloyments;
+    private $employments;
 
     /**
      * @var Collection
@@ -66,9 +67,20 @@ class Department
     private $nurses;
 
     /**
-     * @return int
+     * Department constructor.
      */
-    public function getId(): int
+    public function __construct()
+    {
+        $this->employments= new ArrayCollection();
+        $this->hospitalizations = new ArrayCollection();
+        $this->nurses = new ArrayCollection();
+    }
+
+
+    /**
+     * @return int|null
+     */
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -85,9 +97,9 @@ class Department
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getShortcut(): string
+    public function getShortcut(): ?string
     {
         return $this->shortcut;
     }
@@ -104,9 +116,9 @@ class Department
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -123,9 +135,9 @@ class Department
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getTelephone(): string
+    public function getTelephone(): ?string
     {
         return $this->telephone;
     }
@@ -144,18 +156,18 @@ class Department
     /**
      * @return Collection
      */
-    public function getEmoloyments(): Collection
+    public function getEmployments(): Collection
     {
-        return $this->emoloyments;
+        return $this->employments;
     }
 
     /**
-     * @param Collection $emoloyments
+     * @param Collection $employments
      * @return Department
      */
-    public function setEmoloyments(Collection $emoloyments): Department
+    public function setEmployments(Collection $employments): Department
     {
-        $this->emoloyments = $emoloyments;
+        $this->employments = $employments;
 
         return $this;
     }

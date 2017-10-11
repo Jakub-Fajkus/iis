@@ -40,6 +40,7 @@ class Version20171011104629 extends AbstractMigration
         $this->addSql('ALTER TABLE hospitalization ADD CONSTRAINT FK_40CF08916B899279 FOREIGN KEY (patient_id) REFERENCES patient (id)');
         $this->addSql('ALTER TABLE drug_application ADD CONSTRAINT FK_336E49163C7ECDAB FOREIGN KEY (id_prescription) REFERENCES prescritpion (id)');
         $this->addSql('ALTER TABLE nurse ADD CONSTRAINT FK_D27E6D43AE80F5DF FOREIGN KEY (department_id) REFERENCES department (id)');
+        $this->addSql('INSERT INTO app_user (username, username_canonical, email, email_canonical, enabled, salt, password, last_login, confirmation_token, password_requested_at, roles) VALUES (\'admin\', \'admin\', \'admiaus9d8ahsudhaidh@mai.com\', \'admiaus9d8ahsudhaidh@mai.com\', 1, null, \'$2y$13$sZQBwUWW4dnVlLLqdphx6ud29tQtmUucGVhl9TqYkFlqkMylWLujm\', null, null, null, \'a:1:{i:0;s:10:"ROLE_ADMIN";}\');');
     }
 
     /**
