@@ -1,3 +1,7 @@
+admin_employee:
+    resource: "@AdminBundle/Controller/EmployeeController.php"
+    type:     annotation
+
 admin:
     resource: "@AdminBundle/Controller/"
     type:     annotation
