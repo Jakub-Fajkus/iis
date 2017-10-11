@@ -1,6 +1,14 @@
 {% extends 'app/appBase.html.twig' %}
 
 {% block body %}
+    <form method="GET">
+        <label>Search:
+            <input type="text" name="q">
+            <input type="submit" value="Search">
+            <a href="{{ path('app_patient_index') }}">Clear search</a>
+        </label>
+    </form>
+
     <h1>Patients list</h1>
 
     <table>

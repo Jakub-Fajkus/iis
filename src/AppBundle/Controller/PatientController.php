@@ -21,11 +21,16 @@ class PatientController extends Controller
      * @Route("/", name="app_patient_index")
      * @Method("GET")
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $patients = $em->getRepository('AppBundle:Patient')->findAll();
+        if ($request->query->has('q')) {
+            $query = $request->query->get('q');
+            $patients = $this->getDoctrine()->getRepository(Patient::class)->getMatching($query);
+        } else {
+            $patients = $em->getRepository('AppBundle:Patient')->findAll();
+        }
 
         return $this->render('app/patient/index.html.twig', [
             'patients' => $patients,
