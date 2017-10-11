@@ -1,11 +1,7 @@
-app_department:
-    resource: "@AppBundle/Controller/DepartmentController.php"
-    type:     annotation
-
 admin:
     resource: "@AdminBundle/Controller/"
     type:     annotation
-    prefix:   /
+    prefix:   /admin/
 
 app:
     resource: '@AppBundle/Controller/'

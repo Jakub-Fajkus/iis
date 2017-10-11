@@ -1,16 +1,18 @@
 <?php
 
-namespace AppBundle\Controller;
+namespace AdminBundle\Controller;
 
+use AdminBundle\Form\DepartmentType;
 use AppBundle\Entity\Department;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Department controller.
  *
- * @Route("admin/department")
+ * @Route("department")
  */
 class DepartmentController extends Controller
 {
@@ -40,7 +42,13 @@ class DepartmentController extends Controller
     public function newAction(Request $request)
     {
         $department = new Department();
-        $form = $this->createForm('AppBundle\Form\DepartmentType', $department);
+
+        if ($request->getMethod() === 'POST') {
+            $form = $this->createForm(DepartmentType::class, $department);
+        } else {
+            $form = $this->createForm(DepartmentType::class);
+        }
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -82,7 +90,7 @@ class DepartmentController extends Controller
     public function editAction(Request $request, Department $department)
     {
         $deleteForm = $this->createDeleteForm($department);
-        $editForm = $this->createForm('AppBundle\Form\DepartmentType', $department);
+        $editForm = $this->createForm(DepartmentType::class, $department);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
