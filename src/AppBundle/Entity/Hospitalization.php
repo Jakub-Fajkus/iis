@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -74,5 +75,147 @@ class Hospitalization
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Examination", mappedBy="hospitalization")
      */
     private $examinations;
+
+    /**
+     * Hospitalization constructor.
+     */
+    public function __construct()
+    {
+        $this->examinations = new ArrayCollection();
+    }
+
+
+    /**
+     * @return int|null
+     */
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     * @return Hospitalization
+     */
+    public function setId(int $id): Hospitalization
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
+    /**
+     * @return \DateTime|null
+     */
+    public function getDateFrom(): ?\DateTime
+    {
+        return $this->dateFrom;
+    }
+
+    /**
+     * @param \DateTime $dateFrom
+     * @return Hospitalization
+     */
+    public function setDateFrom(\DateTime $dateFrom): Hospitalization
+    {
+        $this->dateFrom = $dateFrom;
+
+        return $this;
+    }
+
+    /**
+     * @return \DateTime|null
+     */
+    public function getDateTo(): ?\DateTime
+    {
+        return $this->dateTo;
+    }
+
+    /**
+     * @param \DateTime $dateTo
+     * @return Hospitalization
+     */
+    public function setDateTo(\DateTime $dateTo): Hospitalization
+    {
+        $this->dateTo = $dateTo;
+
+        return $this;
+    }
+
+    /**
+     * @return Doctor|null
+     */
+    public function getDoctor(): ?Doctor
+    {
+        return $this->doctor;
+    }
+
+    /**
+     * @param Doctor $doctor
+     * @return Hospitalization
+     */
+    public function setDoctor(Doctor $doctor): Hospitalization
+    {
+        $this->doctor = $doctor;
+
+        return $this;
+    }
+
+    /**
+     * @return Department|null
+     */
+    public function getDepartment(): ?Department
+    {
+        return $this->department;
+    }
+
+    /**
+     * @param Department $department
+     * @return Hospitalization
+     */
+    public function setDepartment(Department $department): Hospitalization
+    {
+        $this->department = $department;
+
+        return $this;
+    }
+
+    /**
+     * @return Patient|null
+     */
+    public function getPatient(): ?Patient
+    {
+        return $this->patient;
+    }
+
+    /**
+     * @param Patient $patient
+     * @return Hospitalization
+     */
+    public function setPatient(Patient $patient): Hospitalization
+    {
+        $this->patient = $patient;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection
+     */
+    public function getExaminations(): Collection
+    {
+        return $this->examinations;
+    }
+
+    /**
+     * @param Collection $examinations
+     * @return Hospitalization
+     */
+    public function setExaminations(Collection $examinations): Hospitalization
+    {
+        $this->examinations = $examinations;
+
+        return $this;
+    }
 }
 

@@ -2,11 +2,14 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Doctor;
 use AppBundle\Entity\Patient;
+use AppBundle\Form\HospitalizePatientType;
 use AppBundle\Form\PatientType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Patient controller.
@@ -71,9 +74,17 @@ class PatientController extends Controller
      */
     public function showAction(Patient $patient)
     {
+        $hospitalizeType = $this->createForm(
+            HospitalizePatientType::class,
+            null,
+            [
+                'action' => $this->generateUrl('app_patient_hospitalize', ['id' => $patient->getId()]),
+            ]
+        );
 
         return $this->render('app/patient/show.html.twig', [
             'patient' => $patient,
+            'hospitalizeForm' => $hospitalizeType->createView(),
         ]);
     }
 
@@ -98,5 +109,24 @@ class PatientController extends Controller
             'patient' => $patient,
             'edit_form' => $editForm->createView(),
         ]);
+    }
+
+    /**
+     * @Route("/{id}/hospitalize", name="app_patient_hospitalize")
+     * @throws \Exception
+     */
+    public function hospitalizeAction(Request $request, Patient $patient)
+    {
+        $editForm = $this->createForm(HospitalizePatientType::class, null);
+        $editForm->handleRequest($request);
+
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $doctor = $this->getUser();
+            if (!$doctor instanceof Doctor) {
+                throw new \Exception('Only doctor can hospitalize a patient!');
+            }
+
+            $patient->hospitalize($doctor, $editForm->get('department')->getData());
+        }
     }
 }

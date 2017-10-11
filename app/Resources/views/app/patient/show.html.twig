@@ -52,6 +52,11 @@
         </tbody>
     </table>
 
+    {{ form_start(hospitalizeForm) }}
+    {{ form_widget(hospitalizeForm) }}
+        <input type="submit" value="Hospitalize" />
+    {{ form_end(hospitalizeForm) }}
+
     <ul>
         <li>
             <a href="{{ path('app_patient_index') }}">Back to the list</a>

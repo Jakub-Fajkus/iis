@@ -96,7 +96,7 @@ class Patient
     /**
      * @var Collection
      *
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Hospitalization", mappedBy="patient")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Hospitalization", mappedBy="patient", cascade={"PERSIST"})
      */
     private $hospitalizations;
 
@@ -337,6 +337,56 @@ class Patient
         return $this;
     }
 
+    /**
+     * Hospitalize the patient on the department.
+     *
+     * If the patient is already hospitalized, the current hospitalization is closed and the new one is created.
+     *
+     * @param Doctor     $doctor
+     * @param Department $department
+     */
+    public function hospitalize(Doctor $doctor, Department $department)
+    {
+        $current = $this->getCurrentHospitalization();
+
+        if ($current) {
+            $current->setDateTo(new \DateTime());
+        }
+
+        $new = new Hospitalization();
+        $new->setDateFrom(new \DateTime())
+            ->setDepartment($department)
+            ->setDoctor($doctor)
+            ->setPatient($this);
+    }
+
+
+    /**
+     * Is there a current hospitalization
+     *
+     * @return bool
+     */
+    public function isHospitalized(): bool
+    {
+        return $this->getCurrentHospitalization() !== null;
+    }
+
+    /**
+     * Get the current hospitalization or null
+     *
+     * @return Hospitalization|null
+     */
+    public function getCurrentHospitalization(): ?Hospitalization
+    {
+        /** @var Hospitalization $hospitalization */
+        foreach ($this->hospitalizations as $hospitalization) {
+            if ($hospitalization->getDateTo() === null) {
+                return $hospitalization;
+            }
+        }
+
+        return null;
+    }
 
 }
 
