@@ -52,6 +52,7 @@ class Employee extends User
     public function __construct()
     {
         parent::__construct();
+        $this->enabled = true;
     }
 
     /**

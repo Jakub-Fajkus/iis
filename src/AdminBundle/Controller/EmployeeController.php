@@ -46,9 +46,7 @@ class EmployeeController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($employee);
-            $em->flush();
+            $this->get('fos_user.user_manager')->updateUser($employee);
 
             return $this->redirectToRoute('admin_employee_show', array('id' => $employee->getId()));
         }
@@ -88,8 +86,7 @@ class EmployeeController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
-
+            $this->get('fos_user.user_manager')->updateUser($employee);
             return $this->redirectToRoute('admin_employee_edit', array('id' => $employee->getId()));
         }
 
