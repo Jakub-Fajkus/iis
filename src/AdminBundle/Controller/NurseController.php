@@ -27,7 +27,7 @@ class NurseController extends Controller
 
         $nurses = $em->getRepository(Nurse::class)->findAll();
 
-        return $this->render('nurse/index.html.twig', array(
+        return $this->render('admin/nurse/index.html.twig', array(
             'nurses' => $nurses,
         ));
     }
@@ -51,7 +51,7 @@ class NurseController extends Controller
             return $this->redirectToRoute('admin_nurse_show', array('id' => $nurse->getId()));
         }
 
-        return $this->render('nurse/new.html.twig', array(
+        return $this->render('admin/nurse/new.html.twig', array(
             'nurse' => $nurse,
             'form' => $form->createView(),
         ));
@@ -67,7 +67,7 @@ class NurseController extends Controller
     {
         $deleteForm = $this->createDeleteForm($nurse);
 
-        return $this->render('nurse/show.html.twig', array(
+        return $this->render('admin/nurse/show.html.twig', array(
             'nurse' => $nurse,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -91,7 +91,7 @@ class NurseController extends Controller
             return $this->redirectToRoute('admin_nurse_edit', array('id' => $nurse->getId()));
         }
 
-        return $this->render('nurse/edit.html.twig', array(
+        return $this->render('admin/nurse/edit.html.twig', array(
             'nurse' => $nurse,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

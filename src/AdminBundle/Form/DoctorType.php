@@ -2,8 +2,8 @@
 
 namespace AdminBundle\Form;
 
-use AppBundle\Entity\Department;
-use AppBundle\Entity\Nurse;
+use AppBundle\Entity\Doctor;
+use AppBundle\Entity\Employment;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
@@ -13,7 +13,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 /**
  * {@inheritDoc}
  */
-class NurseType extends AbstractType
+class DoctorType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -27,21 +27,16 @@ class NurseType extends AbstractType
             ->add('username')
             ->add('email')
             ->add('plainPassword', PasswordType::class, ['label' => 'Password'])
-            ->add('department', EntityType::class, [
-                'class' => Department::class,
-                'choice_label' => function (Department $department) {
-                    return $department->getShortcut();
-                }
-            ]);
+            ;
     }
-    
+
     /**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => Nurse::class
+            'data_class' => Doctor::class
         ));
     }
 
@@ -50,7 +45,7 @@ class NurseType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'appbundle_nurse';
+        return 'appbundle_doctor';
     }
 
 

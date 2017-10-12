@@ -1,0 +1,43 @@
+{% extends 'admin/adminBase.html.twig' %}
+
+{% block body %}
+    <h1>Doctors list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Username</th>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for doctor in doctors %}
+            <tr>
+                <td><a href="{{ path('admin_doctor_show', { 'id': doctor.id }) }}">{{ doctor.id }}</a></td>
+                <td>{{ doctor.username }}</td>
+                <td>{{ doctor.name }}</td>
+                <td>{{ doctor.surname }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_doctor_show', { 'id': doctor.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_doctor_edit', { 'id': doctor.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_doctor_new') }}">Create a new doctor</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -34,7 +34,7 @@ class Employment
      *
      * @ORM\Column(name="date_from", type="datetime", nullable=false)
      */
-    private $dateFrom = 'CURRENT_TIMESTAMP';
+    private $dateFrom;
 
     /**
      * @var \DateTime
@@ -62,6 +62,123 @@ class Employment
      * })
      */
     private $department;
+
+    /**
+     * Employment constructor.
+     */
+    public function __construct()
+    {
+        $this->dateFrom = new \DateTime();
+    }
+
+
+    /**
+     * @return int
+     */
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     * @return Employment
+     */
+    public function setId(int $id): Employment
+    {
+        $this->id = $id;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param string $type
+     * @return Employment
+     */
+    public function setType(string $type): Employment
+    {
+        $this->type = $type;
+        return $this;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getDateFrom(): ?\DateTime
+    {
+        return $this->dateFrom;
+    }
+
+    /**
+     * @param \DateTime $dateFrom
+     * @return Employment
+     */
+    public function setDateFrom(\DateTime $dateFrom): Employment
+    {
+        $this->dateFrom = $dateFrom;
+        return $this;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getDateTo(): ?\DateTime
+    {
+        return $this->dateTo;
+    }
+
+    /**
+     * @param \DateTime $dateTo
+     * @return Employment
+     */
+    public function setDateTo(\DateTime $dateTo = null): Employment
+    {
+        $this->dateTo = $dateTo;
+        return $this;
+    }
+
+    /**
+     * @return Doctor
+     */
+    public function getDoctor(): ?Doctor
+    {
+        return $this->doctor;
+    }
+
+    /**
+     * @param Doctor $doctor
+     * @return Employment
+     */
+    public function setDoctor(Doctor $doctor): Employment
+    {
+        $this->doctor = $doctor;
+        return $this;
+    }
+
+    /**
+     * @return Department
+     */
+    public function getDepartment(): ?Department
+    {
+        return $this->department;
+    }
+
+    /**
+     * @param Department $department
+     * @return Employment
+     */
+    public function setDepartment(Department $department): Employment
+    {
+        $this->department = $department;
+        return $this;
+    }
 
 
 }

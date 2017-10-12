@@ -4,6 +4,10 @@ namespace AppBundle\Menu;
 
 use Knp\Menu\FactoryInterface;
 
+/**
+ * Class AppMenuBuilder
+ * @package AppBundle\Menu
+ */
 class AppMenuBuilder
 {
     /**
@@ -30,6 +34,7 @@ class AppMenuBuilder
         $menu->addChild('Drugs', ['route' => 'admin_drug_index']);
         $menu->addChild('Employees', ['route' => 'admin_employee_index']);
         $menu->addChild('Nurses', ['route' => 'admin_nurse_index']);
+        $menu->addChild('Doctors', ['route' => 'admin_doctor_index']);
         // ... add more children
 
         return $menu;

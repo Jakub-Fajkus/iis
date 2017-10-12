@@ -1,3 +1,11 @@
+admin_employment:
+    resource: "@AdminBundle/Controller/EmploymentController.php"
+    type:     annotation
+
+admin_doctor:
+    resource: "@AdminBundle/Controller/DoctorController.php"
+    type:     annotation
+
 admin_nurse:
     resource: "@AdminBundle/Controller/NurseController.php"
     type:     annotation
