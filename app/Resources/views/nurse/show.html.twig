@@ -1,39 +1,43 @@
 {% extends 'admin/adminBase.html.twig' %}
 
 {% block body %}
-    <h1>Employee</h1>
+    <h1>Nurse</h1>
 
     <table>
         <tbody>
             <tr>
                 <th>Id</th>
-                <td>{{ employee.id }}</td>
+                <td>{{ nurse.id }}</td>
             </tr>
             <tr>
                 <th>Username</th>
-                <td>{{ employee.username }}</td>
+                <td>{{ nurse.username }}</td>
             </tr>
             <tr>
                 <th>Name</th>
-                <td>{{ employee.name }}</td>
+                <td>{{ nurse.name }}</td>
             </tr>
             <tr>
                 <th>Surname</th>
-                <td>{{ employee.surname }}</td>
+                <td>{{ nurse.surname }}</td>
             </tr>
             <tr>
                 <th>Telephone</th>
-                <td>{{ employee.telephone }}</td>
+                <td>{{ nurse.telephone }}</td>
+            </tr>
+            <tr>
+                <th>Department</th>
+                <td>{{ nurse.department.name}}</td>
             </tr>
         </tbody>
     </table>
 
     <ul>
         <li>
-            <a href="{{ path('admin_employee_index') }}">Back to the list</a>
+            <a href="{{ path('admin_nurse_index') }}">Back to the list</a>
         </li>
         <li>
-            <a href="{{ path('admin_employee_edit', { 'id': employee.id }) }}">Edit</a>
+            <a href="{{ path('admin_nurse_edit', { 'id': nurse.id }) }}">Edit</a>
         </li>
         <li>
             {{ form_start(delete_form) }}

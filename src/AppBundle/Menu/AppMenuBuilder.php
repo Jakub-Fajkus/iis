@@ -29,6 +29,7 @@ class AppMenuBuilder
         $menu->addChild('Departments', ['route' => 'admin_department_index']);
         $menu->addChild('Drugs', ['route' => 'admin_drug_index']);
         $menu->addChild('Employees', ['route' => 'admin_employee_index']);
+        $menu->addChild('Nurses', ['route' => 'admin_nurse_index']);
         // ... add more children
 
         return $menu;

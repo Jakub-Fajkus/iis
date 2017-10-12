@@ -1,0 +1,46 @@
+{% extends 'admin/adminBase.html.twig' %}
+
+{% block body %}
+    <h1>Nurses list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Username</th>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Department</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for nurse in nurses %}
+            <tr>
+                <td><a href="{{ path('admin_nurse_show', { 'id': nurse.id }) }}">{{ nurse.id }}</a></td>
+                <td>{{ nurse.username }}</td>
+                <td>{{ nurse.name }}</td>
+                <td>{{ nurse.surname }}</td>
+                <td>{{ nurse.department.shortcut }}</td>
+                <td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_nurse_show', { 'id': nurse.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_nurse_edit', { 'id': nurse.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_nurse_new') }}">Create a new nurse</a>
+        </li>
+    </ul>
+{% endblock %}

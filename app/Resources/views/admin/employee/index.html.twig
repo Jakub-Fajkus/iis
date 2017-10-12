@@ -7,9 +7,9 @@
         <thead>
             <tr>
                 <th>Id</th>
+                <th>Username</th>
                 <th>Name</th>
                 <th>Surname</th>
-                <th>Telephone</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -17,9 +17,9 @@
         {% for employee in employees %}
             <tr>
                 <td><a href="{{ path('admin_employee_show', { 'id': employee.id }) }}">{{ employee.id }}</a></td>
+                <td>{{ employee.username }}</td>
                 <td>{{ employee.name }}</td>
                 <td>{{ employee.surname }}</td>
-                <td>{{ employee.telephone }}</td>
                 <td>
                     <ul>
                         <li>
