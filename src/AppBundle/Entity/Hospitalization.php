@@ -30,7 +30,7 @@ class Hospitalization
      *
      * @ORM\Column(name="date_from", type="datetime", nullable=false)
      */
-    private $dateFrom = 'CURRENT_TIMESTAMP';
+    private $dateFrom;
 
     /**
      * @var \DateTime
@@ -82,6 +82,7 @@ class Hospitalization
     public function __construct()
     {
         $this->examinations = new ArrayCollection();
+        $this->dateFrom = new \DateTime();
     }
 
 

@@ -1,0 +1,32 @@
+{% extends 'app/appBase.html.twig' %}
+
+{% block body %}
+    <h1>Department</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Shortcut</th>
+                <td>{{ department.shortcut }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ department.name }}</td>
+            </tr>
+            <tr>
+                <th>Telephone</th>
+                <td>{{ department.telephone }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    {#todo: all current patients#}
+    {#todo: all examinations?#}
+    {#todo: all current prescriptions?#}
+
+    <ul>
+        <li>
+            <a href="{{ path('app_department_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}

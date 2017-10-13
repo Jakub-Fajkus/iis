@@ -1,0 +1,41 @@
+{% extends 'app/appBase.html.twig' %}
+
+{% block body %}
+    <h1>Examinations list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Report</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for examination in examinations %}
+            <tr>
+                <td><a href="{{ path('app_examination_show', { 'id': examination.id }) }}">{{ examination.id }}</a></td>
+                <td>{% if examination.date %}{{ examination.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ examination.report }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('app_examination_show', { 'id': examination.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('app_examination_edit', { 'id': examination.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('app_examination_new') }}">Create a new examination</a>
+        </li>
+    </ul>
+{% endblock %}

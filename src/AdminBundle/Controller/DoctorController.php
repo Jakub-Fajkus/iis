@@ -10,6 +10,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 
+//todo: Should we limit the data that the doctor and the nurse sees based on their department?
+
 /**
  * Doctor controller.
  *

@@ -17,6 +17,8 @@ use FOS\UserBundle\Model\User;
  */
 class Employee extends User
 {
+    const ROLE_ADMIN = 'ROLE_ADMIN';
+
     /**
      * @var int
      * @ORM\Id
@@ -70,6 +72,7 @@ class Employee extends User
     public function setId($id)
     {
         $this->id = $id;
+
         return $this;
     }
 
@@ -89,6 +92,7 @@ class Employee extends User
     public function setName(string $name): Employee
     {
         $this->name = $name;
+
         return $this;
     }
 
@@ -107,6 +111,7 @@ class Employee extends User
     public function setSurname(string $surname): Employee
     {
         $this->surname = $surname;
+
         return $this;
     }
 
@@ -125,8 +130,23 @@ class Employee extends User
     public function setTelephone(string $telephone): Employee
     {
         $this->telephone = $telephone;
+
         return $this;
     }
 
+    /**
+     * @return string
+     */
+    public function getFullName(): string
+    {
+        return $this->name . ' ' . $this->surname;
+    }
 
+    /**
+     * @return bool
+     */
+    public function isAdmin(): bool
+    {
+        return $this->hasRole(static::ROLE_ADMIN);
+    }
 }

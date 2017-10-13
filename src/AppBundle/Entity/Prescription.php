@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -71,6 +72,170 @@ class Prescription
      */
     private $applications;
 
+    /**
+     * Prescription constructor.
+     */
+    public function __construct()
+    {
+        $this->applications = new ArrayCollection();
+    }
 
+    /**
+     * @return int|null
+     */
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     * @return Prescription
+     */
+    public function setId(int $id): Prescription
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getPeriodOfApplication(): ?int
+    {
+        return $this->periodOfApplication;
+    }
+
+    /**
+     * @param int $periodOfApplication
+     * @return Prescription
+     */
+    public function setPeriodOfApplication(int $periodOfApplication): Prescription
+    {
+        $this->periodOfApplication = $periodOfApplication;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getDelivery(): ?string
+    {
+        return $this->delivery;
+    }
+
+    /**
+     * @param string $delivery
+     * @return Prescription
+     */
+    public function setDelivery(string $delivery): Prescription
+    {
+        $this->delivery = $delivery;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getAmount(): ?string
+    {
+        return $this->amount;
+    }
+
+    /**
+     * @param string $amount
+     * @return Prescription
+     */
+    public function setAmount(string $amount): Prescription
+    {
+        $this->amount = $amount;
+
+        return $this;
+    }
+
+    /**
+     * @return Drug|null
+     */
+    public function getDrug(): ?Drug
+    {
+        return $this->drug;
+    }
+
+    /**
+     * @param Drug $drug
+     * @return Prescription
+     */
+    public function setDrug(Drug $drug): Prescription
+    {
+        $this->drug = $drug;
+
+        return $this;
+    }
+
+    /**
+     * @return Examination|null
+     */
+    public function getExamination(): ?Examination
+    {
+        return $this->examination;
+    }
+
+    /**
+     * @param Examination $examination
+     * @return Prescription
+     */
+    public function setExamination(Examination $examination): Prescription
+    {
+        $this->examination = $examination;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection
+     */
+    public function getApplications(): Collection
+    {
+        return $this->applications;
+    }
+
+    /**
+     * @param Collection $applications
+     * @return Prescription
+     */
+    public function setApplications(Collection $applications): Prescription
+    {
+        $this->applications = $applications;
+
+        return $this;
+    }
+
+
+    /**
+     * @param DrugApplication $application
+     * @return $this
+     */
+    public function addApplication(DrugApplication $application)
+    {
+        if (!$this->applications->contains($application)) {
+            $this->applications->add($application);
+        }
+
+        return $this;
+    }
+
+
+    /**
+     * @param DrugApplication $application
+     * @return $this
+     */
+    public function removeApplication(DrugApplication $application)
+    {
+        $this->applications->remove($application);
+
+        return $this;
+    }
 }
-

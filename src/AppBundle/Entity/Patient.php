@@ -340,10 +340,14 @@ class Patient
     /**
      * Hospitalize the patient on the department.
      *
+    * //todo: refactor to the doctor entity
+     *
      * If the patient is already hospitalized, the current hospitalization is closed and the new one is created.
      *
      * @param Doctor     $doctor
      * @param Department $department
+     *
+     * @return Hospitalization
      */
     public function hospitalize(Doctor $doctor, Department $department)
     {
@@ -358,6 +362,8 @@ class Patient
             ->setDepartment($department)
             ->setDoctor($doctor)
             ->setPatient($this);
+
+        return $new;
     }
 
 
@@ -386,6 +392,14 @@ class Patient
         }
 
         return null;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFullName(): string
+    {
+        return $this->name . ' ' . $this->surname;
     }
 
 }

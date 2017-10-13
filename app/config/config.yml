@@ -9,6 +9,9 @@ imports:
 parameters:
     locale: en
 
+#todo: start thinking about roles.. create ROLE_DOCTOR and ROLE_NURSE and set the role checks
+
+
 framework:
     #esi: ~
     #translator: { fallbacks: ['%locale%'] }

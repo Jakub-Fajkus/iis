@@ -20,7 +20,7 @@ class EmploymentType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('type')
+            ->add('type') //todo: wtf???
             ->add('dateFrom')
             ->add('dateTo')
             ->add('department', EntityType::class, [

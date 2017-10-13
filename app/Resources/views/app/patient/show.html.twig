@@ -5,57 +5,62 @@
 
     <table>
         <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ patient.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ patient.name }}</td>
-            </tr>
-            <tr>
-                <th>Surname</th>
-                <td>{{ patient.surname }}</td>
-            </tr>
-            <tr>
-                <th>Personalidentificationnumber</th>
-                <td>{{ patient.personalIdentificationNumber }}</td>
-            </tr>
-            <tr>
-                <th>Street</th>
-                <td>{{ patient.street }}</td>
-            </tr>
-            <tr>
-                <th>Housenumber</th>
-                <td>{{ patient.houseNumber }}</td>
-            </tr>
-            <tr>
-                <th>City</th>
-                <td>{{ patient.city }}</td>
-            </tr>
-            <tr>
-                <th>Zip</th>
-                <td>{{ patient.zip }}</td>
-            </tr>
-            <tr>
-                <th>Medicalidentificationnumber</th>
-                <td>{{ patient.medicalIdentificationNumber }}</td>
-            </tr>
-            <tr>
-                <th>Insurancecompanyid</th>
-                <td>{{ patient.insuranceCompanyId }}</td>
-            </tr>
-            <tr>
-                <th>Gender</th>
-                <td>{{ patient.gender }}</td>
-            </tr>
+        <tr>
+            <th>Id</th>
+            <td>{{ patient.id }}</td>
+        </tr>
+        <tr>
+            <th>Name</th>
+            <td>{{ patient.name }}</td>
+        </tr>
+        <tr>
+            <th>Surname</th>
+            <td>{{ patient.surname }}</td>
+        </tr>
+        <tr>
+            <th>Personalidentificationnumber</th>
+            <td>{{ patient.personalIdentificationNumber }}</td>
+        </tr>
+        <tr>
+            <th>Street</th>
+            <td>{{ patient.street }}</td>
+        </tr>
+        <tr>
+            <th>Housenumber</th>
+            <td>{{ patient.houseNumber }}</td>
+        </tr>
+        <tr>
+            <th>City</th>
+            <td>{{ patient.city }}</td>
+        </tr>
+        <tr>
+            <th>Zip</th>
+            <td>{{ patient.zip }}</td>
+        </tr>
+        <tr>
+            <th>Medicalidentificationnumber</th>
+            <td>{{ patient.medicalIdentificationNumber }}</td>
+        </tr>
+        <tr>
+            <th>Insurancecompanyid</th>
+            <td>{{ patient.insuranceCompanyId }}</td>
+        </tr>
+        <tr>
+            <th>Gender</th>
+            <td>{{ patient.gender }}</td>
+        </tr>
         </tbody>
-    </table>
 
     {{ form_start(hospitalizeForm) }}
     {{ form_widget(hospitalizeForm) }}
-        <input type="submit" value="Hospitalize" />
+    <input type="submit" value="Hospitalize"/>
     {{ form_end(hospitalizeForm) }}
+
+        {#todo: move to a separate page?#}
+    {{ form_start(examineForm) }}
+    {{ form_widget(examineForm) }}
+    <input type="submit" value="Examine"/>
+    {{ form_end(examineForm) }}
 
     <ul>
         <li>
@@ -65,4 +70,13 @@
             <a href="{{ path('app_patient_edit', { 'id': patient.id }) }}">Edit</a>
         </li>
     </ul>
+
+    {% set currentHospitalization = patient.getCurrentHospitalization() %}
+
+    {% if currentHospitalization %}
+        <h2>Current hospitalization</h2>
+        {% include ':app/hospitalization:showWidget.html.twig' with {'hospitalization': currentHospitalization} %}
+    {% endif %}
+
+    {% include ':app/hospitalization:index.html.twig' with {'hospitalizations': patient.getHospitalizations()} %}
 {% endblock %}

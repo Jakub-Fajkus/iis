@@ -2,31 +2,32 @@
 
 namespace AppBundle\Form;
 
-use AppBundle\Entity\Department;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use AppBundle\Entity\Examination;
 
-/**
- * Class HospitalizePatientType
- */
-class HospitalizePatientType extends AbstractType
+class ExaminePatientType extends AbstractType
 {
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('department', EntityType::class, ['class' => Department::class, 'choice_label' => 'name']);
+        //todo: change to textarea!
+        $builder
+            ->add('report');
     }
 
     /**
      * {@inheritdoc}
+     * @throws \Symfony\Component\OptionsResolver\Exception\AccessException
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults([]);
+        $resolver->setDefaults([
+            'data_class' => Examination::class,
+        ]);
     }
 
     /**
@@ -34,7 +35,7 @@ class HospitalizePatientType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'appbundle_hospitalize_patient';
+        return 'appbundle_examination';
     }
 
 

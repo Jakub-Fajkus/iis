@@ -1,3 +1,19 @@
+app_examination:
+    resource: "@AppBundle/Controller/ExaminationController.php"
+    type:     annotation
+
+app_prescription:
+    resource: "@AppBundle/Controller/PrescriptionController.php"
+    type:     annotation
+
+app_department:
+    resource: "@AppBundle/Controller/DepartmentController.php"
+    type:     annotation
+
+app_hospitalization:
+    resource: "@AppBundle/Controller/HospitalizationController.php"
+    type:     annotation
+
 admin_employment:
     resource: "@AdminBundle/Controller/EmploymentController.php"
     type:     annotation

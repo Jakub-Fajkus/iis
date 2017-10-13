@@ -3,7 +3,9 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Doctor;
+use AppBundle\Entity\Examination;
 use AppBundle\Entity\Patient;
+use AppBundle\Form\ExaminePatientType;
 use AppBundle\Form\HospitalizePatientType;
 use AppBundle\Form\PatientType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -82,9 +84,18 @@ class PatientController extends Controller
             ]
         );
 
+        $examineType = $this->createForm(
+            ExaminePatientType::class,
+            null,
+            [
+                'action' => $this->generateUrl('app_patient_examine', ['id' => $patient->getId()])
+            ]
+        );
+
         return $this->render('app/patient/show.html.twig', [
             'patient' => $patient,
             'hospitalizeForm' => $hospitalizeType->createView(),
+            'examineForm' => $examineType->createView(),
         ]);
     }
 
@@ -113,6 +124,7 @@ class PatientController extends Controller
 
     /**
      * @Route("/{id}/hospitalize", name="app_patient_hospitalize")
+     * @Method({"POST"})
      * @throws \Exception
      */
     public function hospitalizeAction(Request $request, Patient $patient)
@@ -123,10 +135,50 @@ class PatientController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $doctor = $this->getUser();
             if (!$doctor instanceof Doctor) {
-                throw new \Exception('Only doctor can hospitalize a patient!');
+                //todo add the annotation role check:
+//                throw new \Exception('Only doctor can hospitalize a patient!');
+
+                $doctor = $this->getDoctrine()->getRepository(Doctor::class)->findAll()[0];
             }
 
-            $patient->hospitalize($doctor, $editForm->get('department')->getData());
+            $hospitalization = $patient->hospitalize($doctor, $editForm->get('department')->getData());
+
+            $this->getDoctrine()->getManager()->persist($hospitalization);
+            $this->getDoctrine()->getManager()->flush();
         }
+
+        return $this->redirectToRoute('app_patient_show', ['id' => $patient->getId()]);
+    }
+
+    /**
+     * @Route("/{id}/examine", name="app_patient_examine")
+     * @Method({"POST"})
+     * @throws \Exception
+     */
+    public function examineAction(Request $request, Patient $patient)
+    {
+        $editForm = $this->createForm(ExaminePatientType::class, null);
+        $editForm->handleRequest($request);
+
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $doctor = $this->getUser();
+            if (!$doctor instanceof Doctor) {
+                //todo add the annotation role check:
+//                throw new \Exception('Only doctor can examine a patient!');
+
+                $doctor = $this->getDoctrine()->getRepository(Doctor::class)->findAll()[0];
+            }
+
+            //todo: refactor to the doctor entity
+            $examination = (new Examination())
+                ->setDoctor($doctor)
+                ->setHospitalization($patient->getCurrentHospitalization())
+                ->setReport($editForm->get('report')->getData());
+
+            $this->getDoctrine()->getManager()->persist($examination);
+            $this->getDoctrine()->getManager()->flush();
+        }
+
+        return $this->redirectToRoute('app_patient_show', ['id' => $patient->getId()]);
     }
 }

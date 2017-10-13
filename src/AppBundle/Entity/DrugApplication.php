@@ -26,7 +26,7 @@ class DrugApplication
      *
      * @ORM\Column(name="time", type="datetime", nullable=false)
      */
-    private $time = 'CURRENT_TIMESTAMP';
+    private $time;
 
     /**
      * @var string Username of the person that applied the drug
@@ -45,6 +45,90 @@ class DrugApplication
      */
     private $prescription;
 
+
+    /**
+     * DrugApplication constructor.
+     */
+    public function __construct()
+    {
+        $this->time = new \DateTime();
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     * @return DrugApplication
+     */
+    public function setId(int $id): DrugApplication
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
+    /**
+     * @return \DateTime|null
+     */
+    public function getTime(): ?\DateTime
+    {
+        return $this->time;
+    }
+
+    /**
+     * @param \DateTime $time
+     * @return DrugApplication
+     */
+    public function setTime(\DateTime $time): DrugApplication
+    {
+        $this->time = $time;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getAppliedBy(): ?string
+    {
+        return $this->appliedBy;
+    }
+
+    /**
+     * @param string $appliedBy
+     * @return DrugApplication
+     */
+    public function setAppliedBy(string $appliedBy): DrugApplication
+    {
+        $this->appliedBy = $appliedBy;
+
+        return $this;
+    }
+
+    /**
+     * @return Prescription|null
+     */
+    public function getPrescription(): ?Prescription
+    {
+        return $this->prescription;
+    }
+
+    /**
+     * @param Prescription $prescription
+     * @return DrugApplication
+     */
+    public function setPrescription(Prescription $prescription): DrugApplication
+    {
+        $this->prescription = $prescription;
+
+        return $this;
+    }
 
 }
 
