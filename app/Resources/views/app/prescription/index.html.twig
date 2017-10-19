@@ -3,41 +3,11 @@
 {% block body %}
     <h1>Prescriptions list</h1>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Periodofapplication</th>
-                <th>Delivery</th>
-                <th>Amount</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for prescription in prescriptions %}
-            <tr>
-                <td><a href="{{ path('app_prescription_show', { 'id': prescription.id }) }}">{{ prescription.id }}</a></td>
-                <td>{{ prescription.periodOfApplication }}</td>
-                <td>{{ prescription.delivery }}</td>
-                <td>{{ prescription.amount }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('app_prescription_show', { 'id': prescription.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('app_prescription_edit', { 'id': prescription.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    {% include ":app/prescription:list.html.twig" with {'prescriptions': prescriptions} %}
 
-    <ul>
-        <li>
-            <a href="{{ path('app_prescription_new') }}">Create a new prescription</a>
-        </li>
-    </ul>
+    {#<ul>#}
+        {#<li>#}
+            {#<a href="{{ path('app_prescription_new') }}">Create a new prescription</a>#}
+        {#</li>#}
+    {#</ul>#}
 {% endblock %}

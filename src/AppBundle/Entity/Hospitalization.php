@@ -218,5 +218,20 @@ class Hospitalization
 
         return $this;
     }
+
+    /**
+     * @return Prescription[]
+     */
+    public function getAllPrescriptions()
+    {
+        $prescriptions = [];
+
+        /** @var Examination $examination */
+        foreach ($this->examinations as $examination) {
+            $prescriptions = array_merge($prescriptions, $examination->getPrescriptions()->toArray());
+        }
+
+        return $prescriptions;
+    }
 }
 

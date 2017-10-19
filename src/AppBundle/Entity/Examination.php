@@ -215,5 +215,13 @@ class Examination
         return $this;
     }
 
+
+    /**
+     * @return mixed
+     */
+    public function __toString()
+    {
+        return (string)$this->id;
+    }
 }
 

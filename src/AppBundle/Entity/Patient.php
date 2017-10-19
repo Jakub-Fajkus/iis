@@ -96,6 +96,7 @@ class Patient
     /**
      * @var Collection
      *
+     * @ORM\OrderBy(value={"dateFrom": "DESC"})
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Hospitalization", mappedBy="patient", cascade={"PERSIST"})
      */
     private $hospitalizations;

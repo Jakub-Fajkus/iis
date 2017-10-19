@@ -3,6 +3,15 @@
 {% block body %}
     <h1>Patient</h1>
 
+    <ul>
+        <li>
+            <a href="{{ path('app_patient_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('app_patient_edit', { 'id': patient.id }) }}">Edit</a>
+        </li>
+    </ul>
+
     <table>
         <tbody>
         <tr>
@@ -50,31 +59,35 @@
             <td>{{ patient.gender }}</td>
         </tr>
         </tbody>
+    </table>
 
-    {{ form_start(hospitalizeForm) }}
-    {{ form_widget(hospitalizeForm) }}
-    <input type="submit" value="Hospitalize"/>
-    {{ form_end(hospitalizeForm) }}
+    <br>
+
+    <div>
+        <h4>Hospitalize form</h4>
+
+        {{ form_start(hospitalizeForm) }}
+        {{ form_widget(hospitalizeForm) }}
+        <input type="submit" value="Hospitalize"/>
+        {{ form_end(hospitalizeForm) }}
+    </div>
+
+    <br>
+
+    <div>
+        <h4>Examine form</h4>
 
         {#todo: move to a separate page?#}
-    {{ form_start(examineForm) }}
-    {{ form_widget(examineForm) }}
-    <input type="submit" value="Examine"/>
-    {{ form_end(examineForm) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('app_patient_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('app_patient_edit', { 'id': patient.id }) }}">Edit</a>
-        </li>
-    </ul>
+        {{ form_start(examineForm) }}
+        {{ form_widget(examineForm) }}
+        <input type="submit" value="Examine"/>
+        {{ form_end(examineForm) }}
+    </div>
 
     {% set currentHospitalization = patient.getCurrentHospitalization() %}
 
     {% if currentHospitalization %}
-        <h2>Current hospitalization</h2>
+        <h2>Aktuální hospitalizace s vyšetřeními a předepsanými léky</h2>
         {% include ':app/hospitalization:showWidget.html.twig' with {'hospitalization': currentHospitalization} %}
     {% endif %}
 

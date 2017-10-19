@@ -16,10 +16,10 @@
     {% for hospitalization in hospitalizations %}
         <tr>
             <td>
-                <a href="{{ path('app_patient_show', {'id': hospitalization.getPatient().id}) }}">{{ hospitalization.patient.fullName }}</a>
+                <a href="{{ path('app_patient_show', {'id': hospitalization.patient.id}) }}">{{ hospitalization.patient.fullName }}</a>
             </td>
             <td>
-                <a href="{{ path('app_department_show', {'id': hospitalization.getDepartment().id}) }}">{{ hospitalization.getDepartment.shortcut }}</a>
+                <a href="{{ path('app_department_show', {'id': hospitalization.department.id}) }}">{{ hospitalization.getDepartment.shortcut }}</a>
             </td>
             <td>{% if hospitalization.dateFrom %}{{ hospitalization.dateFrom|date('Y-m-d H:i:s') }}{% endif %}</td>
             <td>{% if hospitalization.dateTo %}{{ hospitalization.dateTo|date('Y-m-d H:i:s') }}{% else %}Aktuální{% endif %}</td>

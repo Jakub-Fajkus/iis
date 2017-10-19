@@ -29,12 +29,10 @@
             <a href="{{ path('app_prescription_index') }}">Back to the list</a>
         </li>
         <li>
-            <a href="{{ path('app_prescription_edit', { 'id': prescription.id }) }}">Edit</a>
+            <a href="{{ path('app_patient_show', {'id': prescription.examination.hospitalization.patient.id}) }}">Back to the patient</a>
         </li>
         <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
+            <a href="{{ path('app_prescription_edit', { 'id': prescription.id }) }}">Edit</a>
         </li>
     </ul>
 {% endblock %}

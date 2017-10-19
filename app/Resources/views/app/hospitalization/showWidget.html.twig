@@ -29,7 +29,9 @@
 </table>
 
 
-<h2>Prescriptions</h2>
-{#todo: add prescriptions!!!#}
 <h2>Examinations</h2>
-{#todo: add examinations?#}
+{% include ':app/examination:list.html.twig' with {'examinations': hospitalization.examinations} %}
+
+
+<h2>Prescriptions</h2>
+{% include ':app/prescription:list.html.twig' with {'prescriptions': hospitalization.allPrescriptions} %}

@@ -2,11 +2,13 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Examination;
 use AppBundle\Entity\Prescription;
 use AppBundle\Form\PrescriptionType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Prescription controller.
@@ -35,13 +37,17 @@ class PrescriptionController extends Controller
     /**
      * Creates a new prescription entity.
      *
-     * @Route("/new", name="app_prescription_new")
+     * @Route("/examination/{id}/new", name="app_prescription_new")
      * @Method({"GET", "POST"})
+     *
+     * @param Request     $request
+     * @param Examination $examination
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response     *
      */
-    public function newAction(Request $request)
+    public function newAction(Request $request, Examination $examination)
     {
         $prescription = new Prescription();
-        $form = $this->createForm(PrescriptionType::class, $prescription);
+        $form = $this->createForm(PrescriptionType::class, $prescription, ['examination' => $examination]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -79,13 +85,21 @@ class PrescriptionController extends Controller
      */
     public function editAction(Request $request, Prescription $prescription)
     {
-        $editForm = $this->createForm(PrescriptionType::class, $prescription);
+        $editForm = $this->createForm(
+            PrescriptionType::class,
+            $prescription,
+            ['examination' => $prescription->getExamination()]
+        );
+
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('app_prescription_edit', ['id' => $prescription->getId()]);
+            return $this->redirectToRoute(
+                'app_prescription_edit',
+                ['id' => $prescription->getId(), $prescription->getExamination()]
+            );
         }
 
         return $this->render('app/prescription/edit.html.twig', [

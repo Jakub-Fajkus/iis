@@ -5,28 +5,47 @@ namespace AppBundle\Form;
 use AppBundle\Entity\Drug;
 use AppBundle\Entity\Examination;
 use AppBundle\Entity\Prescription;
+use AppBundle\Transformer\EntityToNumberTransformer;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class PrescriptionType extends AbstractType
 {
+    /** @var  EntityManagerInterface */
+    protected $entityManager;
+
+    /**
+     * PrescriptionType constructor.
+     *
+     * @param EntityManagerInterface $entityManager
+     */
+    public function __construct(EntityManagerInterface $entityManager)
+    {
+        $this->entityManager = $entityManager;
+    }
+
+
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('periodOfApplication')
-            ->add('delivery')
-            ->add('amount')
             ->add('drug', EntityType::class, ['class' => Drug::class, 'choice_label' => 'name'])
-            ->add('examination', EntityType::class, [
-                'class' => Examination::class,
-                'data' => $options['prescriptionEntity'],
-                'attr' => ['class' => 'hidden'] //todo: obviously does not work, but this should not be visible to the user
+            ->add('delivery')//todo: add select list?
+            ->add('amount')
+            ->add('periodOfApplication')
+            ->add('examination', HiddenType::class, [
+                'data' => $options['examination'],
+                'data_class' => null,
             ]);
+
+        $builder->get('examination')
+            ->addModelTransformer(new EntityToNumberTransformer($this->entityManager, Examination::class));
     }
 
     /**
@@ -36,7 +55,7 @@ class PrescriptionType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Prescription::class,
-            'prescriptionEntity' => null,
+            'examination' => null,
         ]);
     }
 

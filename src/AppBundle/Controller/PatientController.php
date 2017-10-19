@@ -78,7 +78,10 @@ class PatientController extends Controller
     {
         $hospitalizeType = $this->createForm(
             HospitalizePatientType::class,
-            null,
+            [
+                'dateFrom' => new \DateTime(),
+                'doctor' => $this->getUser()
+            ],
             [
                 'action' => $this->generateUrl('app_patient_hospitalize', ['id' => $patient->getId()]),
             ]

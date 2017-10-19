@@ -9,3 +9,10 @@ services:
         arguments: ["@knp_menu.factory"]
         tags:
             - { name: knp_menu.menu_builder, method: createAdminMenu, alias: admin } # The alias is what is used to retrieve the menu
+
+
+    app.prescription_type:
+        class: AppBundle\Form\PrescriptionType
+        autowire: true
+        tags:
+             - {name: form.type}

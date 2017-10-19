@@ -26,7 +26,7 @@ class DoctorType extends AbstractType
             ->add('telephone')
             ->add('username')
             ->add('email')
-            ->add('plainPassword', PasswordType::class, ['label' => 'Password'])
+            ->add('plainPassword', PasswordType::class, ['label' => 'Password', 'required' => false])
             ;
     }
 
