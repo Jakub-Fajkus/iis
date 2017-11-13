@@ -9,7 +9,9 @@ imports:
 #todo: pridat do frontu menu pro oddeleni: pro lekare bude vypis, pro sestru bude jeji oddeleni
 #   zde bude vypis vsech hospitalizaci a vsech podani leku na konkretni den: napr v tabulce! - radky by byly pacienti, sloupce hodiny... v bunkach by byly leky k podani!
 
-#todo: pridat do vsech vypisu hlasku o tom,ze tam nejsou data! ted se ukazuje jen header tabulky a je to oslive
+#todo: pridat do vsech vypisu hlasku o tom,ze tam nejsou data! ted se ukazuje jen header tabulky a je to osklive
+
+#todo: integritni omezeni!
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
