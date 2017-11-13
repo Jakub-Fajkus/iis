@@ -67,11 +67,8 @@ class DrugController extends Controller
      */
     public function showAction(Drug $drug)
     {
-        $deleteForm = $this->createDeleteForm($drug);
-
         return $this->render('admin/drug/show.html.twig', [
             'drug' => $drug,
-            'delete_form' => $deleteForm->createView(),
         ]);
     }
 
@@ -83,7 +80,6 @@ class DrugController extends Controller
      */
     public function editAction(Request $request, Drug $drug)
     {
-        $deleteForm = $this->createDeleteForm($drug);
         $editForm = $this->createForm(DrugType::class, $drug);
         $editForm->handleRequest($request);
 
@@ -96,43 +92,6 @@ class DrugController extends Controller
         return $this->render('admin/drug/edit.html.twig', [
             'drug' => $drug,
             'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
         ]);
-    }
-
-    /**
-     * Deletes a drug entity.
-     *
-     * @Route("/{id}", name="admin_drug_delete")
-     * @Method("DELETE")
-     */
-    public function deleteAction(Request $request, Drug $drug)
-    {
-        $form = $this->createDeleteForm($drug);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($drug);
-            $em->flush();
-        }
-
-        return $this->redirectToRoute('admin_drug_index');
-    }
-
-    /**
-     * Creates a form to delete a drug entity.
-     *
-     * @param Drug $drug The drug entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createDeleteForm(Drug $drug)
-    {
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('admin_drug_delete', ['id' => $drug->getId()]))
-            ->setMethod('DELETE')
-            ->getForm()
-        ;
     }
 }

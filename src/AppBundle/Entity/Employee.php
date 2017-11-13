@@ -18,6 +18,13 @@ use FOS\UserBundle\Model\User;
 class Employee extends User
 {
     const ROLE_ADMIN = 'ROLE_ADMIN';
+    const ROLE_SUPER_ADMIN = 'ROLE_SUPER_ADMIN';
+    const ROLE_NURSE = 'ROLE_NURSE';
+    const ROLE_DOCTOR = 'ROLE_DOCTOR';
+
+    const NURSE_HANDLE = 'nurse';
+    const DOCTOR_HANDLE = 'doctor';
+    const ADMIN_HANDLE = 'admin';
 
     /**
      * @var int
@@ -148,5 +155,29 @@ class Employee extends User
     public function isAdmin(): bool
     {
         return $this->hasRole(static::ROLE_ADMIN);
+    }
+
+    /**
+     * @return bool
+     */
+    public function isSuperAdmin(): bool
+    {
+        return $this->hasRole(static::ROLE_SUPER_ADMIN);
+    }
+
+    /**
+     * @return bool
+     */
+    public function isNurse(): bool
+    {
+        return $this->hasRole(static::ROLE_NURSE);
+    }
+
+    /**
+     * @return bool
+     */
+    public function isDoctor(): bool
+    {
+        return $this->hasRole(static::ROLE_DOCTOR);
     }
 }

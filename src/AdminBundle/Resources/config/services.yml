@@ -4,15 +4,14 @@ services:
 #        arguments: ["@service_id", "plain_value", "%parameter%"]
 
 
-    admin.menu_builder:
-        class: AdminBundle\Menu\AdminMenuBuilder
-        arguments: ["@knp_menu.factory"]
-        tags:
-            - { name: knp_menu.menu_builder, method: createAdminMenu, alias: admin } # The alias is what is used to retrieve the menu
+#    admin.menu_builder:
+#        class: AdminBundle\Menu\AdminMenuBuilder
+#        arguments: ["@knp_menu.factory"]
+#        tags:
+#            - { name: knp_menu.menu_builder, method: createAdminMenu, alias: admin } # The alias is what is used to retrieve the menu
 
-
-    app.prescription_type:
-        class: AppBundle\Form\PrescriptionType
+    admin.twig.employee:
+        class: AdminBundle\Twig\Extension\EmployeeExtension
         autowire: true
         tags:
-             - {name: form.type}
+            - { name: twig.extension }

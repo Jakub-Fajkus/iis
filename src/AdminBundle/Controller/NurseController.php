@@ -3,10 +3,12 @@
 namespace AdminBundle\Controller;
 
 use AdminBundle\Form\NurseType;
+use AppBundle\Entity\Employee;
 use AppBundle\Entity\Nurse;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Nurse controller.
@@ -16,27 +18,12 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
 class NurseController extends Controller
 {
     /**
-     * Lists all nurse entities.
-     *
-     * @Route("/", name="admin_nurse_index")
-     * @Method("GET")
-     */
-    public function indexAction()
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $nurses = $em->getRepository(Nurse::class)->findAll();
-
-        return $this->render('admin/nurse/index.html.twig', array(
-            'nurses' => $nurses,
-        ));
-    }
-
-    /**
      * Creates a new nurse entity.
      *
      * @Route("/new", name="admin_nurse_new")
      * @Method({"GET", "POST"})
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function newAction(Request $request)
     {
@@ -45,16 +32,17 @@ class NurseController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
+            $nurse->addRole(Employee::ROLE_NURSE);
+
             $this->get('fos_user.user_manager')->updateUser($nurse);
 
-            return $this->redirectToRoute('admin_nurse_show', array('id' => $nurse->getId()));
+            return $this->redirectToRoute('admin_nurse_show', ['id' => $nurse->getId()]);
         }
 
-        return $this->render('admin/nurse/new.html.twig', array(
+        return $this->render('admin/nurse/new.html.twig', [
             'nurse' => $nurse,
             'form' => $form->createView(),
-        ));
+        ]);
     }
 
     /**
@@ -62,15 +50,14 @@ class NurseController extends Controller
      *
      * @Route("/{id}", name="admin_nurse_show")
      * @Method("GET")
+     * @param Nurse $nurse
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function showAction(Nurse $nurse)
     {
-        $deleteForm = $this->createDeleteForm($nurse);
-
-        return $this->render('admin/nurse/show.html.twig', array(
+        return $this->render('admin/nurse/show.html.twig', [
             'nurse' => $nurse,
-            'delete_form' => $deleteForm->createView(),
-        ));
+        ]);
     }
 
     /**
@@ -78,59 +65,24 @@ class NurseController extends Controller
      *
      * @Route("/{id}/edit", name="admin_nurse_edit")
      * @Method({"GET", "POST"})
+     * @param Request $request
+     * @param Nurse   $nurse
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function editAction(Request $request, Nurse $nurse)
     {
-        $deleteForm = $this->createDeleteForm($nurse);
         $editForm = $this->createForm(NurseType::class, $nurse);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->get('fos_user.user_manager')->updateUser($nurse);
 
-            return $this->redirectToRoute('admin_nurse_edit', array('id' => $nurse->getId()));
+            return $this->redirectToRoute('admin_nurse_edit', ['id' => $nurse->getId()]);
         }
 
-        return $this->render('admin/nurse/edit.html.twig', array(
+        return $this->render('admin/nurse/edit.html.twig', [
             'nurse' => $nurse,
             'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
-    }
-
-    /**
-     * Deletes a nurse entity.
-     *
-     * @Route("/{id}", name="admin_nurse_delete")
-     * @Method("DELETE")
-     */
-    public function deleteAction(Request $request, Nurse $nurse)
-    {
-        $form = $this->createDeleteForm($nurse);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($nurse);
-            $em->flush();
-        }
-
-        return $this->redirectToRoute('admin_nurse_index');
-    }
-
-    /**
-     * Creates a form to delete a nurse entity.
-     *
-     * @param Nurse $nurse The nurse entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createDeleteForm(Nurse $nurse)
-    {
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('admin_nurse_delete', array('id' => $nurse->getId())))
-            ->setMethod('DELETE')
-            ->getForm()
-        ;
+        ]);
     }
 }

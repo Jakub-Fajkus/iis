@@ -1,0 +1,16 @@
+{% extends 'app/appBase.html.twig' %}
+
+{% block body %}
+    <h1>Zaznamenání podání léku</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="Zaznamenat" />
+    {{ form_end(form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('app_drug_application_index') }}">Zpět na všechna podání léků</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -64,6 +64,13 @@ class Employment
     private $department;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="telephone", type="string", length=20, nullable=false)
+     */
+    private $telephone;
+
+    /**
      * Employment constructor.
      */
     public function __construct()
@@ -180,6 +187,19 @@ class Employment
         return $this;
     }
 
+    /**
+     * @return string
+     */
+    public function getTelephone(): string
+    {
+        return $this->telephone;
+    }
 
+    /**
+     * @param string $telephone
+     */
+    public function setTelephone(string $telephone)
+    {
+        $this->telephone = $telephone;
+    }
 }
-

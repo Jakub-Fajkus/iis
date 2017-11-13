@@ -98,7 +98,7 @@ class PrescriptionController extends Controller
 
             return $this->redirectToRoute(
                 'app_prescription_edit',
-                ['id' => $prescription->getId(), $prescription->getExamination()]
+                ['id' => $prescription->getId()]
             );
         }
 

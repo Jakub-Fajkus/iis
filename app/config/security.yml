@@ -6,8 +6,11 @@ security:
         FOS\UserBundle\Model\UserInterface: bcrypt
 
     role_hierarchy:
-        ROLE_ADMIN:       ROLE_USER
-        ROLE_SUPER_ADMIN: ROLE_ADMIN
+        ROLE_NURSE: ROLE_USER
+        ROLE_DOCTOR: ROLE_USER
+        ROLE_ADMIN: ROLE_USER
+        ROLE_MEDICAL: [ROLE_NURSE, ROLE_DOCTOR]
+        ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_MEDICAL]
 
     # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     providers:
@@ -15,14 +18,47 @@ security:
             id: fos_user.user_provider.username
 
     firewalls:
-         main:
-             pattern: ^/
-             form_login:
-                 provider: fos_userbundle
-                 csrf_token_generator: security.csrf.token_manager
-             logout:       true
-             anonymous:    true
+#        usr:
+#            pattern: ^/usr
+##                form_login:
+##                     provider: fos_userbundle
+##                     csrf_token_generator: security.csrf.token_manager
+#            anonymous: true
+#            logout:
+#                path: /usr/logout
+#                target: /usr/login
+#
+#        main:
+#            pattern: ^/
+#            form_login:
+#                login_path: /usr/login
+#                check_path: /usr/login_check
+#                provider: fos_userbundle
+#                csrf_token_generator: security.csrf.token_manager
+#            logout:
+#                path: /usr/logout
+#                target: /usr/login
+#            anonymous:    false
+
+        main:
+            pattern: ^/
+            anonymous: true
+            logout: true
+            form_login:
+                provider: fos_userbundle
+                csrf_token_generator: security.csrf.token_manager
+                check_path: /login_check
 
     access_control:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin, role: ROLE_ADMIN }
+
+#   medical(doctor, nurse) frontend
+        - { path: ^/department, role: [ROLE_NURSE, ROLE_DOCTOR] }
+        - { path: ^/drug, role: [ROLE_NURSE, ROLE_DOCTOR] }
+        - { path: ^/examination, role: [ROLE_NURSE, ROLE_DOCTOR] }
+        - { path: ^/hospitalization, role: [ROLE_NURSE, ROLE_DOCTOR] }
+        - { path: ^/patient, role: [ROLE_NURSE, ROLE_DOCTOR] }
+        - { path: ^/prescription, role: [ROLE_NURSE, ROLE_DOCTOR] }
+#        fallback pro vsechny url, pokud se nejedna o zadnou vypsanou vyse
+        - { path: ^/, role: ROLE_USER }

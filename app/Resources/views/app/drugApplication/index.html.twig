@@ -1,0 +1,7 @@
+{% extends 'app/appBase.html.twig' %}
+
+{% block body %}
+    <h1>Seznam podání léků</h1>
+
+    {% include ":app/drugApplication:list.html.twig" with {'applications': applications} only %}
+{% endblock %}

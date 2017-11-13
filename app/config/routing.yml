@@ -1,3 +1,7 @@
+app_drug_application:
+    resource: "@AppBundle/Controller/DrugApplicationController.php"
+    type:     annotation
+
 app_examination:
     resource: "@AppBundle/Controller/ExaminationController.php"
     type:     annotation

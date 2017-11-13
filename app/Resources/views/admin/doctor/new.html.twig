@@ -4,13 +4,13 @@
     <h1>Doctor creation</h1>
 
     {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
+    {{ form_widget(form) }}
+    <input type="submit" value="Vytvořit"/>
     {{ form_end(form) }}
 
     <ul>
         <li>
-            <a href="{{ path('admin_doctor_index') }}">Back to the list</a>
+            <a href="{{ path('admin_employee_index') }}">Zpět na výpis zaměstnanců</a>
         </li>
     </ul>
 {% endblock %}

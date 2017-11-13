@@ -2,11 +2,12 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}We are gonna save your ass! {% endblock %}</title>
+        <title>{% block title %}Nemocnice{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.png') }}" />
     </head>
     <body>
+        <a href="{{ path('fos_user_security_logout') }}">LOGOUT</a>
         {% block menu %}{% endblock %}
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}

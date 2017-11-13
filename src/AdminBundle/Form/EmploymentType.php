@@ -23,6 +23,7 @@ class EmploymentType extends AbstractType
             ->add('type') //todo: wtf???
             ->add('dateFrom')
             ->add('dateTo')
+            ->add('telephone')
             ->add('department', EntityType::class, [
                 'class' => Department::class,
                 'choice_label' => function (Department $department) {

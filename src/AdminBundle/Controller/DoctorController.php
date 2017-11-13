@@ -4,6 +4,7 @@ namespace AdminBundle\Controller;
 
 use AppBundle\Entity\Doctor;
 use AdminBundle\Form\DoctorType;
+use AppBundle\Entity\Employee;
 use AppBundle\Entity\Employment;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -49,6 +50,8 @@ class DoctorController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $doctor->addRole(Employee::ROLE_DOCTOR);
+
             $this->get('fos_user.user_manager')->updateUser($doctor);
 
             return $this->redirectToRoute('admin_doctor_show', ['id' => $doctor->getId()]);
@@ -56,7 +59,7 @@ class DoctorController extends Controller
 
         return $this->render('admin/doctor/new.html.twig', [
             'doctor' => $doctor,
-            'form'   => $form->createView(),
+            'form' => $form->createView(),
         ]);
     }
 
@@ -68,14 +71,11 @@ class DoctorController extends Controller
      */
     public function showAction(Doctor $doctor)
     {
-        $deleteForm = $this->createDeleteForm($doctor);
         $employments = $this->getDoctrine()->getRepository(Employment::class)->findBy(['doctor' => $doctor]);
 
-
         return $this->render('admin/doctor/show.html.twig', [
-            'doctor'      => $doctor,
+            'doctor' => $doctor,
             'employments' => $employments,
-            'delete_form' => $deleteForm->createView(),
         ]);
     }
 
@@ -87,7 +87,6 @@ class DoctorController extends Controller
      */
     public function editAction(Request $request, Doctor $doctor)
     {
-        $deleteForm = $this->createDeleteForm($doctor);
         $editForm = $this->createForm(DoctorType::class, $doctor);
         $editForm->handleRequest($request);
 
@@ -98,44 +97,8 @@ class DoctorController extends Controller
         }
 
         return $this->render('admin/doctor/edit.html.twig', [
-            'doctor'      => $doctor,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+            'doctor' => $doctor,
+            'edit_form' => $editForm->createView()
         ]);
-    }
-
-    /**
-     * Deletes a doctor entity.
-     *
-     * @Route("/{id}", name="admin_doctor_delete")
-     * @Method("DELETE")
-     */
-    public function deleteAction(Request $request, Doctor $doctor)
-    {
-        $form = $this->createDeleteForm($doctor);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($doctor);
-            $em->flush();
-        }
-
-        return $this->redirectToRoute('admin_doctor_index');
-    }
-
-    /**
-     * Creates a form to delete a doctor entity.
-     *
-     * @param Doctor $doctor The doctor entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createDeleteForm(Doctor $doctor)
-    {
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('admin_doctor_delete', ['id' => $doctor->getId()]))
-            ->setMethod('DELETE')
-            ->getForm();
     }
 }

@@ -13,6 +13,12 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
+        if ($this->getUser()->isAdmin()) {
+            return $this->redirectToRoute('admin_department_index');
+        } else {
+            return $this->redirectToRoute('app_patient_index');
+        }
+
         // replace this example code with whatever you need
         return $this->render('default/index.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,

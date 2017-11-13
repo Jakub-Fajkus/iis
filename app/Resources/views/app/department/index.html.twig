@@ -3,8 +3,12 @@
 {% block body %}
     <h1>Departments list</h1>
 
-    <table>
-        <thead>
+    {% if departments|length == 0 %}
+        <p>Žádná oddělení</p>
+    {% else %}
+
+        <table>
+            <thead>
             <tr>
                 <th>Id</th>
                 <th>Shortcut</th>
@@ -12,25 +16,26 @@
                 <th>Telephone</th>
                 <th>Actions</th>
             </tr>
-        </thead>
-        <tbody>
-        {% for department in departments %}
-            <tr>
-                <td><a href="{{ path('app_department_show', { 'id': department.id }) }}">{{ department.id }}</a></td>
-                <td>{{ department.shortcut }}</td>
-                <td>{{ department.name }}</td>
-                <td>{{ department.telephone }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('app_department_show', { 'id': department.id }) }}">show</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            {% for department in departments %}
+                <tr>
+                    <td><a href="{{ path('app_department_show', { 'id': department.id }) }}">{{ department.id }}</a>
+                    </td>
+                    <td>{{ department.shortcut }}</td>
+                    <td>{{ department.name }}</td>
+                    <td>{{ department.telephone }}</td>
+                    <td>
+                        <ul>
+                            <li>
+                                <a href="{{ path('app_department_show', { 'id': department.id }) }}">Detail</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
 
-    
 {% endblock %}

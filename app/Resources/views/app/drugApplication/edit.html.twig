@@ -1,0 +1,21 @@
+{% extends 'app/appBase.html.twig' %}
+
+{% block body %}
+    <h1>Upravení podání léku</h1>
+
+    {{ form_start(edit_form) }}
+    {{ form_widget(edit_form) }}
+    <input type="submit" value="Edit"/>
+    {{ form_end(edit_form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('app_drug_application_index') }}">Zpět na všechna podání léků</a>
+
+        </li>
+        <li>
+            <a href="{{ path('app_patient_show', {'id': drugApplication.prescription.examination.hospitalization.patient.id}) }}">Zpět
+                na pacienta</a>
+        </li>
+    </ul>
+{% endblock %}

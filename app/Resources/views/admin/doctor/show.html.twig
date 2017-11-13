@@ -5,80 +5,43 @@
 
     <table>
         <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ doctor.id }}</td>
-            </tr>
-            <tr>
-                <th>Username</th>
-                <td>{{ doctor.username }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ doctor.name }}</td>
-            </tr>
-            <tr>
-                <th>Surname</th>
-                <td>{{ doctor.surname }}</td>
-            </tr>
-            <tr>
-                <th>Telephone</th>
-                <td>{{ doctor.telephone }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('admin_doctor_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('admin_doctor_edit', { 'id': doctor.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
-    {#todo: change heading?#}
-    <h2>Employments list</h2>
-
-    <table>
-        <thead>
         <tr>
             <th>Id</th>
-            <th>Type</th>
-            <th>Datefrom</th>
-            <th>Dateto</th>
-            <th>Actions</th>
+            <td>{{ doctor.id }}</td>
         </tr>
-        </thead>
-        <tbody>
-        {% for employment in employments %}
-            <tr>
-                <td><a href="{{ path('admin_employment_show', { 'id': employment.id, 'doctor_id': doctor.id }) }}">{{ employment.id }}</a></td>
-                <td>{{ employment.type }}</td>
-                <td>{% if employment.dateFrom %}{{ employment.dateFrom|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{% if employment.dateTo %}{{ employment.dateTo|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('admin_employment_show', { 'id': employment.id, 'doctor_id': doctor.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('admin_employment_edit', { 'id': employment.id, 'doctor_id': doctor.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
+        <tr>
+            <th>Username</th>
+            <td>{{ doctor.username }}</td>
+        </tr>
+        <tr>
+            <th>Name</th>
+            <td>{{ doctor.name }}</td>
+        </tr>
+        <tr>
+            <th>Surname</th>
+            <td>{{ doctor.surname }}</td>
+        </tr>
+        <tr>
+            <th>Telephone</th>
+            <td>{{ doctor.telephone }}</td>
+        </tr>
         </tbody>
     </table>
 
     <ul>
         <li>
-            <a href="{{ path('admin_employment_new', {'doctor_id': doctor.id}) }}">Create a new employment</a>
+            <a href="{{ path('admin_employee_index') }}">Zpět na výpis zaměstnanců</a>
+        </li>
+        <li>
+            <a href="{{ path('admin_doctor_edit', { 'id': doctor.id }) }}">Upravit</a>
+        </li>
+    </ul>
+
+    {% include "admin/employment/list.html.twig" with {'doctor': doctor} %}
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_employment_new', {'doctor_id': doctor.id}) }}">Vytvořit úvazek</a>
         </li>
     </ul>
 {% endblock %}

@@ -1,16 +1,17 @@
 {% extends 'app/appBase.html.twig' %}
 
 {% block body %}
+    {#TODO: PRIDAT NEJAKE VYHLEDAVANI? leku muze byt dost...#}
     <h1>Prescription creation</h1>
 
     {{ form_start(form) }}
         {{ form_widget(form) }}
-        <input type="submit" value="Create" />
+        <input type="submit" value="Vytvořit" />
     {{ form_end(form) }}
 
     <ul>
         <li>
-            <a href="{{ path('app_prescription_index') }}">Back to the list</a>
+            <a href="{{ path('app_prescription_index') }}">Zpět na výpis</a>
         </li>
     </ul>
 {% endblock %}

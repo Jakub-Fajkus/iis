@@ -5,10 +5,10 @@
 
     <ul>
         <li>
-            <a href="{{ path('app_patient_index') }}">Back to the list</a>
+            <a href="{{ path('app_patient_index') }}">Zpět na výpis</a>
         </li>
         <li>
-            <a href="{{ path('app_patient_edit', { 'id': patient.id }) }}">Edit</a>
+            <a href="{{ path('app_patient_edit', { 'id': patient.id }) }}">Upravit</a>
         </li>
     </ul>
 
@@ -64,7 +64,7 @@
     <br>
 
     <div>
-        <h4>Hospitalize form</h4>
+        <h1>Hospitalize form</h1>
 
         {{ form_start(hospitalizeForm) }}
         {{ form_widget(hospitalizeForm) }}
@@ -75,7 +75,7 @@
     <br>
 
     <div>
-        <h4>Examine form</h4>
+        <h1>Examine form</h1>
 
         {#todo: move to a separate page?#}
         {{ form_start(examineForm) }}
@@ -87,7 +87,7 @@
     {% set currentHospitalization = patient.getCurrentHospitalization() %}
 
     {% if currentHospitalization %}
-        <h2>Aktuální hospitalizace s vyšetřeními a předepsanými léky</h2>
+        <h1>Aktuální hospitalizace s vyšetřeními a předepsanými léky</h1>
         {% include ':app/hospitalization:showWidget.html.twig' with {'hospitalization': currentHospitalization} %}
     {% endif %}
 

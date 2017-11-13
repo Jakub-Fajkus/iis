@@ -3,8 +3,12 @@
 {% block body %}
     <h1>Drugs list</h1>
 
-    <table>
-        <thead>
+    {% if drugs|length == 0 %}
+        <p>Žádné léky</p>
+    {% else %}
+
+        <table>
+            <thead>
             <tr>
                 <th>Id</th>
                 <th>Name</th>
@@ -14,25 +18,27 @@
                 <th>Recommendeddosage</th>
                 <th>Actions</th>
             </tr>
-        </thead>
-        <tbody>
-        {% for drug in drugs %}
-            <tr>
-                <td><a href="{{ path('app_drug_show', { 'id': drug.id }) }}">{{ drug.id }}</a></td>
-                <td>{{ drug.name }}</td>
-                <td>{{ drug.mainSubstance }}</td>
-                <td>{{ drug.contraindication }}</td>
-                <td>{{ drug.substanceAmount }}</td>
-                <td>{{ drug.recommendedDosage }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('app_drug_show', { 'id': drug.id }) }}">show</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            {% for drug in drugs %}
+                <tr>
+                    <td><a href="{{ path('app_drug_show', { 'id': drug.id }) }}">{{ drug.id }}</a></td>
+                    <td>{{ drug.name }}</td>
+                    <td>{{ drug.mainSubstance }}</td>
+                    <td>{{ drug.contraindication }}</td>
+                    <td>{{ drug.substanceAmount }}</td>
+                    <td>{{ drug.recommendedDosage }}</td>
+                    <td>
+                        <ul>
+                            <li>
+                                <a href="{{ path('app_drug_show', { 'id': drug.id }) }}">Detail</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    {% endif %}
 {% endblock %}

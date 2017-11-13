@@ -6,7 +6,22 @@ services:
 
     app.menu_builder:
         class: AppBundle\Menu\AppMenuBuilder
-        arguments: ["@knp_menu.factory"]
+        arguments:
+            - "@knp_menu.factory"
+            - "@security.token_storage"
         tags:
             - { name: knp_menu.menu_builder, method: createAppMenu,   alias: "app" } # The alias is what is used to retrieve the menu
             - { name: knp_menu.menu_builder, method: createAdminMenu, alias: "admin" } # The alias is what is used to retrieve the menu
+
+
+    app.prescription_type:
+        class: AppBundle\Form\PrescriptionType
+        autowire: true
+        tags:
+             - {name: form.type}
+
+    app.drug_application_type:
+        class: AppBundle\Form\DrugApplicationType
+        autowire: true
+        tags:
+             - {name: form.type}

@@ -1,0 +1,27 @@
+{% extends 'app/appBase.html.twig' %}
+
+{% block body %}
+    <h1>Podání léku</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Datum a čas</th>
+                <td>{% if drugApplication.time %}{{ drugApplication.time|date('d.m.Y H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Aplikováno osobou</th>
+                <td>{{ drugApplication.appliedBy }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('app_drug_application_index') }}">Zpět na výpis</a>
+        </li>
+        <li>
+            <a href="{{ path('app_drug_application_edit', { 'id': drugApplication.id }) }}">Upravit</a>
+        </li>
+    </ul>
+{% endblock %}

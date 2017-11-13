@@ -5,28 +5,28 @@
 
     <table>
         <thead>
-            <tr>
-                <th>Id</th>
-                <th>Username</th>
-                <th>Name</th>
-                <th>Surname</th>
-                <th>Actions</th>
-            </tr>
+        <tr>
+            <th>Username</th>
+            <th>Povolání</th>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Actions</th>
+        </tr>
         </thead>
         <tbody>
         {% for employee in employees %}
             <tr>
-                <td><a href="{{ path('admin_employee_show', { 'id': employee.id }) }}">{{ employee.id }}</a></td>
                 <td>{{ employee.username }}</td>
+                <td>{% if employee.admin %} admin {% elseif employee.doctor %} lékař {% else %} sestra {% endif %}</td>
                 <td>{{ employee.name }}</td>
                 <td>{{ employee.surname }}</td>
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('admin_employee_show', { 'id': employee.id }) }}">show</a>
+                            <a href="{{ getEmployeeShowUrl(employee) }}">Detail</a>
                         </li>
                         <li>
-                            <a href="{{ path('admin_employee_edit', { 'id': employee.id }) }}">edit</a>
+                            <a href="{{ getEmployeeEditUrl(employee) }}">upravit</a>
                         </li>
                     </ul>
                 </td>
@@ -37,7 +37,12 @@
 
     <ul>
         <li>
-            <a href="{{ path('admin_employee_new') }}">Create a new employee</a>
+            <a href="{{ path('admin_nurse_new') }}">Přidat novou sestru</a>
         </li>
+        <li>
+            <a href="{{ path('admin_doctor_new') }}">Přidat nového lékaře</a>
+        </li>
+        <li>
+            <a href="{{ path('admin_admin_new') }}">Přidat nového admina</a></li>
     </ul>
 {% endblock %}

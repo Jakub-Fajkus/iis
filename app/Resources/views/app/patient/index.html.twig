@@ -11,8 +11,11 @@
 
     <h1>Patients list</h1>
 
-    <table>
-        <thead>
+    {% if patients|length == 0 %}
+        <p>Žádní pacienti</p>
+    {% else %}
+        <table>
+            <thead>
             <tr>
                 <th>Id</th>
                 <th>Name</th>
@@ -27,39 +30,41 @@
                 <th>Gender</th>
                 <th>Actions</th>
             </tr>
-        </thead>
-        <tbody>
-        {% for patient in patients %}
-            <tr>
-                <td><a href="{{ path('app_patient_show', { 'id': patient.id }) }}">{{ patient.id }}</a></td>
-                <td>{{ patient.name }}</td>
-                <td>{{ patient.surname }}</td>
-                <td>{{ patient.personalIdentificationNumber }}</td>
-                <td>{{ patient.street }}</td>
-                <td>{{ patient.houseNumber }}</td>
-                <td>{{ patient.city }}</td>
-                <td>{{ patient.zip }}</td>
-                <td>{{ patient.medicalIdentificationNumber }}</td>
-                <td>{{ patient.insuranceCompanyId }}</td>
-                <td>{{ patient.gender }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('app_patient_show', { 'id': patient.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('app_patient_edit', { 'id': patient.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            {% for patient in patients %}
+                <tr>
+                    <td><a href="{{ path('app_patient_show', { 'id': patient.id }) }}">{{ patient.id }}</a></td>
+                    <td>{{ patient.name }}</td>
+                    <td>{{ patient.surname }}</td>
+                    <td>{{ patient.personalIdentificationNumber }}</td>
+                    <td>{{ patient.street }}</td>
+                    <td>{{ patient.houseNumber }}</td>
+                    <td>{{ patient.city }}</td>
+                    <td>{{ patient.zip }}</td>
+                    <td>{{ patient.medicalIdentificationNumber }}</td>
+                    <td>{{ patient.insuranceCompanyId }}</td>
+                    <td>{{ patient.gender }}</td>
+                    <td>
+                        <ul>
+                            <li>
+                                <a href="{{ path('app_patient_show', { 'id': patient.id }) }}">Detail</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('app_patient_edit', { 'id': patient.id }) }}">Upravit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('app_patient_new') }}">Create a new patient</a>
-        </li>
-    </ul>
+        <ul>
+            <li>
+                <a href="{{ path('app_patient_new') }}">Create a new patient</a>
+            </li>
+        </ul>
+
+    {% endif %}
 {% endblock %}

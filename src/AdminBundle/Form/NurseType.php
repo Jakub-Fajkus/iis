@@ -26,7 +26,7 @@ class NurseType extends AbstractType
             ->add('telephone')
             ->add('username')
             ->add('email')
-            ->add('plainPassword', PasswordType::class, ['label' => 'Password'])
+            ->add('plainPassword', PasswordType::class, ['label' => 'Password', 'required' => false])
             ->add('department', EntityType::class, [
                 'class' => Department::class,
                 'choice_label' => function (Department $department) {

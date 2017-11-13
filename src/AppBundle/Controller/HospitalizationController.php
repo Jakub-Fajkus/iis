@@ -22,6 +22,7 @@ class HospitalizationController extends Controller
      */
     public function indexAction()
     {
+        //todo: pro sestru vypsat jen informace pro jeji oddeleni
         $em = $this->getDoctrine()->getManager();
 
         $hospitalizations = $em->getRepository('AppBundle:Hospitalization')->findAll();

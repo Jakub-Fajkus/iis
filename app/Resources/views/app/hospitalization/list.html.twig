@@ -1,0 +1,50 @@
+<h1>Hospitalizations list</h1>
+{#todo:kdyz se  kikne v menu na hospitalizations, pouziva se tato sablona bez layoutu!#}
+
+{#todo: do not display patient when the output is in the patient's detail?#}
+
+
+{% if hospitalizations|length == 0 %}
+    <p>Žádné hospitalizace</p>
+{% else %}
+    <table>
+        <thead>
+        <tr>
+            <th>Patient</th>
+            <th>Department</th>
+            <th>Datefrom</th>
+            <th>Dateto</th>
+            <th>Doctor</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for hospitalization in hospitalizations %}
+            <tr>
+                <td>
+                    <a href="{{ path('app_patient_show', {'id': hospitalization.patient.id}) }}">{{ hospitalization.patient.fullName }}</a>
+                </td>
+                <td>
+                    <a href="{{ path('app_department_show', {'id': hospitalization.department.id}) }}">{{ hospitalization.getDepartment.shortcut }}</a>
+                </td>
+                <td>{% if hospitalization.dateFrom %}{{ hospitalization.dateFrom|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if hospitalization.dateTo %}{{ hospitalization.dateTo|date('Y-m-d H:i:s') }}{% else %}Aktuální{% endif %}</td>
+                <td>
+                    {% if app.user.isAdmin() %}
+                        <a href="{{ path('admin_doctor_show', {'id': hospitalization.doctor.id}) }}">{{ hospitalization.doctor.fullName }}</a>
+                    {% else %}
+                        {{ hospitalization.doctor.fullName }}
+                    {% endif %}
+                </td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('app_hospitalization_show', { 'id': hospitalization.id }) }}">Detail</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endif %}

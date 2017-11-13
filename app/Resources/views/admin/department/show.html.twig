@@ -26,15 +26,10 @@
 
     <ul>
         <li>
-            <a href="{{ path('admin_department_index') }}">Back to the list</a>
+            <a href="{{ path('admin_department_index') }}">Zpět na výpis</a>
         </li>
         <li>
-            <a href="{{ path('admin_department_edit', { 'id': department.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
+            <a href="{{ path('admin_department_edit', { 'id': department.id }) }}">Upravit</a>
         </li>
     </ul>
 {% endblock %}
