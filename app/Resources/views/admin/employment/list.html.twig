@@ -1,43 +1,43 @@
 <h2>Výpis úvazků na odděleních</h2>
 
 {% if doctor.employments.empty %}
-    <p>Žádné úvazky</p>
+	<p>Žádné úvazky</p>
 {% else %}
 
-    <table>
-        <thead>
-        <tr>
-            <th>Id</th>
-            <th>Type</th>
-            <th>Datefrom</th>
-            <th>Dateto</th>
-            <th>Telefon</th>
-            <th>Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for employment in doctor.employments %}
-            <tr>
-                <td>
-                    <a href="{{ path('admin_employment_show', { 'id': employment.id, 'doctor_id': doctor.id }) }}">{{ employment.id }}</a>
-                </td>
-                <td>{{ employment.type }}</td>
-                <td>{% if employment.dateFrom %}{{ employment.dateFrom|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{% if employment.dateTo %}{{ employment.dateTo|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{{ employment.telephone }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('admin_employment_show', { 'id': employment.id, 'doctor_id': doctor.id }) }}">Detail</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('admin_employment_edit', { 'id': employment.id, 'doctor_id': doctor.id }) }}">Upravit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+	<table class="grid">
+		<thead>
+		<tr>
+			<th>Id</th>
+			<th>Type</th>
+			<th>Datefrom</th>
+			<th>Dateto</th>
+			<th>Telefon</th>
+			<th>Actions</th>
+		</tr>
+		</thead>
+		<tbody>
+		{% for employment in doctor.employments %}
+			<tr>
+				<td>
+					<a href="{{ path('admin_employment_show', { 'id': employment.id, 'doctor_id': doctor.id }) }}">{{ employment.id }}</a>
+				</td>
+				<td>{{ employment.type }}</td>
+				<td>{% if employment.dateFrom %}{{ employment.dateFrom|date('Y-m-d H:i:s') }}{% endif %}</td>
+				<td>{% if employment.dateTo %}{{ employment.dateTo|date('Y-m-d H:i:s') }}{% endif %}</td>
+				<td>{{ employment.telephone }}</td>
+				<td>
+					<ul>
+						<li>
+							<a href="{{ path('admin_employment_show', { 'id': employment.id, 'doctor_id': doctor.id }) }}">Detail</a>
+						</li>
+						<li>
+							<a href="{{ path('admin_employment_edit', { 'id': employment.id, 'doctor_id': doctor.id }) }}">Upravit</a>
+						</li>
+					</ul>
+				</td>
+			</tr>
+		{% endfor %}
+		</tbody>
+	</table>
 
 {% endif %}

@@ -1,16 +1,19 @@
 {% extends 'admin/adminBase.html.twig' %}
+{% block title %}Oddělení | nové{% endblock %}
 
 {% block body %}
-    <h1>Department creation</h1>
+	<div class="container">
+		<h1>Nové oddělení</h1>
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Vytvořit" />
-    {{ form_end(form) }}
+		{{ form_start(form) }}
+			{{ form_widget(form) }}
+			<input type="submit" value="Vytvořit" />
+		{{ form_end(form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('admin_department_index') }}">Zpět na výpis</a>
-        </li>
-    </ul>
+		<ul>
+			<li>
+				<a href="{{ path('admin_department_index') }}">Zpět na výpis</a>
+			</li>
+		</ul>
+	</div>
 {% endblock %}

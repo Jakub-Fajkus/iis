@@ -1,53 +1,53 @@
 {% extends 'admin/adminBase.html.twig' %}
 
 {% block body %}
-    <h1>Drugs list</h1>
+	<h1>Drugs list</h1>
 
-    {% if drugs.length == 0 %}
-        <p>Žádné léky</p>
-    {% else %}
+	{% if drugs.length == 0 %}
+		<p>Žádné léky</p>
+	{% else %}
 
-        <table>
-            <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Mainsubstance</th>
-                <th>Contraindication</th>
-                <th>Substanceamount</th>
-                <th>Recommendeddosage</th>
-                <th>Actions</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for drug in drugs %}
-                <tr>
-                    <td><a href="{{ path('admin_drug_show', { 'id': drug.id }) }}">{{ drug.id }}</a></td>
-                    <td>{{ drug.name }}</td>
-                    <td>{{ drug.mainSubstance }}</td>
-                    <td>{{ drug.contraindication }}</td>
-                    <td>{{ drug.substanceAmount }}</td>
-                    <td>{{ drug.recommendedDosage }}</td>
-                    <td>
-                        <ul>
-                            <li>
-                                <a href="{{ path('admin_drug_show', { 'id': drug.id }) }}">Detail</a>
-                            </li>
-                            <li>
-                                <a href="{{ path('admin_drug_edit', { 'id': drug.id }) }}">Upravit</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+		<table class="grid">
+			<thead>
+			<tr>
+				<th>Id</th>
+				<th>Name</th>
+				<th>Mainsubstance</th>
+				<th>Contraindication</th>
+				<th>Substanceamount</th>
+				<th>Recommendeddosage</th>
+				<th>Actions</th>
+			</tr>
+			</thead>
+			<tbody>
+			{% for drug in drugs %}
+				<tr>
+					<td><a href="{{ path('admin_drug_show', { 'id': drug.id }) }}">{{ drug.id }}</a></td>
+					<td>{{ drug.name }}</td>
+					<td>{{ drug.mainSubstance }}</td>
+					<td>{{ drug.contraindication }}</td>
+					<td>{{ drug.substanceAmount }}</td>
+					<td>{{ drug.recommendedDosage }}</td>
+					<td>
+						<ul>
+							<li>
+								<a href="{{ path('admin_drug_show', { 'id': drug.id }) }}">Detail</a>
+							</li>
+							<li>
+								<a href="{{ path('admin_drug_edit', { 'id': drug.id }) }}">Upravit</a>
+							</li>
+						</ul>
+					</td>
+				</tr>
+			{% endfor %}
+			</tbody>
+		</table>
 
-        <ul>
-            <li>
-                <a href="{{ path('admin_drug_new') }}">Create a new drug</a>
-            </li>
-        </ul>
+		<ul>
+			<li>
+				<a href="{{ path('admin_drug_new') }}">Create a new drug</a>
+			</li>
+		</ul>
 
-    {% endif %}
+	{% endif %}
 {% endblock %}

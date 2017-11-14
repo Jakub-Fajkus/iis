@@ -28,21 +28,24 @@
 			<div class="cwrapper">
 				{% block header %}
 					<header class="header">
-						<div class="h">
-							<div class="h__item h__item--logo">
-								{# @TODO baseUrl #}
-								<a href="/">
-									<img src="../../images/logo.png" alt="Nemocnice">
-								</a>
-							</div>
+						<div class="h__wrapper">
+							<div class="h">
+								<div class="h__item h__item--logo">
+									{# @TODO some baseUrl #}
+									<a href="{{ path('admin_drug_index') }}">
+										<img src="{{ asset('images/logo.png') }}" alt="Nemocnice">
+									</a>
+								</div>
 
-							{# @TODO #}
-							<a href="{{ path('fos_user_security_logout') }}">LOGOUT</a>
+								<div class="h__item nav__wrapper">
+									<nav aria-label="navigace" class="nav">
+										{% block menu %}{% endblock %}
+									</nav>
+								</div>
 
-							<div class="h__item nav__wrapper">
-								<nav aria-label="navigace" class="nav">
-									{% block menu %}{% endblock %}
-								</nav>
+								<div class="h__item h__item--user">
+									<a href="{{ path('fos_user_security_logout') }}" title="Odhlásit se"></a>
+								</div>
 							</div>
 						</div>
 					</header>

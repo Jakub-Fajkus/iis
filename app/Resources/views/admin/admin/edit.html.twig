@@ -1,16 +1,16 @@
 {% extends 'admin/adminBase.html.twig' %}
 
 {% block body %}
-    <h1>Úprava admina</h1>
+	<h1>Úprava admina</h1>
 
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Upravit" />
-    {{ form_end(edit_form) }}
+	{{ form_start(edit_form) }}
+		{{ form_widget(edit_form) }}
+		<input type="submit" value="Upravit" />
+	{{ form_end(edit_form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('admin_employee_index') }}">Zpět na výpis zaměstnanců</a>
-        </li>
-    </ul>
+	<ul>
+		<li>
+			<a href="{{ path('admin_employee_index') }}">Zpět na výpis zaměstnanců</a>
+		</li>
+	</ul>
 {% endblock %}

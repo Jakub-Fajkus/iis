@@ -1,35 +1,38 @@
 {% extends 'admin/adminBase.html.twig' %}
+{% block title %}Oddělení | detail{% endblock %}
 
 {% block body %}
-    <h1>Department</h1>
+	<div class="container">
+		<h1>Oddělení</h1>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ department.id }}</td>
-            </tr>
-            <tr>
-                <th>Shortcut</th>
-                <td>{{ department.shortcut }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ department.name }}</td>
-            </tr>
-            <tr>
-                <th>Telephone</th>
-                <td>{{ department.telephone }}</td>
-            </tr>
-        </tbody>
-    </table>
+		<table class="grid">
+			<tbody>
+				<tr>
+					<th>Id</th>
+					<td>{{ department.id }}</td>
+				</tr>
+				<tr>
+					<th>Zkratka</th>
+					<td>{{ department.shortcut }}</td>
+				</tr>
+				<tr>
+					<th>Název</th>
+					<td>{{ department.name }}</td>
+				</tr>
+				<tr>
+					<th>Telefon</th>
+					<td>{{ department.telephone }}</td>
+				</tr>
+			</tbody>
+		</table>
 
-    <ul>
-        <li>
-            <a href="{{ path('admin_department_index') }}">Zpět na výpis</a>
-        </li>
-        <li>
-            <a href="{{ path('admin_department_edit', { 'id': department.id }) }}">Upravit</a>
-        </li>
-    </ul>
+		<ul>
+			<li>
+				<a href="{{ path('admin_department_index') }}">Zpět na výpis</a>
+			</li>
+			<li>
+				<a href="{{ path('admin_department_edit', { 'id': department.id }) }}">Upravit</a>
+			</li>
+		</ul>
+	</div>
 {% endblock %}

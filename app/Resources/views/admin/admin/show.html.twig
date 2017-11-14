@@ -1,35 +1,35 @@
 {% extends 'admin/adminBase.html.twig' %}
 
 {% block body %}
-    <h1>Admin</h1>
+	<h1>Admin</h1>
 
-    <table>
-        <tbody>
-        <tr>
-            <th>Username</th>
-            <td>{{ admin.username }}</td>
-        </tr>
-        <tr>
-            <th>Name</th>
-            <td>{{ admin.name }}</td>
-        </tr>
-        <tr>
-            <th>Surname</th>
-            <td>{{ admin.surname }}</td>
-        </tr>
-        <tr>
-            <th>Telephone</th>
-            <td>{{ admin.telephone }}</td>
-        </tr>
-        </tbody>
-    </table>
+	<table class="grid">
+		<tbody>
+		<tr>
+			<th>Username</th>
+			<td>{{ admin.username }}</td>
+		</tr>
+		<tr>
+			<th>Name</th>
+			<td>{{ admin.name }}</td>
+		</tr>
+		<tr>
+			<th>Surname</th>
+			<td>{{ admin.surname }}</td>
+		</tr>
+		<tr>
+			<th>Telephone</th>
+			<td>{{ admin.telephone }}</td>
+		</tr>
+		</tbody>
+	</table>
 
-    <ul>
-        <li>
-            <a href="{{ path('admin_employee_index') }}">Zpět na výpis zaměstnanců</a>
-        </li>
-        <li>
-            <a href="{{ path('admin_admin_edit', { 'id': admin.id }) }}">Upravit</a>
-        </li>
-    </ul>
+	<ul>
+		<li>
+			<a href="{{ path('admin_employee_index') }}">Zpět na výpis zaměstnanců</a>
+		</li>
+		<li>
+			<a href="{{ path('admin_admin_edit', { 'id': admin.id }) }}">Upravit</a>
+		</li>
+	</ul>
 {% endblock %}
