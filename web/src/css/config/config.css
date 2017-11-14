@@ -1,0 +1,31 @@
+$break-small: 640px;
+$break-mobile-nav: 750px;
+$break-mobile-nav-min: 751px;
+$break-medium: 960px;
+$break-large: 1070px;
+
+$small-down: (max-width: 639px);
+$small-up: (min-width: 640px);
+$medium-down: (max-width: 959px);
+$medium-up: (min-width: 960px);
+$large-up: (min-width: 1070px);
+$wide-up: (min-width: 1200px);
+
+$container-width: 1200px;
+
+$font-main: 'Barlow Semi Condensed', sans-serif;
+
+
+$body-background-color: #f9f9f9;
+$default-text-color: #050e4e;
+$link-color: #1fb7e4;
+
+$green-color: #35c76e;
+$red-color: #eb1616;
+
+
+$transition-easing: linear;
+$transition-time: .3s;
+
+
+$nav-height: 42px;

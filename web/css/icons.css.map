@@ -1,0 +1,1 @@
+{"version":3,"sources":["icons/logout.css"],"names":[],"mappings":"AAAA,uBACE,WAAY,AACZ,WAAY,AACZ,YAAa,AACb,gVAAwF,AACxF,qBAAuB,CACxB","file":"icons.css","sourcesContent":[".h__item--user a:after {\n  content: '';\n  width: 20px;\n  height: 20px;\n  background: svg-load('./../../svg/exit.svg'), linear-gradient(transparent, transparent);\n  background-size: cover;\n}\n"]}

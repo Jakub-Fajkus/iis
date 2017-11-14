@@ -1,0 +1,7 @@
+.h__item--user a:after {
+  content: '';
+  width: 20px;
+  height: 20px;
+  background: svg-load('./../../svg/exit.svg'), linear-gradient(transparent, transparent);
+  background-size: cover;
+}

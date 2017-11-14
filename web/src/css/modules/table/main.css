@@ -1,0 +1,39 @@
+$el: .grid;
+
+$(el) {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 1px 1px 6px 1px rgba(0, 0, 0, 0.11);
+
+  thead tr {
+    background-color: #5ea4d68c;
+  }
+
+  th {
+    padding: 12px 22px;
+    font-weight: 600;
+    text-align: left;
+
+    &:first-child {
+      padding-left: 16px;
+    }
+  }
+
+  td {
+    padding: 10px 22px;
+    background-size: #fff;
+
+    &:first-child {
+      padding-left: 16px;
+    }
+  }
+
+  tr:nth-child(odd) td {
+    background-color: #f7fbff;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+}
