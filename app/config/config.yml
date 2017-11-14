@@ -13,6 +13,8 @@ imports:
 
 #todo: integritni omezeni!
 
+#todo: strankovani! (statisice pacientu? 10000 zamestnancu, zatracene mnoho predepsanych a podanych leku)
+
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
