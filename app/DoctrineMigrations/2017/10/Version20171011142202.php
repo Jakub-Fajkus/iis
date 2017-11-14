@@ -42,7 +42,6 @@ class Version20171011142202 extends AbstractMigration
         $this->addSql('ALTER TABLE nurse ADD CONSTRAINT FK_D27E6D43BF396750 FOREIGN KEY (id) REFERENCES employee (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE prescritpion ADD CONSTRAINT FK_655D894EAABCA765 FOREIGN KEY (drug_id) REFERENCES drug (id)');
         $this->addSql('ALTER TABLE prescritpion ADD CONSTRAINT FK_655D894EDAD0CFBF FOREIGN KEY (examination_id) REFERENCES examination (id)');
-        $this->addSql('INSERT INTO employee (username, username_canonical, email, email_canonical, enabled, salt, password, last_login, confirmation_token, password_requested_at, roles, name, surname, telephone, discr) VALUES (\'admin\', \'admin\', \'asdad@sdadasd.sds\', \'asdad@sdadasd.sds\', 1, null, \'$2y$13$VAhEC737R6rwEVySjL0KqOdv6fx7JlBHlJdKXNUWit0ma/7u7rO6C\', \'2017-10-11 14:37:33\', null, null, \'a:1:{i:0;s:10:"ROLE_ADMIN";}\', null, null, null, \'employee\');');
     }
 
     /**
