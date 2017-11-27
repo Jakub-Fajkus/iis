@@ -6,10 +6,20 @@
 		<h1>Nový lék</h1>
 
 		{{ form_start(form, {'attr' : {'class': 'fm'}}) }}
-			{{ form_widget(form, {'attr' : {'class': 'fm__wrapper'}}) }}
-			<div class="fm__btn">
-				<input type="submit" value="Vytvořit" class="btn" />
+
+			<div class="fm__wrapper">
+				{{ form_row(form.name, { 'label': 'Název' }) }}
+				{{ form_row(form.mainSubstance, { 'label': 'Hlavní látka' }) }}
+				{{ form_row(form.contraindication, { 'label': 'Kontradikce' }) }}
+
+				{{ form_row(form.substanceAmount, { 'label': 'Množství' }) }}
+				{{ form_row(form.recommendedDosage, { 'label': 'Doporučené dávkování' }) }}
+
+				<div class="fm__btn">
+					<input type="submit" value="Vytvořit" class="btn" />
+				</div>
 			</div>
+
 		{{ form_end(form) }}
 
 		<a href="{{ path('admin_drug_index') }}" class="btn btn--back">Zpět na výpis</a>

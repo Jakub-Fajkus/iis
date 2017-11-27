@@ -38,5 +38,10 @@ $(el) {
     }
   }
 
+  &--edit, &--show {
+    margin-right: 16px;
+    font-size: 0;
+  }
+
 
 }

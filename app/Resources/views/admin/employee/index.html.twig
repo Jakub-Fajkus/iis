@@ -22,14 +22,8 @@
 					<td>{{ employee.name }}</td>
 					<td>{{ employee.surname }}</td>
 					<td>
-						<ul>
-							<li>
-								<a href="{{ getEmployeeShowUrl(employee) }}">Detail</a>
-							</li>
-							<li>
-								<a href="{{ getEmployeeEditUrl(employee) }}">Upravit</a>
-							</li>
-						</ul>
+						<a href="{{ getEmployeeShowUrl(employee) }}" class="btn--show" class="btn--show" title="Detail"></a>
+						<a href="{{ getEmployeeEditUrl(employee) }}" class="btn--edit" class="btn--edit" title="Upravit"></a>
 					</td>
 				</tr>
 			{% endfor %}

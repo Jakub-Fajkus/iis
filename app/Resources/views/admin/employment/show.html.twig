@@ -4,7 +4,7 @@
 	<div class="container">
 		<h1>Zaměstnanec</h1>
 
-		<table class="grid">
+		<table class="grid grid--show">
 			<tbody>
 			<tr>
 				<th>Id</th>
@@ -32,9 +32,7 @@
 		<ul>
 			<li>
 				<a href="{{ path('admin_doctor_show', {'id': doctorId}) }}" class="btn btn--back">Zpět na doktora</a>
-			</li>
-			<li>
-				<a href="{{ path('admin_employment_edit', { 'id': employment.id , 'doctor_id': doctorId}) }}" class="btn">Upravit</a>
+				<a href="{{ path('admin_employment_edit', { 'id': employment.id , 'doctor_id': doctorId}) }}" class="btn" class="btn--edit" title="Upravit"></a>
 			</li>
 			<li>
 				{{ form_start(delete_form) }}

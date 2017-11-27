@@ -27,11 +27,7 @@
 						<td>{{ department.name }}</td>
 						<td>{{ department.telephone }}</td>
 						<td>
-							<ul>
-								<li>
-									<a href="{{ path('app_department_show', { 'id': department.id }) }}">Detail</a>
-								</li>
-							</ul>
+							<a href="{{ path('app_department_show', { 'id': department.id }) }}" class="btn--show" title="Detail"></a>
 						</td>
 					</tr>
 				{% endfor %}

@@ -49,14 +49,8 @@
 							<td>{{ patient.insuranceCompanyId }}</td>
 							<td>{{ patient.gender }}</td>
 							<td>
-								<ul>
-									<li>
-										<a href="{{ path('app_patient_show', { 'id': patient.id }) }}">Detail</a>
-									</li>
-									<li>
-										<a href="{{ path('app_patient_edit', { 'id': patient.id }) }}">Upravit</a>
-									</li>
-								</ul>
+								<a href="{{ path('app_patient_show', { 'id': patient.id }) }}" class="btn--show" title="Detail"></a>
+								<a href="{{ path('app_patient_edit', { 'id': patient.id }) }}" class="btn--edit" title="Upravit"></a>
 							</td>
 						</tr>
 					{% endfor %}

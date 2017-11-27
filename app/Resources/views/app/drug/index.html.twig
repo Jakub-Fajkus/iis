@@ -30,11 +30,7 @@
 							<td>{{ drug.substanceAmount }}</td>
 							<td>{{ drug.recommendedDosage }}</td>
 							<td>
-								<ul>
-									<li>
-										<a href="{{ path('app_drug_show', { 'id': drug.id }) }}">Detail</a>
-									</li>
-								</ul>
+								<a href="{{ path('app_drug_show', { 'id': drug.id }) }}" class="btn--show" title="Detail"></a>
 							</td>
 						</tr>
 					{% endfor %}

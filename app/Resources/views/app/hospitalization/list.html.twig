@@ -40,11 +40,7 @@
 								{% endif %}
 							</td>
 							<td>
-								<ul>
-									<li>
-										<a href="{{ path('app_hospitalization_show', { 'id': hospitalization.id }) }}">Detail</a>
-									</li>
-								</ul>
+								<a href="{{ path('app_hospitalization_show', { 'id': hospitalization.id }) }}" class="btn--show" title="Detail"></a>
 							</td>
 						</tr>
 					{% endfor %}

@@ -4,7 +4,7 @@
 	<div class="container">
 		<h1>Doktor</h1>
 
-		<table class="grid">
+		<table class="grid grid--show">
 			<tbody>
 			<tr>
 				<th>Id</th>
@@ -32,8 +32,6 @@
 		<ul>
 			<li>
 				<a href="{{ path('admin_employee_index') }}" class="btn btn--back">Zpět na výpis zaměstnanců</a>
-			</li>
-			<li>
 				<a href="{{ path('admin_doctor_edit', { 'id': doctor.id }) }}" class="btn">Upravit</a>
 			</li>
 		</ul>

@@ -22,10 +22,8 @@
 							<td>
 								<ul>
 									<li>
-										<a href="{{ path('app_examination_show', { 'id': examination.id }) }}">Detail</a>
-									</li>
-									<li>
-										<a href="{{ path('app_examination_edit', { 'id': examination.id }) }}">Upravit</a>
+										<a href="{{ path('app_examination_show', { 'id': examination.id }) }}" class="btn--show" title="Detail"></a>
+										<a href="{{ path('app_examination_edit', { 'id': examination.id }) }}" class="btn--edit" title="Upravit"></a>
 									</li>
 									<li>
 										<a href="{{ path('app_prescription_new', {'id': examination.id }) }}">Create a new

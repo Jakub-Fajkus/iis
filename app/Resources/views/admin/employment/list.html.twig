@@ -26,14 +26,8 @@
 				<td>{% if employment.dateTo %}{{ employment.dateTo|date('Y-m-d H:i:s') }}{% endif %}</td>
 				<td>{{ employment.telephone }}</td>
 				<td>
-					<ul>
-						<li>
-							<a href="{{ path('admin_employment_show', { 'id': employment.id, 'doctor_id': doctor.id }) }}">Detail</a>
-						</li>
-						<li>
-							<a href="{{ path('admin_employment_edit', { 'id': employment.id, 'doctor_id': doctor.id }) }}">Upravit</a>
-						</li>
-					</ul>
+					<a href="{{ path('admin_employment_show', { 'id': employment.id, 'doctor_id': doctor.id }) }}" class="btn--show" title="Detail"></a>
+					<a href="{{ path('admin_employment_edit', { 'id': employment.id, 'doctor_id': doctor.id }) }}" class="btn--edit" title="Upravit"></a>
 				</td>
 			</tr>
 		{% endfor %}

@@ -21,20 +21,13 @@
 				<tbody>
 				{% for department in departments %}
 					<tr>
-						<td><a href="{{ path('admin_department_show', { 'id': department.id }) }}">{{ department.id }}</a>
-						</td>
+						<td>{{ department.id }}</td>
 						<td>{{ department.shortcut }}</td>
 						<td>{{ department.name }}</td>
 						<td>{{ department.telephone }}</td>
 						<td>
-							<ul>
-								<li>
-									<a href="{{ path('admin_department_show', { 'id': department.id }) }}">Detail</a>
-								</li>
-								<li>
-									<a href="{{ path('admin_department_edit', { 'id': department.id }) }}">Upravit</a>
-								</li>
-							</ul>
+							<a href="{{ path('admin_department_show', { 'id': department.id }) }}" class="btn--show" title="Detail"></a>
+							<a href="{{ path('admin_department_edit', { 'id': department.id }) }}" class="btn--edit" title="Upravit"></a>
 						</td>
 					</tr>
 				{% endfor %}

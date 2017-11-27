@@ -6,10 +6,17 @@
 		<h1>Nové oddělení</h1>
 
 		{{ form_start(form, {'attr' : {'class': 'fm'}}) }}
-			{{ form_widget(form, {'attr' : {'class': 'fm__wrapper'}}) }}
-			<div class="fm__btn">
-				<input type="submit" value="Vytvořit" class="btn" />
+
+			<div class="fm__wrapper">
+				{{ form_row(form.shortcut, { 'label': 'Zkratka' }) }}
+				{{ form_row(form.name, { 'label': 'Název' }) }}
+				{{ form_row(form.telephone, { 'label': 'Telefon' }) }}
+
+				<div class="fm__btn">
+					<input type="submit" value="Vytvořit" class="btn" />
+				</div>
 			</div>
+
 		{{ form_end(form) }}
 
 		<a href="{{ path('admin_department_index') }}" class="btn btn--back">Zpět na výpis</a>

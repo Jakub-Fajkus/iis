@@ -20,11 +20,13 @@ $(el) {
   &--show {
     max-width: 600px;
     margin: 26px 0 60px 0;
+    border: 1px solid #ccd4da;
     background: #fff;
 
-    tr:nth-child(odd) th {
+    tr:nth-child(even) th {
       width: 40%;
-      background-color: #f7fbff;
+      /* background-color: #f9f9f9; */
+      border-bottom: 1px solid #e5eaef;
     }
   }
 
@@ -42,20 +44,27 @@ $(el) {
     }
   }
 
+  tr:hover td {
+    background-color: #f9f9f9;
+  }
+
   td {
     padding: 10px 22px;
-    background-size: #fff;
+    transition: .3s;
+    border-bottom: 1px solid #e5eaef;
 
     &:first-child {
       padding-left: 16px;
     }
   }
 
-  tr:nth-child(odd) td {
-    background-color: #f7fbff;
-  }
+  /* tr:nth-child(even) td {
+    background-color: #f9f9f9;
+  } */
 
   a {
+    display: inline-block;
+    float: right;
     text-decoration: underline;
   }
 

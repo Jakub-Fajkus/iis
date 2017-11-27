@@ -5,10 +5,20 @@
 		<h1>Lék - úpravy</h1>
 
 		{{ form_start(edit_form, {'attr' : {'class': 'fm'}}) }}
-			{{ form_widget(edit_form, {'attr' : {'class': 'fm__wrapper'}}) }}
-			<div class="fm__btn">
-				<input type="submit" value="Upravit" class="btn" />
+
+			<div class="fm__wrapper">
+				{{ form_row(edit_form.name, { 'label': 'Název' }) }}
+				{{ form_row(edit_form.mainSubstance, { 'label': 'Hlavní látka' }) }}
+				{{ form_row(edit_form.contraindication, { 'label': 'Kontradikce' }) }}
+
+				{{ form_row(edit_form.substanceAmount, { 'label': 'Množství' }) }}
+				{{ form_row(edit_form.recommendedDosage, { 'label': 'Doporučené dávkování' }) }}
+
+				<div class="fm__btn">
+					<input type="submit" value="Upravit" class="btn" />
+				</div>
 			</div>
+
 		{{ form_end(edit_form) }}
 
 		<ul>
