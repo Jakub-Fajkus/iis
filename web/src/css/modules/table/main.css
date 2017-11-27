@@ -46,6 +46,10 @@ $(el) {
 
   tr:hover td {
     background-color: #f9f9f9;
+
+    a {
+      opacity: .86;
+    }
   }
 
   td {
@@ -65,7 +69,9 @@ $(el) {
   a {
     display: inline-block;
     float: right;
+    transition: .3s;
     text-decoration: underline;
+    opacity: .3;
   }
 
   ul {
