@@ -1,0 +1,42 @@
+$el: .btn;
+
+$(el) {
+  position: relative;
+  display: inline-block;
+  margin: 6px;
+  padding: 14px 28px;
+  font-family: $font-main;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all $transition-time $transition-easing;
+  color: #fff;
+  border: 0 none;
+  background-color: $link-color;
+
+  &:hover {
+    color: #fff;
+    background-color: $default-text-color;
+  }
+
+  &--small {
+    padding: 12px 18px;
+  }
+
+  &--delete {
+    background-color: $red-color;
+  }
+
+  &--back {
+    color: $link-color;
+    border: 1px solid $link-color;
+    background: #fff;
+
+    &:hover {
+      color: #fff;
+      background-color: $link-color;
+    }
+  }
+
+
+}

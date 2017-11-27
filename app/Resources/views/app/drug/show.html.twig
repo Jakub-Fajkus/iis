@@ -1,40 +1,39 @@
 {% extends 'app/appBase.html.twig' %}
 
 {% block body %}
-    <h1>Drug</h1>
+	<div class="container">
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ drug.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ drug.name }}</td>
-            </tr>
-            <tr>
-                <th>Mainsubstance</th>
-                <td>{{ drug.mainSubstance }}</td>
-            </tr>
-            <tr>
-                <th>Contraindication</th>
-                <td>{{ drug.contraindication }}</td>
-            </tr>
-            <tr>
-                <th>Substanceamount</th>
-                <td>{{ drug.substanceAmount }}</td>
-            </tr>
-            <tr>
-                <th>Recommendeddosage</th>
-                <td>{{ drug.recommendedDosage }}</td>
-            </tr>
-        </tbody>
-    </table>
+		<h1>Drug</h1>
 
-    <ul>
-        <li>
-            <a href="{{ path('app_drug_index') }}">Zpět na výpis</a>
-        </li>
-    </ul>
+		<table class="grid grid--show">
+			<tbody>
+				<tr>
+					<th>Id</th>
+					<td>{{ drug.id }}</td>
+				</tr>
+				<tr>
+					<th>Název</th>
+					<td>{{ drug.name }}</td>
+				</tr>
+				<tr>
+					<th>Hlavní látka</th>
+					<td>{{ drug.mainSubstance }}</td>
+				</tr>
+				<tr>
+					<th>Kontraindikace</th>
+					<td>{{ drug.contraindication }}</td>
+				</tr>
+				<tr>
+					<th>Množství</th>
+					<td>{{ drug.substanceAmount }}</td>
+				</tr>
+				<tr>
+					<th>Doporučená dávka</th>
+					<td>{{ drug.recommendedDosage }}</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<a href="{{ path('app_drug_index') }}"class="btn btn--back">Zpět na výpis</a>
+	</div>
 {% endblock %}

@@ -1,95 +1,101 @@
 {% extends 'app/appBase.html.twig' %}
 
 {% block body %}
-    <h1>Patient</h1>
+	<div class="container">
+		<h1>Pacient</h1>
 
-    <ul>
-        <li>
-            <a href="{{ path('app_patient_index') }}">Zpět na výpis</a>
-        </li>
-        <li>
-            <a href="{{ path('app_patient_edit', { 'id': patient.id }) }}">Upravit</a>
-        </li>
-    </ul>
+		<table class="grid grid--show">
+			<tbody>
+				<tr>
+					<th>Id</th>
+					<td>{{ patient.id }}</td>
+				</tr>
+				<tr>
+					<th>Jméno</th>
+					<td>{{ patient.name }}</td>
+				</tr>
+				<tr>
+					<th>Příjmení</th>
+					<td>{{ patient.surname }}</td>
+				</tr>
+				<tr>
+					<th>uid</th>
+					<td>{{ patient.personalIdentificationNumber }}</td>
+				</tr>
+				<tr>
+					<th>Ulice</th>
+					<td>{{ patient.street }}</td>
+				</tr>
+				<tr>
+					<th>Č.p.</th>
+					<td>{{ patient.houseNumber }}</td>
+				</tr>
+				<tr>
+					<th>Město</th>
+					<td>{{ patient.city }}</td>
+				</tr>
+				<tr>
+					<th>PSČ</th>
+					<td>{{ patient.zip }}</td>
+				</tr>
+				<tr>
+					<th>mid</th>
+					<td>{{ patient.medicalIdentificationNumber }}</td>
+				</tr>
+				<tr>
+					<th>Pojišťovna</th>
+					<td>{{ patient.insuranceCompanyId }}</td>
+				</tr>
+				<tr>
+					<th>Pohlaví</th>
+					<td>{{ patient.gender }}</td>
+				</tr>
+			</tbody>
+		</table>
 
-    <table>
-        <tbody>
-        <tr>
-            <th>Id</th>
-            <td>{{ patient.id }}</td>
-        </tr>
-        <tr>
-            <th>Name</th>
-            <td>{{ patient.name }}</td>
-        </tr>
-        <tr>
-            <th>Surname</th>
-            <td>{{ patient.surname }}</td>
-        </tr>
-        <tr>
-            <th>Personalidentificationnumber</th>
-            <td>{{ patient.personalIdentificationNumber }}</td>
-        </tr>
-        <tr>
-            <th>Street</th>
-            <td>{{ patient.street }}</td>
-        </tr>
-        <tr>
-            <th>Housenumber</th>
-            <td>{{ patient.houseNumber }}</td>
-        </tr>
-        <tr>
-            <th>City</th>
-            <td>{{ patient.city }}</td>
-        </tr>
-        <tr>
-            <th>Zip</th>
-            <td>{{ patient.zip }}</td>
-        </tr>
-        <tr>
-            <th>Medicalidentificationnumber</th>
-            <td>{{ patient.medicalIdentificationNumber }}</td>
-        </tr>
-        <tr>
-            <th>Insurancecompanyid</th>
-            <td>{{ patient.insuranceCompanyId }}</td>
-        </tr>
-        <tr>
-            <th>Gender</th>
-            <td>{{ patient.gender }}</td>
-        </tr>
-        </tbody>
-    </table>
+		<ul>
+			<li>
+				<a href="{{ path('app_patient_index') }}" class="btn btn--back">Zpět na výpis</a>
+				<a href="{{ path('app_patient_edit', { 'id': patient.id }) }}" class="btn">Upravit</a>
+			</li>
+		</ul>
 
-    <br>
+		<div>
+			<h2>Hospitalizace</h2>
+			{{ form_start(hospitalizeForm, {'attr' : {'class': 'fm'}}) }}
+				<div class="fm__wrapper">
+					<div class="fm__item--select">
+						{{ form_row(hospitalizeForm.department, { 'label': 'Oddělení'}) }}
+					</div>
+					{{ form_row(hospitalizeForm.dateFrom, { 'label': 'Datum od', 'attr' : {'class': 'fm__item--date'}}) }}
+					<div class="fm__item--select">
+						{{ form_row(hospitalizeForm.doctor, { 'label': 'Doktor'}) }}
+					</div>
+					{{ form_widget(hospitalizeForm) }}
+					<div class="fm__btn">
+						<input type="submit" value="Přidat hospitalizaci" class="btn" />
+					</div>
+				</div>
+			{{ form_end(hospitalizeForm) }}
+		</div>
 
-    <div>
-        <h1>Hospitalize form</h1>
+			<h2>Vyšetření</h2>
+			{#todo: move to a separate page?#}
+			{{ form_start(examineForm, {'attr' : {'class': 'fm'}}) }}
+				<div class="fm__wrapper">
+					{{ form_row(examineForm.report, { 'label': 'Zapis z vyšetření' }) }}
+					{{ form_widget(examineForm) }}
+					<div class="fm__btn">
+						<input type="submit" value="Přidat vyšetření" class="btn" />
+					</div>
+				</div>
+			{{ form_end(examineForm) }}
 
-        {{ form_start(hospitalizeForm) }}
-        {{ form_widget(hospitalizeForm) }}
-        <input type="submit" value="Hospitalize"/>
-        {{ form_end(hospitalizeForm) }}
-    </div>
-
-    <br>
-
-    <div>
-        <h1>Examine form</h1>
-
-        {#todo: move to a separate page?#}
-        {{ form_start(examineForm) }}
-        {{ form_widget(examineForm) }}
-        <input type="submit" value="Examine"/>
-        {{ form_end(examineForm) }}
-    </div>
-
-    {% set currentHospitalization = patient.getCurrentHospitalization() %}
-
-    {% if currentHospitalization %}
-        <h1>Aktuální hospitalizace s vyšetřeními a předepsanými léky</h1>
-        {% include ':app/hospitalization:showWidget.html.twig' with {'hospitalization': currentHospitalization} %}
-    {% endif %}
-
-    {% include ':app/hospitalization:index.html.twig' with {'hospitalizations': patient.getHospitalizations()} %}
+		{% set currentHospitalization = patient.getCurrentHospitalization() %}
+		{% if currentHospitalization %}
+			<h2>Aktuální hospitalizace s vyšetřeními a předepsanými léky</h2>
+			{% include ':app/hospitalization:showWidget.html.twig' with {'hospitalization': currentHospitalization} %}
+		{% endif %}
+			{% include ':app/hospitalization:list.html.twig' with {'hospitalizations': patient.getHospitalizations()} %}
+	</div>
 {% endblock %}

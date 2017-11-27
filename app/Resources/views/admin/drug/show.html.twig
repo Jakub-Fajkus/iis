@@ -1,43 +1,45 @@
 {% extends 'admin/adminBase.html.twig' %}
 
 {% block body %}
-	<h1>Drug</h1>
+	<div class="container">
+		<h1>Lék</h1>
 
-	<table class="grid">
-		<tbody>
-			<tr>
-				<th>Id</th>
-				<td>{{ drug.id }}</td>
-			</tr>
-			<tr>
-				<th>Name</th>
-				<td>{{ drug.name }}</td>
-			</tr>
-			<tr>
-				<th>Mainsubstance</th>
-				<td>{{ drug.mainSubstance }}</td>
-			</tr>
-			<tr>
-				<th>Contraindication</th>
-				<td>{{ drug.contraindication }}</td>
-			</tr>
-			<tr>
-				<th>Substanceamount</th>
-				<td>{{ drug.substanceAmount }}</td>
-			</tr>
-			<tr>
-				<th>Recommendeddosage</th>
-				<td>{{ drug.recommendedDosage }}</td>
-			</tr>
-		</tbody>
-	</table>
+		<table class="grid">
+			<tbody>
+				<tr>
+					<th>Id</th>
+					<td>{{ drug.id }}</td>
+				</tr>
+				<tr>
+					<th>Název</th>
+					<td>{{ drug.name }}</td>
+				</tr>
+				<tr>
+					<th>Hlavní látka</th>
+					<td>{{ drug.mainSubstance }}</td>
+				</tr>
+				<tr>
+					<th>Kontraindikace</th>
+					<td>{{ drug.contraindication }}</td>
+				</tr>
+				<tr>
+					<th>Množství</th>
+					<td>{{ drug.substanceAmount }}</td>
+				</tr>
+				<tr>
+					<th>Doporučená dávka</th>
+					<td>{{ drug.recommendedDosage }}</td>
+				</tr>
+			</tbody>
+		</table>
 
-	<ul>
-		<li>
-			<a href="{{ path('admin_drug_index') }}">Zpět na výpis</a>
-		</li>
-		<li>
-			<a href="{{ path('admin_drug_edit', { 'id': drug.id }) }}">Upravit</a>
-		</li>
-	</ul>
+		<ul>
+			<li>
+				<a href="{{ path('admin_drug_index') }}" class="btn btn--back">Zpět na výpis</a>
+			</li>
+			<li>
+				<a href="{{ path('admin_drug_edit', { 'id': drug.id }) }}" class="btn">Upravit</a>
+			</li>
+		</ul>
+	</div>
 {% endblock %}

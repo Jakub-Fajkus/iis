@@ -11,7 +11,7 @@
 				<th>Povolání</th>
 				<th>Jméno</th>
 				<th>Příjmení</th>
-				<th>&nbsp</th>
+				<th>&nbsp;</th>
 			</tr>
 			</thead>
 			<tbody>
@@ -38,13 +38,10 @@
 
 		<ul>
 			<li>
-				<a href="{{ path('admin_nurse_new') }}">Přidat novou sestru</a>
+				<a href="{{ path('admin_nurse_new') }}" class="btn">Přidat novou sestru</a>
+				<a href="{{ path('admin_doctor_new') }}" class="btn">Přidat nového lékaře</a>
+				<a href="{{ path('admin_admin_new') }}" class="btn">Přidat nového admina</a>
 			</li>
-			<li>
-				<a href="{{ path('admin_doctor_new') }}">Přidat nového lékaře</a>
-			</li>
-			<li>
-				<a href="{{ path('admin_admin_new') }}">Přidat nového admina</a></li>
 		</ul>
 	</div>
 {% endblock %}

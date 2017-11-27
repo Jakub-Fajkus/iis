@@ -1,0 +1,7 @@
+.fm--search button:after {
+  content: '';
+  width: 20px;
+  height: 20px;
+  background: svg-load('./../../svg/search.svg'), linear-gradient(transparent, transparent);
+  background-size: cover;
+}

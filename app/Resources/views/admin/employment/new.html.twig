@@ -1,16 +1,20 @@
 {% extends 'admin/adminBase.html.twig' %}
 
 {% block body %}
-	<h1>Employment creation</h1>
+	<div class="container">
+		<h1>Nový zaměstnanec</h1>
 
-	{{ form_start(form) }}
-		{{ form_widget(form) }}
-		<input type="submit" value="Vytvořit" />
-	{{ form_end(form) }}
+		{{ form_start(form, {'attr' : {'class': 'fm'}}) }}
+			{{ form_widget(form, {'attr' : {'class': 'fm__wrapper'}}) }}
+			<div class="fm__btn">
+				<input type="submit" value="Vytvořit" class="btn" />
+			</div>
+		{{ form_end(form) }}
 
-	<ul>
-		<li>
-			<a href="{{ path('admin_doctor_show', {'id': doctorId}) }}">Zpět na výpis</a>
-		</li>
-	</ul>
+		<ul>
+			<li>
+				<a href="{{ path('admin_doctor_show', {'id': doctorId}) }}" class="btn btn--back">Zpět na výpis</a>
+			</li>
+		</ul>
+	</div>
 {% endblock %}

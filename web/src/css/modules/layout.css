@@ -106,6 +106,7 @@ p, li {
 
 ul {
   padding-left: 0;
+  list-style: none;
 }
 
 /* main clear */

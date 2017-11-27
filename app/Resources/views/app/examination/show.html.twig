@@ -1,31 +1,35 @@
 {% extends 'app/appBase.html.twig' %}
 
 {% block body %}
-    <h1>Examination</h1>
+	<div class="container">
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ examination.id }}</td>
-            </tr>
-            <tr>
-                <th>Date</th>
-                <td>{% if examination.date %}{{ examination.date|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Report</th>
-                <td>{{ examination.report }}</td>
-            </tr>
-        </tbody>
-    </table>
+		<h1>Vyšetření</h1>
 
-    <ul>
-        <li>
-            <a href="{{ path('app_examination_index') }}">Zpět na výpis</a>
-        </li>
-        <li>
-            <a href="{{ path('app_examination_edit', { 'id': examination.id }) }}">Upravit</a>
-        </li>
-    </ul>
+		<table class="grid grid--show">
+			<tbody>
+				<tr>
+					<th>Id</th>
+					<td>{{ examination.id }}</td>
+				</tr>
+				<tr>
+					<th>Datum</th>
+					<td>{% if examination.date %}{{ examination.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+				</tr>
+				<tr>
+					<th>Záznam</th>
+					<td>{{ examination.report }}</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<ul>
+			<li>
+				<a href="{{ path('app_examination_index') }}"class="btn btn--back">Zpět na výpis</a>
+			</li>
+			<li>
+				<a href="{{ path('app_examination_edit', { 'id': examination.id }) }}" class="btn">Upravit</a>
+			</li>
+		</ul>
+
+	</div>
 {% endblock %}

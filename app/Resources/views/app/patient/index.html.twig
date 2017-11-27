@@ -1,70 +1,70 @@
 {% extends 'app/appBase.html.twig' %}
 
 {% block body %}
-    <form method="GET">
-        <label>Search:
-            <input type="text" name="q">
-            <input type="submit" value="Search">
-            <a href="{{ path('app_patient_index') }}">Clear search</a>
-        </label>
-    </form>
+	<div class="container">
 
-    <h1>Patients list</h1>
+	{% if patients|length != 0 %}
+		<form method="GET" class="fm fm--search">
+			<label>
+				<input type="text" name="q" placeholder="Vyhledávejte např. pacienta">
+				<button type="submit"><span>Vyhledávat</span></button>
+				{# <a href="{{ path('app_patient_index') }}">Clear search</a> #}
+			</label>
+		</form>
+	{% endif %}
 
-    {% if patients|length == 0 %}
-        <p>Žádní pacienti</p>
-    {% else %}
-        <table>
-            <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Surname</th>
-                <th>Personalidentificationnumber</th>
-                <th>Street</th>
-                <th>Housenumber</th>
-                <th>City</th>
-                <th>Zip</th>
-                <th>Medicalidentificationnumber</th>
-                <th>Insurancecompanyid</th>
-                <th>Gender</th>
-                <th>Actions</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for patient in patients %}
-                <tr>
-                    <td><a href="{{ path('app_patient_show', { 'id': patient.id }) }}">{{ patient.id }}</a></td>
-                    <td>{{ patient.name }}</td>
-                    <td>{{ patient.surname }}</td>
-                    <td>{{ patient.personalIdentificationNumber }}</td>
-                    <td>{{ patient.street }}</td>
-                    <td>{{ patient.houseNumber }}</td>
-                    <td>{{ patient.city }}</td>
-                    <td>{{ patient.zip }}</td>
-                    <td>{{ patient.medicalIdentificationNumber }}</td>
-                    <td>{{ patient.insuranceCompanyId }}</td>
-                    <td>{{ patient.gender }}</td>
-                    <td>
-                        <ul>
-                            <li>
-                                <a href="{{ path('app_patient_show', { 'id': patient.id }) }}">Detail</a>
-                            </li>
-                            <li>
-                                <a href="{{ path('app_patient_edit', { 'id': patient.id }) }}">Upravit</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+		<h1>Seznam pacientů</h1>
+		{% if patients|length == 0 %}
+			<p class="grid--empty">Žádní pacienti</p>
+		{% else %}
+			<table class="grid">
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Jméno</th>
+						<th>Příjmení</th>
+						<th>uid</th>
+						<th>Ulice</th>
+						<th>Č.p.</th>
+						<th>Město</th>
+						<th>PSČ</th>
+						<th>mid</th>
+						<th>Pojišťovna</th>
+						<th>Pohlaví</th>
+						<th>&nbsp;</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for patient in patients %}
+						<tr>
+							<td><a href="{{ path('app_patient_show', { 'id': patient.id }) }}">{{ patient.id }}</a></td>
+							<td>{{ patient.name }}</td>
+							<td>{{ patient.surname }}</td>
+							<td>{{ patient.personalIdentificationNumber }}</td>
+							<td>{{ patient.street }}</td>
+							<td>{{ patient.houseNumber }}</td>
+							<td>{{ patient.city }}</td>
+							<td>{{ patient.zip }}</td>
+							<td>{{ patient.medicalIdentificationNumber }}</td>
+							<td>{{ patient.insuranceCompanyId }}</td>
+							<td>{{ patient.gender }}</td>
+							<td>
+								<ul>
+									<li>
+										<a href="{{ path('app_patient_show', { 'id': patient.id }) }}">Detail</a>
+									</li>
+									<li>
+										<a href="{{ path('app_patient_edit', { 'id': patient.id }) }}">Upravit</a>
+									</li>
+								</ul>
+							</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		{% endif %}
 
-        <ul>
-            <li>
-                <a href="{{ path('app_patient_new') }}">Create a new patient</a>
-            </li>
-        </ul>
+		<a href="{{ path('app_patient_new') }}" class="btn">Vytvořit nového pacienta</a>
 
-    {% endif %}
+	</div>
 {% endblock %}

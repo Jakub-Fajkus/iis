@@ -20,7 +20,7 @@
 					<td>{{ department.name }}</td>
 				</tr>
 				<tr>
-					<th>Telefon</th>
+					<th>Tel</th>
 					<td>{{ department.telephone }}</td>
 				</tr>
 			</tbody>
@@ -28,10 +28,10 @@
 
 		<ul>
 			<li>
-				<a href="{{ path('admin_department_index') }}">Zpět na výpis</a>
+				<a href="{{ path('admin_department_index') }}" class="btn btn--back">Zpět na výpis</a>
 			</li>
 			<li>
-				<a href="{{ path('admin_department_edit', { 'id': department.id }) }}">Upravit</a>
+				<a href="{{ path('admin_department_edit', { 'id': department.id }) }}" class="btn">Upravit</a>
 			</li>
 		</ul>
 	</div>

@@ -2,8 +2,27 @@ $el: .grid;
 
 $(el) {
   width: 100%;
+  margin: 26px auto 60px auto;
   border-collapse: collapse;
+  background-color: #fff;
   box-shadow: 1px 1px 6px 1px rgba(0, 0, 0, 0.11);
+
+  &--empty {
+    margin: 66px auto;
+    font-size: 28px;
+    text-align: center;
+  }
+
+  &--show {
+    max-width: 600px;
+    margin: 26px 0 60px 0;
+    background: #fff;
+
+    tr:nth-child(odd) th {
+      width: 40%;
+      background-color: #f7fbff;
+    }
+  }
 
   thead tr {
     background-color: #5ea4d68c;
@@ -30,6 +49,10 @@ $(el) {
 
   tr:nth-child(odd) td {
     background-color: #f7fbff;
+  }
+
+  a {
+    text-decoration: underline;
   }
 
   ul {

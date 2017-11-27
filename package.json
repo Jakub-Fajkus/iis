@@ -4,7 +4,7 @@
   "description": "Package json for school project. Brno university of technology, FIT.",
   "main": "gulpfile.js",
   "scripts": {
-    "gulp": "gulp",
+    "gulp": "gulp"
   },
   "repository": {
     "type": "git",

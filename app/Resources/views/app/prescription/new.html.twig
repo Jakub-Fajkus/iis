@@ -1,17 +1,14 @@
 {% extends 'app/appBase.html.twig' %}
 
 {% block body %}
-    {#TODO: PRIDAT NEJAKE VYHLEDAVANI? leku muze byt dost...#}
-    <h1>Prescription creation</h1>
+	<div class="container">
+		{#TODO: PRIDAT NEJAKE VYHLEDAVANI? leku muze byt dost...#}
+		<h1>Předepsání léku</h1>
+		{{ form_start(form, {'attr' : {'class': 'fm'}}) }}
+			{{ form_widget(form, {'attr' : {'class': 'fm__wrapper'}}) }}
+			<input type="submit" value="Vytvořit" />
+		{{ form_end(form) }}
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Vytvořit" />
-    {{ form_end(form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('app_prescription_index') }}">Zpět na výpis</a>
-        </li>
-    </ul>
+		<a href="{{ path('app_prescription_index') }}"class="btn btn--back">Zpět na výpis</a>
+	</div>
 {% endblock %}

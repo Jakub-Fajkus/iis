@@ -1,5 +1,7 @@
 {% extends 'app/appBase.html.twig' %}
 
 {% block body %}
+	<div class="container">
     {% include ':app/hospitalization:list.html.twig' with {'hospitalizations': hospitalizations} %}
+  </div>
 {% endblock %}

@@ -1,16 +1,27 @@
 {% extends 'admin/adminBase.html.twig' %}
 
 {% block body %}
-	<h1>Úprava admina</h1>
+	<div class="container">
+		<h1>Admin - úpravy</h1>
 
-	{{ form_start(edit_form) }}
-		{{ form_widget(edit_form) }}
-		<input type="submit" value="Upravit" />
-	{{ form_end(edit_form) }}
+		{{ form_start(edit_form, {'attr' : {'class': 'fm'}}) }}
 
-	<ul>
-		<li>
-			<a href="{{ path('admin_employee_index') }}">Zpět na výpis zaměstnanců</a>
-		</li>
-	</ul>
+			<div class="fm__wrapper">
+				{{ form_row(edit_form.name, { 'label': 'Jméno' }) }}
+				{{ form_row(edit_form.surname, { 'label': 'Příjmení' }) }}
+				{{ form_row(edit_form.telephone, { 'label': 'Telefon' }) }}
+				{{ form_row(edit_form.username, { 'label': 'Uživatelské jméno' }) }}
+				{{ form_row(edit_form.email, { 'label': 'Email' }) }}
+				{{ form_row(edit_form.plainPassword, { 'label': 'Heslo' }) }}
+
+				<div class="fm__btn">
+					<input type="submit" value="Upravit" class="btn" />
+				</div>
+			</div>
+
+		{{ form_end(edit_form) }}
+
+
+		<a href="{{ path('admin_employee_index') }}" class="btn btn--back">Zpět na výpis zaměstnanců</a>
+	</div>
 {% endblock %}

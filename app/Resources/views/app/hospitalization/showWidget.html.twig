@@ -1,37 +1,37 @@
 {# hospitalization #}
-<table>
-    <tbody>
-    <tr>
-        <th>Department</th>
-        <td>
-            <a href="{{ path('app_department_show', {'id': hospitalization.getDepartment().getId()}) }}">{{ hospitalization.getDepartment().getShortcut() }}</a>
-        </td>
-    </tr>
-    <tr>
-        <th>Datefrom</th>
-        <td>{% if hospitalization.dateFrom %}{{ hospitalization.dateFrom|date('Y-m-d H:i:s') }}{% endif %}</td>
-    </tr>
-    <tr>
-        <th>Dateto</th>
-        <td>{% if hospitalization.dateTo %}{{ hospitalization.dateTo|date('Y-m-d H:i:s') }}{% endif %}</td>
-    </tr>
-    <tr>
-        <th>Doctor</th>
-        <td>
-            {% if app.user.isAdmin() %}
-                <a href="{{ path('admin_doctor_show', {'id': hospitalization.getDoctor().getId()}) }}">{{ hospitalization.getDoctor().getFullName() }}</a>
-            {% else %}
-                {{ hospitalization.getDoctor().getFullName() }}
-            {% endif %}
-        </td>
-    </tr>
-    </tbody>
+<table class="grid grid--show">
+	<tbody>
+	<tr>
+		<th>Oddělení</th>
+		<td>
+			<a href="{{ path('app_department_show', {'id': hospitalization.getDepartment().getId()}) }}">{{ hospitalization.getDepartment().getShortcut() }}</a>
+		</td>
+	</tr>
+	<tr>
+		<th>Datum od</th>
+		<td>{% if hospitalization.dateFrom %}{{ hospitalization.dateFrom|date('Y-m-d H:i:s') }}{% endif %}</td>
+	</tr>
+	<tr>
+		<th>Datum do</th>
+		<td>{% if hospitalization.dateTo %}{{ hospitalization.dateTo|date('Y-m-d H:i:s') }}{% endif %}</td>
+	</tr>
+	<tr>
+		<th>Doktor</th>
+		<td>
+			{% if app.user.isAdmin() %}
+				<a href="{{ path('admin_doctor_show', {'id': hospitalization.getDoctor().getId()}) }}">{{ hospitalization.getDoctor().getFullName() }}</a>
+			{% else %}
+				{{ hospitalization.getDoctor().getFullName() }}
+			{% endif %}
+		</td>
+	</tr>
+	</tbody>
 </table>
 
 
-<h2>Examinations</h2>
+<h2>vyšetření</h2>
 {% include ':app/examination:list.html.twig' with {'examinations': hospitalization.examinations} %}
 
 
-<h2>Prescriptions</h2>
+<h2>Předpisy</h2>
 {% include ':app/prescription:list.html.twig' with {'prescriptions': hospitalization.allPrescriptions} %}

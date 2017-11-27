@@ -1,5 +1,7 @@
 {% extends 'app/appBase.html.twig' %}
 
 {% block body %}
+	<div class="container">
     {% include ':app/hospitalization:showWidget.html.twig' with {'hospitalization': hospitalization} %}
+  </div>
 {% endblock %}

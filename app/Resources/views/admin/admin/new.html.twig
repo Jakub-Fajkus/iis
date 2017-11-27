@@ -1,16 +1,26 @@
 {% extends 'admin/adminBase.html.twig' %}
 
 {% block body %}
-	<h1>Vytvoření admina</h1>
+	<div class="container">
+		<h1>Vytvoření admina</h1>
 
-	{{ form_start(form) }}
-		{{ form_widget(form) }}
-		<input type="submit" value="Vytvořit" />
-	{{ form_end(form) }}
+		{{ form_start(form, {'attr' : {'class': 'fm'}}) }}
 
-	<ul>
-		<li>
-			<a href="{{ path('admin_employee_index') }}">Zpět na výpis zaměstnanců</a>
-		</li>
-	</ul>
+			<div class="fm__wrapper">
+				{{ form_row(form.name, { 'label': 'Jméno' }) }}
+				{{ form_row(form.surname, { 'label': 'Příjmení' }) }}
+				{{ form_row(form.telephone, { 'label': 'Telefon' }) }}
+				{{ form_row(form.username, { 'label': 'Uživatelské jméno' }) }}
+				{{ form_row(form.email, { 'label': 'Email' }) }}
+				{{ form_row(form.plainPassword, { 'label': 'Heslo' }) }}
+
+				<div class="fm__btn">
+					<input type="submit" value="Vytvořit" class="btn" />
+				</div>
+			</div>
+
+		{{ form_end(form) }}
+
+		<a href="{{ path('admin_employee_index') }}" class="btn btn--back">Zpět na výpis zaměstnanců</a>
+	</div>
 {% endblock %}

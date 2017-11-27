@@ -1,43 +1,45 @@
 {% extends 'admin/adminBase.html.twig' %}
 
 {% block body %}
-	<h1>Nurse</h1>
+	<div class="container">
+		<h1>Sestra</h1>
 
-	<table class="grid">
-		<tbody>
-			<tr>
-				<th>Id</th>
-				<td>{{ nurse.id }}</td>
-			</tr>
-			<tr>
-				<th>Username</th>
-				<td>{{ nurse.username }}</td>
-			</tr>
-			<tr>
-				<th>Name</th>
-				<td>{{ nurse.name }}</td>
-			</tr>
-			<tr>
-				<th>Surname</th>
-				<td>{{ nurse.surname }}</td>
-			</tr>
-			<tr>
-				<th>Telephone</th>
-				<td>{{ nurse.telephone }}</td>
-			</tr>
-			<tr>
-				<th>Department</th>
-				<td>{{ nurse.department.name}}</td>
-			</tr>
-		</tbody>
-	</table>
+		<table class="grid">
+			<tbody>
+				<tr>
+					<th>Id</th>
+					<td>{{ nurse.id }}</td>
+				</tr>
+				<tr>
+					<th>Uživatelské jméno</th>
+					<td>{{ nurse.username }}</td>
+				</tr>
+				<tr>
+					<th>Jméno</th>
+					<td>{{ nurse.name }}</td>
+				</tr>
+				<tr>
+					<th>Příjmení</th>
+					<td>{{ nurse.surname }}</td>
+				</tr>
+				<tr>
+					<th>Tel</th>
+					<td>{{ nurse.telephone }}</td>
+				</tr>
+				<tr>
+					<th>Oddělení</th>
+					<td>{{ nurse.department.name}}</td>
+				</tr>
+			</tbody>
+		</table>
 
-	<ul>
-		<li>
-			<a href="{{ path('admin_employee_index') }}">Zpět na výpis zaměstnanců</a>
-		</li>
-		<li>
-			<a href="{{ path('admin_nurse_edit', { 'id': nurse.id }) }}">Upravit</a>
-		</li>
-	</ul>
+		<ul>
+			<li>
+				<a href="{{ path('admin_employee_index') }}" class="btn btn--back">Zpět na výpis zaměstnanců</a>
+			</li>
+			<li>
+				<a href="{{ path('admin_nurse_edit', { 'id': nurse.id }) }}" class="btn">Upravit</a>
+			</li>
+		</ul>
+	</div>
 {% endblock %}

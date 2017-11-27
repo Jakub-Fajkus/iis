@@ -1,44 +1,49 @@
 {% extends 'admin/adminBase.html.twig' %}
 
 {% block body %}
-	<h1>Employment</h1>
+	<div class="container">
+		<h1>Zaměstnanec</h1>
 
-	<table class="grid">
-		<tbody>
-		<tr>
-			<th>Id</th>
-			<td>{{ employment.id }}</td>
-		</tr>
-		<tr>
-			<th>Type</th>
-			<td>{{ employment.type }}</td>
-		</tr>
-		<tr>
-			<th>Datefrom</th>
-			<td>{% if employment.dateFrom %}{{ employment.dateFrom|date('Y-m-d H:i:s') }}{% endif %}</td>
-		</tr>
-		<tr>
-			<th>Dateto</th>
-			<td>{% if employment.dateTo %}{{ employment.dateTo|date('Y-m-d H:i:s') }}{% endif %}</td>
-		</tr>
-		<tr>
-			<th>Telefon</th>
-			<td>{{ employment.telephone }}</td>
-		</tr>
-		</tbody>
-	</table>
+		<table class="grid">
+			<tbody>
+			<tr>
+				<th>Id</th>
+				<td>{{ employment.id }}</td>
+			</tr>
+			<tr>
+				<th>Typ</th>
+				<td>{{ employment.type }}</td>
+			</tr>
+			<tr>
+				<th>Datum od</th>
+				<td>{% if employment.dateFrom %}{{ employment.dateFrom|date('Y-m-d H:i:s') }}{% endif %}</td>
+			</tr>
+			<tr>
+				<th>Datum do</th>
+				<td>{% if employment.dateTo %}{{ employment.dateTo|date('Y-m-d H:i:s') }}{% endif %}</td>
+			</tr>
+			<tr>
+				<th>Telefon</th>
+				<td>{{ employment.telephone }}</td>
+			</tr>
+			</tbody>
+		</table>
 
-	<ul>
-		<li>
-			<a href="{{ path('admin_doctor_show', {'id': doctorId}) }}">Back to the doctor</a>
-		</li>
-		<li>
-			<a href="{{ path('admin_employment_edit', { 'id': employment.id , 'doctor_id': doctorId}) }}">Upravit</a>
-		</li>
-		<li>
-			{{ form_start(delete_form) }}
-			<input type="submit" value="Delete">
-			{{ form_end(delete_form) }}
-		</li>
-	</ul>
+		<ul>
+			<li>
+				<a href="{{ path('admin_doctor_show', {'id': doctorId}) }}" class="btn btn--back">Zpět na doktora</a>
+			</li>
+			<li>
+				<a href="{{ path('admin_employment_edit', { 'id': employment.id , 'doctor_id': doctorId}) }}" class="btn">Upravit</a>
+			</li>
+			<li>
+				{{ form_start(delete_form) }}
+					<div class="fm__btn">
+						<input type="submit" value="Odstranit" class="btn btn--delete" />
+					</div>
+				{{ form_end(delete_form) }}
+			</li>
+		</ul>
+
+	</div>
 {% endblock %}

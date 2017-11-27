@@ -1,16 +1,20 @@
 {% extends 'admin/adminBase.html.twig' %}
 
 {% block body %}
-	<h1>Drug edit</h1>
+	<div class="container">
+		<h1>Lék - úpravy</h1>
 
-	{{ form_start(edit_form) }}
-		{{ form_widget(edit_form) }}
-		<input type="submit" value="Upravit" />
-	{{ form_end(edit_form) }}
+		{{ form_start(edit_form, {'attr' : {'class': 'fm'}}) }}
+			{{ form_widget(edit_form, {'attr' : {'class': 'fm__wrapper'}}) }}
+			<div class="fm__btn">
+				<input type="submit" value="Upravit" class="btn" />
+			</div>
+		{{ form_end(edit_form) }}
 
-	<ul>
-		<li>
-			<a href="{{ path('admin_drug_index') }}">Zpět na výpis</a>
-		</li>
-	</ul>
+		<ul>
+			<li>
+				<a href="{{ path('admin_drug_index') }}" class="btn btn--back">Zpět na výpis</a>
+			</li>
+		</ul>
+	</div>
 {% endblock %}

@@ -1,36 +1,35 @@
 {% if applications|length == 0 %}
-    <p>Žádná podání léku</p>
+	<p class="grid--empty">Žádná podání léku</p>
 {% else %}
-    <table>
-        <thead>
-        <tr>
-            <th>Id</th>
-            <th>Datum a čas podání</th>
-            <th>Aplikováno osobou</th>
-            <th>Akce</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for drugApplication in applications %}
-            <tr>
-                <td>
-                    <a href="{{ path('app_drug_application_show', { 'id': drugApplication.id }) }}">{{ drugApplication.id }}</a>
-                </td>
-                <td>{% if drugApplication.time %}{{ drugApplication.time|date('d.m.Y H:i:s') }}{% endif %}</td>
-                <td>{{ drugApplication.appliedBy }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('app_drug_application_show', { 'id': drugApplication.id }) }}">Detail</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('app_drug_application_edit', { 'id': drugApplication.id }) }}">Upravit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
+	<table class="grid">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Datum a čas podání</th>
+				<th>Aplikováno osobou</th>
+				<th>Akce</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for drugApplication in applications %}
+				<tr>
+					<td>
+						<a href="{{ path('app_drug_application_show', { 'id': drugApplication.id }) }}">{{ drugApplication.id }}</a>
+					</td>
+					<td>{% if drugApplication.time %}{{ drugApplication.time|date('d.m.Y H:i:s') }}{% endif %}</td>
+					<td>{{ drugApplication.appliedBy }}</td>
+					<td>
+						<ul>
+							<li>
+								<a href="{{ path('app_drug_application_show', { 'id': drugApplication.id }) }}">Detail</a>
+							</li>
+							<li>
+								<a href="{{ path('app_drug_application_edit', { 'id': drugApplication.id }) }}">Upravit</a>
+							</li>
+						</ul>
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
 {% endif %}

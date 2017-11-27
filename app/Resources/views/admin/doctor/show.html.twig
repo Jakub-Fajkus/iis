@@ -1,47 +1,49 @@
 {% extends 'admin/adminBase.html.twig' %}
 
 {% block body %}
-	<h1>Doctor</h1>
+	<div class="container">
+		<h1>Doktor</h1>
 
-	<table class="grid">
-		<tbody>
-		<tr>
-			<th>Id</th>
-			<td>{{ doctor.id }}</td>
-		</tr>
-		<tr>
-			<th>Username</th>
-			<td>{{ doctor.username }}</td>
-		</tr>
-		<tr>
-			<th>Name</th>
-			<td>{{ doctor.name }}</td>
-		</tr>
-		<tr>
-			<th>Surname</th>
-			<td>{{ doctor.surname }}</td>
-		</tr>
-		<tr>
-			<th>Telephone</th>
-			<td>{{ doctor.telephone }}</td>
-		</tr>
-		</tbody>
-	</table>
+		<table class="grid">
+			<tbody>
+			<tr>
+				<th>Id</th>
+				<td>{{ doctor.id }}</td>
+			</tr>
+			<tr>
+				<th>Uživatelské jméno</th>
+				<td>{{ doctor.username }}</td>
+			</tr>
+			<tr>
+				<th>Jméno</th>
+				<td>{{ doctor.name }}</td>
+			</tr>
+			<tr>
+				<th>Příjmení</th>
+				<td>{{ doctor.surname }}</td>
+			</tr>
+			<tr>
+				<th>Tel</th>
+				<td>{{ doctor.telephone }}</td>
+			</tr>
+			</tbody>
+		</table>
 
-	<ul>
-		<li>
-			<a href="{{ path('admin_employee_index') }}">Zpět na výpis zaměstnanců</a>
-		</li>
-		<li>
-			<a href="{{ path('admin_doctor_edit', { 'id': doctor.id }) }}">Upravit</a>
-		</li>
-	</ul>
+		<ul>
+			<li>
+				<a href="{{ path('admin_employee_index') }}" class="btn btn--back">Zpět na výpis zaměstnanců</a>
+			</li>
+			<li>
+				<a href="{{ path('admin_doctor_edit', { 'id': doctor.id }) }}" class="btn">Upravit</a>
+			</li>
+		</ul>
 
-	{% include "admin/employment/list.html.twig" with {'doctor': doctor} %}
+		{% include "admin/employment/list.html.twig" with {'doctor': doctor} %}
 
-	<ul>
-		<li>
-			<a href="{{ path('admin_employment_new', {'doctor_id': doctor.id}) }}">Vytvořit úvazek</a>
-		</li>
-	</ul>
+		<ul>
+			<li>
+				<a href="{{ path('admin_employment_new', {'doctor_id': doctor.id}) }}" class="btn">Vytvořit úvazek</a>
+			</li>
+		</ul>
+	</div>
 {% endblock %}

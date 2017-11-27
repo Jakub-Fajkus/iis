@@ -1,13 +1,13 @@
 {% extends 'app/appBase.html.twig' %}
 
 {% block body %}
-    <h1>Prescriptions list</h1>
-
-    {% include ":app/prescription:list.html.twig" with {'prescriptions': prescriptions} %}
-
-    {#<ul>#}
-        {#<li>#}
-            {#<a href="{{ path('app_prescription_new') }}">Create a new prescription</a>#}
-        {#</li>#}
-    {#</ul>#}
+	<div class="container">
+		<h1>Seznam předpisů</h1>
+		{% include ":app/prescription:list.html.twig" with {'prescriptions': prescriptions} %}
+		{#<ul>#}
+			{#<li>#}
+				{#<a href="{{ path('app_prescription_new') }}">Create a new prescription</a>#}
+			{#</li>#}
+		{#</ul>#}
+	</div>
 {% endblock %}

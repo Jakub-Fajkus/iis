@@ -1,16 +1,33 @@
 {% extends 'app/appBase.html.twig' %}
 
 {% block body %}
-    <h1>Patient creation</h1>
+	<div class="container">
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Vytvořit" />
-    {{ form_end(form) }}
+		<h1>Nový pacient</h1>
 
-    <ul>
-        <li>
-            <a href="{{ path('app_patient_index') }}">Zpět na výpis</a>
-        </li>
-    </ul>
+		{{ form_start(form, {'attr' : {'class': 'fm'}}) }}
+
+			<div class="fm__wrapper">
+				{{ form_row(form.name, { 'label': 'Jméno' }) }}
+				{{ form_row(form.surname, { 'label': 'Příjmení' }) }}
+				{{ form_row(form.street, { 'label': 'Ulice' }) }}
+				{{ form_row(form.houseNumber, { 'label': 'Č.p.' }) }}
+				{{ form_row(form.personalIdentificationNumber, { 'label': 'pid' }) }}
+				{{ form_row(form.city, { 'label': 'Město' }) }}
+				{{ form_row(form.zip, { 'label': 'Psč' }) }}
+				{{ form_row(form.city, { 'label': 'Město' }) }}
+				{{ form_row(form.medicalIdentificationNumber, { 'label': 'mid' }) }}
+				{{ form_row(form.insuranceCompanyId, { 'label': 'Číslo pojišťovny' }) }}
+				{{ form_row(form.gender, { 'label': 'Pohlaví' }) }}
+
+				<div class="fm__btn">
+					<input type="submit" value="Vytvořit" class="btn" />
+				</div>
+			</div>
+
+		{{ form_end(form) }}
+
+		<a href="{{ path('app_patient_index') }}" class="btn btn--back">Zpět na výpis</a>
+
+	</div>
 {% endblock %}

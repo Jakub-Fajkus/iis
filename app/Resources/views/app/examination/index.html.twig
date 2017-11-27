@@ -1,13 +1,12 @@
 {% extends 'app/appBase.html.twig' %}
 
 {% block body %}
-    <h1>Examinations list</h1>
+	<div class="container">
 
-    {% include ':app/examination:list.html.twig' with {'examinations': examinations} %}
+		<h1>Seznam vyšetření</h1>
 
-    <ul>
-        <li>
-            <a href="{{ path('app_examination_new') }}">Create a new examination</a>
-        </li>
-    </ul>
+		{% include ':app/examination:list.html.twig' with {'examinations': examinations} %}
+
+		<a href="{{ path('app_examination_new') }}">Vytvořit nové vyšetření</a>
+	</div>
 {% endblock %}

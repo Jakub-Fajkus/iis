@@ -2,7 +2,7 @@ $el: .h;
 
 .header {
   margin-bottom: 32px;
-  background-image: linear-gradient(white,#e8f6ff);
+  background: #fff;
   box-shadow: 4px 0 8px #8aa4b5;
 }
 
@@ -14,7 +14,7 @@ $(el) {
 
   &__wrapper {
     width: 100%;
-    box-shadow: 0px -44px 0 0px #065e94d6 inset;
+    box-shadow: 0px -46px 0 0px #065e94d6 inset;
   }
 
   &__item {
@@ -22,11 +22,7 @@ $(el) {
     margin-top: auto;
 
     &--logo {
-      padding: 12px 22px;
-
-      img {
-        max-height: 80px;
-      }
+      display: none;
     }
 
     &--user {
@@ -42,6 +38,24 @@ $(el) {
           top: 10px;
           right: 10px;
           display: inline-block;
+        }
+      }
+    }
+  }
+}
+
+@media all and ($medium-up) {
+  $(el) {
+    &__item {
+      display: inline-block;
+      margin-top: auto;
+
+      &--logo {
+        display: inline-block;
+        padding: 12px 22px;
+
+        img {
+          max-height: 80px;
         }
       }
     }

@@ -6,7 +6,7 @@
 		<h1>Seznam oddělení</h1>
 
 		{% if departments|length == 0 %}
-			<p>Žádná oddělení</p>
+			<p class="grid--empty">Žádná oddělení</p>
 		{% else %}
 			<table class="grid">
 				<thead>
@@ -15,7 +15,7 @@
 					<th>Zkratka</th>
 					<th>Název</th>
 					<th>Telefon</th>
-					<th>&nbsp</th>
+					<th>&nbsp;</th>
 				</tr>
 				</thead>
 				<tbody>
@@ -40,12 +40,7 @@
 				{% endfor %}
 				</tbody>
 			</table>
-
-			<ul>
-				<li>
-					<a href="{{ path('admin_department_new') }}">Vytvořit nové oddělení</a>
-				</li>
-			</ul>
 		{% endif %}
+		<a href="{{ path('admin_department_new') }}" class="btn">Vytvořit nové oddělení</a>
 	</div>
 {% endblock %}

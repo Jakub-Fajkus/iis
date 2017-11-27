@@ -1,59 +1,155 @@
 $el: .fm;
 
 $(el) {
+  max-width: 680px;
+  margin: 46px auto;
 
-  max-width: 800px;
+  &:after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+
+  .btn {
+    font-size: 16px;
+  }
 
   div {
-    margin-bottom: 20px;
+    margin-bottom: 16px;
+  }
 
-    label {
-      display: block;
-      margin-bottom: 5px;
-      font-size: 14px;
-      font-weight: 500;
-      line-height: 22px;
-      color: $default-text-color;
+  &__item {
+    &--date {
+      width: 100% !important;
 
-      sup {
-        top: 0;
-        font-size: 100%;
-        color: $active-color;
+      select {
+        width: 33%;
+        padding: 12px;
+        text-align: center;
       }
     }
 
-    input, textarea, select {
-      width: 100%;
-      padding: 12px 16px;
-      font-family: $font-main;
-      font-size: 14px;
-      line-height: 20px;
-      transition: box-shadow $transition-time $transition-easing;
-      color: $default-text-color;
-      border: 1px solid #dfe6f1;
-      background-color: #fff;
+    &--select {
+      position: relative;
 
-      &:focus {
-        border-color: transparent;
-        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
-
-        &:-webkit-autofill {
-          box-shadow: 0 0 0 1000px #fff inset, 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
-        }
+      div {
+        width: 100% !important;
       }
+
+      select {
+        padding-right: 20px;
+      }
+
+      &:after {
+        content: '';
+        position: absolute;
+        top: 50px;
+        right: 10px;
+        display: block;
+        border-top: solid 6px $default-text-color;
+        border-right: solid 6px transparent;
+        border-left: solid 6px transparent;
+      }
+    }
+  }
+
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 22px;
+    color: $default-text-color;
+
+    sup {
+      top: 0;
+      font-size: 100%;
+      color: $active-color;
+    }
+  }
+
+  input, textarea, select {
+    width: 100%;
+    padding: 12px 16px;
+    font-family: $font-main;
+    font-size: 15px;
+    line-height: 20px;
+    transition: box-shadow $transition-time $transition-easing;
+    color: $default-text-color;
+    border: 1px solid $border-color;
+    background-color: #fff;
+
+    &:focus {
+      border-color: transparent;
+      box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
 
       &:-webkit-autofill {
-        box-shadow: 0 0 0 1000px #fff inset;
+        box-shadow: 0 0 0 1000px #fff inset, 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
       }
     }
 
-    textarea {
-      min-height: 130px;
+    &:-webkit-autofill {
+      box-shadow: 0 0 0 1000px #fff inset;
+    }
+  }
+
+  input.btn {
+    width: auto;
+    padding: 16px 36px;
+    transition: all $transition-time $transition-easing;
+    color: #fff;
+    border: 0 none;
+    background-color: $link-color;
+
+    &:hover {
+      color: #fff;
+      background-color: $default-text-color;
+    }
+  }
+
+  textarea {
+    min-height: 130px;
+  }
+
+  select {
+    height: 54px;
+    cursor: pointer;
+  }
+
+  &--search {
+    border: 1px solid $border-color;
+
+    input {
+      float: left;
+      width: 80%;
+      height: 46px;
+      border: none;
     }
 
-    select {
-      height: 54px;
-      cursor: pointer;
+    span {
+      margin: 13px;
+    }
+
+    button {
+      float: left;
+      width: 20%;
+      height: 46px;
+      font-weight: 600;
+      transition: all $transition-time $transition-easing;
+      color: #fff;
+      border: none;
+      border-left: 1px solid $border-color;
+      background-color: $link-color;
+
+      &:after {
+        display: inline-block;
+        margin: 13px;
+      }
+
+      &:hover {
+        color: $link-color;
+        background-color: #fff;
+      }
     }
   }
 
@@ -84,16 +180,30 @@ $(el) {
 
 @media all and ($small-up) {
   $(el) {
-    div {
-      &:nth-child(odd) {
-        float: left;
-        width: 48%;
-      }
+    .fm__wrapper {
+      width: 100%;
 
-      &:nth-child(even) {
-        float: right;
-        width: 48%;
+      div {
+        &:nth-child(odd) {
+          float: left;
+          width: 48%;
+        }
+
+        &:nth-child(even) {
+          float: right;
+          width: 48%;
+        }
+
+        &.fm__btn {
+          width: 100%;
+        }
       }
+    }
+
+    div.fm__btn {
+      float: none;
+      width: 100%;
+      text-align: right;
     }
   }
 }

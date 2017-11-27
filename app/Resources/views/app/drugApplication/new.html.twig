@@ -1,16 +1,17 @@
 {% extends 'app/appBase.html.twig' %}
 
 {% block body %}
-    <h1>Zaznamenání podání léku</h1>
+	<div class="container">
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Zaznamenat" />
-    {{ form_end(form) }}
+		<h1>Zaznamenání podání léku</h1>
 
-    <ul>
-        <li>
-            <a href="{{ path('app_drug_application_index') }}">Zpět na všechna podání léků</a>
-        </li>
-    </ul>
+		{{ form_start(form, {'attr' : {'class': 'fm'}}) }}
+			{{ form_widget(form, {'attr' : {'class': 'fm__wrapper'}}) }}
+			<div class="fm__btn">
+				<input type="submit" value="Zaznamenat" class="btn" />
+			</div>
+		{{ form_end(form) }}
+
+		<a href="{{ path('app_drug_application_index') }}" class="btn btn--back">Zpět na všechna podání léků</a>
+	</div>
 {% endblock %}

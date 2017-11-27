@@ -1,16 +1,32 @@
 {% extends 'app/appBase.html.twig' %}
 
 {% block body %}
-    <h1>Patient edit</h1>
+	<div class="container">
 
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Upravit" />
-    {{ form_end(edit_form) }}
+		<h1>Pacient - úpravy</h1>
 
-    <ul>
-        <li>
-            <a href="{{ path('app_patient_index') }}">Zpět na výpis</a>
-        </li>
-    </ul>
+		{{ form_start(edit_form, {'attr' : {'class': 'fm'}}) }}
+
+			<div class="fm__wrapper">
+				{{ form_row(edit_form.name, { 'label': 'Jméno' }) }}
+				{{ form_row(edit_form.surname, { 'label': 'Příjmení' }) }}
+				{{ form_row(edit_form.street, { 'label': 'Ulice' }) }}
+				{{ form_row(edit_form.houseNumber, { 'label': 'Č.p.' }) }}
+				{{ form_row(edit_form.personalIdentificationNumber, { 'label': 'pid' }) }}
+				{{ form_row(edit_form.city, { 'label': 'Město' }) }}
+				{{ form_row(edit_form.zip, { 'label': 'Psč' }) }}
+				{{ form_row(edit_form.city, { 'label': 'Město' }) }}
+				{{ form_row(edit_form.medicalIdentificationNumber, { 'label': 'mid' }) }}
+				{{ form_row(edit_form.insuranceCompanyId, { 'label': 'Číslo pojišťovny' }) }}
+				{{ form_row(edit_form.gender, { 'label': 'Pohlaví' }) }}
+
+				<div class="fm__btn">
+					<input type="submit" value="Upravit" class="btn" />
+				</div>
+			</div>
+
+		{{ form_end(edit_form) }}
+
+		<a href="{{ path('app_patient_index') }}" class="btn btn--back">Zpět na výpis</a>
+	</div>
 {% endblock %}

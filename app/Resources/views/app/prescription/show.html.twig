@@ -1,45 +1,43 @@
 {% extends 'app/appBase.html.twig' %}
 
 {% block body %}
-    <h1>Prescription</h1>
-
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ prescription.id }}</td>
-            </tr>
-            <tr>
-                <th>Periodofapplication</th>
-                <td>{{ prescription.periodOfApplication }}</td>
-            </tr>
-            <tr>
-                <th>Delivery</th>
-                <td>{{ prescription.delivery }}</td>
-            </tr>
-            <tr>
-                <th>Amount</th>
-                <td>{{ prescription.amount }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('app_prescription_edit', { 'id': prescription.id }) }}">Upravit</a>
-        </li>
-        <li>
-            <a href="{{ path('app_drug_application_new', { 'id': prescription.id }) }}">Zaznamenat podání</a>
-        </li>
-        <li>
-            <a href="{{ path('app_prescription_index') }}">Zpět na výpis</a>
-        </li>
-        <li>
-            <a href="{{ path('app_patient_show', {'id': prescription.examination.hospitalization.patient.id}) }}">Back to the patient</a>
-        </li>
-    </ul>
-
-    <h1>Všechna podání léku</h1>
-    {% include ":app/drugApplication:list.html.twig" with {'applications': prescription.applications} only %}
-
+	<div class="container">
+		<h1>Předpis léku</h1>
+		<table class="grid">
+			<tbody>
+				<tr>
+					<th>Id</th>
+					<td>{{ prescription.id }}</td>
+				</tr>
+				<tr>
+					<th>Doba podávání</th>
+					<td>{{ prescription.periodOfApplication }}</td>
+				</tr>
+				<tr>
+					<th>Dávkování</th>
+					<td>{{ prescription.delivery }}</td>
+				</tr>
+				<tr>
+					<th>Množství</th>
+					<td>{{ prescription.amount }}</td>
+				</tr>
+			</tbody>
+		</table>
+		<ul>
+			<li>
+				<a href="{{ path('app_prescription_edit', { 'id': prescription.id }) }}" class="btn">Upravit</a>
+			</li>
+			<li>
+				<a href="{{ path('app_drug_application_new', { 'id': prescription.id }) }}" class="btn">Zaznamenat podání</a>
+			</li>
+			<li>
+				<a href="{{ path('app_prescription_index') }}"class="btn btn--back">Zpět na výpis</a>
+			</li>
+			<li>
+				<a href="{{ path('app_patient_show', {'id': prescription.examination.hospitalization.patient.id}) }}">Zpátky k pacientovi</a>
+			</li>
+		</ul>
+		<h2>Všechna podání léku</h2>
+		{% include ":app/drugApplication:list.html.twig" with {'applications': prescription.applications} only %}
+	</div>
 {% endblock %}

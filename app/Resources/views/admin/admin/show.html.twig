@@ -1,35 +1,37 @@
 {% extends 'admin/adminBase.html.twig' %}
 
 {% block body %}
-	<h1>Admin</h1>
+	<div class="container">
+		<h1>Admin</h1>
 
-	<table class="grid">
-		<tbody>
-		<tr>
-			<th>Username</th>
-			<td>{{ admin.username }}</td>
-		</tr>
-		<tr>
-			<th>Name</th>
-			<td>{{ admin.name }}</td>
-		</tr>
-		<tr>
-			<th>Surname</th>
-			<td>{{ admin.surname }}</td>
-		</tr>
-		<tr>
-			<th>Telephone</th>
-			<td>{{ admin.telephone }}</td>
-		</tr>
-		</tbody>
-	</table>
+		<table class="grid">
+			<tbody>
+			<tr>
+				<th>Uživatelské jméno</th>
+				<td>{{ admin.username }}</td>
+			</tr>
+			<tr>
+				<th>Jméno</th>
+				<td>{{ admin.name }}</td>
+			</tr>
+			<tr>
+				<th>Příjmení</th>
+				<td>{{ admin.surname }}</td>
+			</tr>
+			<tr>
+				<th>Tel</th>
+				<td>{{ admin.telephone }}</td>
+			</tr>
+			</tbody>
+		</table>
 
-	<ul>
-		<li>
-			<a href="{{ path('admin_employee_index') }}">Zpět na výpis zaměstnanců</a>
-		</li>
-		<li>
-			<a href="{{ path('admin_admin_edit', { 'id': admin.id }) }}">Upravit</a>
-		</li>
-	</ul>
+		<ul>
+			<li>
+				<a href="{{ path('admin_employee_index') }}" class="btn btn--back">Zpět na výpis zaměstnanců</a>
+			</li>
+			<li>
+				<a href="{{ path('admin_admin_edit', { 'id': admin.id }) }}" class="btn">Upravit</a>
+			</li>
+		</ul>
+	</div>
 {% endblock %}

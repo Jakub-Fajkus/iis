@@ -1,41 +1,42 @@
 {% extends 'app/appBase.html.twig' %}
 
 {% block body %}
-    <h1>Departments list</h1>
+	<div class="container">
 
-    {% if departments|length == 0 %}
-        <p>Žádná oddělení</p>
-    {% else %}
+		<h1>Seznam oddělení</h1>
 
-        <table>
-            <thead>
-            <tr>
-                <th>Id</th>
-                <th>Shortcut</th>
-                <th>Name</th>
-                <th>Telephone</th>
-                <th>Actions</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for department in departments %}
-                <tr>
-                    <td><a href="{{ path('app_department_show', { 'id': department.id }) }}">{{ department.id }}</a>
-                    </td>
-                    <td>{{ department.shortcut }}</td>
-                    <td>{{ department.name }}</td>
-                    <td>{{ department.telephone }}</td>
-                    <td>
-                        <ul>
-                            <li>
-                                <a href="{{ path('app_department_show', { 'id': department.id }) }}">Detail</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-    {% endif %}
-
+		{% if departments|length == 0 %}
+			<p class="grid--empty">Žádná oddělení</p>
+		{% else %}
+			<table class="grid">
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Zkratka</th>
+						<th>Název</th>
+						<th>Tel</th>
+						<th>&nbsp;</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for department in departments %}
+						<tr>
+							<td><a href="{{ path('app_department_show', { 'id': department.id }) }}">{{ department.id }}</a>
+						</td>
+						<td>{{ department.shortcut }}</td>
+						<td>{{ department.name }}</td>
+						<td>{{ department.telephone }}</td>
+						<td>
+							<ul>
+								<li>
+									<a href="{{ path('app_department_show', { 'id': department.id }) }}">Detail</a>
+								</li>
+							</ul>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	{% endif %}
+</div>
 {% endblock %}

@@ -1,16 +1,17 @@
 {% extends 'app/appBase.html.twig' %}
 
 {% block body %}
-    <h1>Examination creation</h1>
+	<div class="container">
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Vytvořit" />
-    {{ form_end(form) }}
+		<h1>Nové vyšetření</h1>
 
-    <ul>
-        <li>
-            <a href="{{ path('app_examination_index') }}">Zpět na výpis</a>
-        </li>
-    </ul>
+		{{ form_start(form, {'attr' : {'class': 'fm'}}) }}
+			{{ form_widget(form, {'attr' : {'class': 'fm__wrapper'}}) }}
+				<div class="fm__btn">
+					<input type="submit" value="Vytvořit" class="btn" />
+				</div>
+		{{ form_end(form) }}
+
+		<a href="{{ path('app_examination_index') }}" class="btn btn--back">Zpět na výpis</a>
+	</div>
 {% endblock %}
