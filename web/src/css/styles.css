@@ -5,6 +5,7 @@
 @import 'modules/layout.css';
 @import 'modules/btn.css';
 @import 'modules/form.css';
+@import 'modules/pagging.css';
 
 @import 'modules/header/main.css';
 @import 'modules/header/nav.css';

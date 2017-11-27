@@ -1,0 +1,41 @@
+$el: .pagging;
+
+$(el) {
+  display: inline-block;
+
+  &__item {
+    float: left;
+    margin: 2px;
+    font-weight: 600;
+    transition: .3s;
+    border: 1px solid $border-color;
+    background-color: #fff;
+
+    &:hover {
+      background-color:  rgba(94,164,214,.54902);
+    }
+
+    &--active {
+      background-color: $link-color;
+
+      a {
+        color: #fff;
+      }
+    }
+
+    &--separator {
+      padding: 6px 12px;
+      font-weight: 800;
+      border: none;
+      background: transparent;
+      &:hover {
+        background-color:  none;
+      }
+    }
+
+    a {
+      padding: 6px 14px;
+      line-height: 42px;
+    }
+  }
+}

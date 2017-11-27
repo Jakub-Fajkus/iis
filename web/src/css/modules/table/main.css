@@ -13,6 +13,10 @@ $(el) {
     text-align: center;
   }
 
+  &__pagginator {
+    text-align: center;
+  }
+
   &--show {
     max-width: 600px;
     margin: 26px 0 60px 0;
