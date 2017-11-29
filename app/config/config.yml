@@ -18,8 +18,9 @@ imports:
 
 # @TODO: Pridat do editacnich formularu hlasky o spravnem provedeni staci nejake, v editaci pacienta jsou pripravene
 #  takze vlozit jednu nebo druhou...
-#  selectbox u datumu bych dal do hajzlu teda
+#  - selectbox u datumu bych dal do hajzlu teda
 #  preklad menu, nebo nekde natvdo to prepsat
+#  - dodat tlacitko zpet pro vyhledavani pacientu
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
