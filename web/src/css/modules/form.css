@@ -168,35 +168,44 @@ $(el) {
     }
   }
 
-/*   &__form-item-select {
-    position: relative;
+  &__info {
+    position: fixed;
+    top: 15px;
+    right: calc(50% - 600px);
+    width: 300px;
+    min-height: 68px;
+    margin-bottom: 18px;
+    padding: 10px;
+    font-weight: 700;
+    animation: hide 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    opacity: 1;
+    color: #fff;
+    border-radius: 2px;
+    background-color: #d6d6d6;
+    animation-fill-mode: forwards;
 
-    &:after {
-      position: absolute;
-      z-index: 10;
-      top: 22px;
-      right: 15px;
-      transition: top $transition-time $transition-easing;
+    &--success {
+      background-color: $green-color;
     }
 
-    &:hover {
-      &:after {
-        top: 25px;
-      }
+    &--error {
+      background-color: $red-color;
     }
   }
 
-  &__button {
-    &__wrap {
-      margin: 30px 0;
-    }
-  } */
 }
 
 @media all and ($small-up) {
   $(el) {
     .fm__wrapper {
       width: 100%;
+      transition: .3s;
+
+      &:after {
+        content: '';
+        display: table;
+        clear: both;
+      }
 
       div {
         &:nth-child(odd) {
@@ -221,4 +230,21 @@ $(el) {
       text-align: right;
     }
   }
+}
+
+@keyframes hide {
+
+    0% {
+      visibility: visibile;
+      opacity: 1;
+    }
+
+    90% {
+      opacity: 1;
+    }
+
+    100% {
+      visibility: hidden;
+      opacity: 0;
+    }
 }

@@ -4,8 +4,17 @@
 	<div class="container">
 
 		<h1>Pacient - úpravy</h1>
-
 		{{ form_start(edit_form, {'attr' : {'class': 'fm'}}) }}
+
+
+			{# TODO info o zmene #}
+			<p class="fm__info fm__info--success vam">
+				<span>Změny byly úspešně uloženy.</span>
+			</p>
+
+			<p class="fm__info fm__info--error vam">
+				<span>Něco se porouchalo:(</span>
+			</p>
 
 			<div class="fm__wrapper">
 				{{ form_row(edit_form.name, { 'label': 'Jméno' }) }}
