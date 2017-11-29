@@ -1,33 +1,35 @@
-{% if prescriptions|length == 0 %}
-	<p class="grid--empty">Žádná předepsání léku</p>
-{% else %}
-	<table class="grid">
-		<thead>
-			<tr>
-				<th>Id</th>
-				<th>Doba podávání</th>
-				<th>Dávkování</th>
-				<th>Množství</th>
-				<th>&nbsp;</th>
-			</tr>
-		</thead>
-		<tbody>
-			{% for prescription in prescriptions %}
+<div class="container">
+	{% if prescriptions|length == 0 %}
+		<p class="grid--empty">Žádná předepsání léku</p>
+	{% else %}
+		<table class="grid">
+			<thead>
 				<tr>
-					<td><a href="{{ path('app_prescription_show', { 'id': prescription.id }) }}">{{ prescription.id }}</a></td>
-					<td>{{ prescription.periodOfApplication }}</td>
-					<td>{{ prescription.delivery }}</td>
-					<td>{{ prescription.amount }}</td>
-					<td>
-						<a href="{{ path('app_prescription_show', { 'id': prescription.id }) }}" class="btn--show" title="Detail"></a>
-						<a href="{{ path('app_prescription_edit', { 'id': prescription.id }) }}" class="btn--edit" title="Upravit"></a>
-					</td>
+					<th>Id</th>
+					<th>Doba podávání</th>
+					<th>Dávkování</th>
+					<th>Množství</th>
+					<th>&nbsp;</th>
 				</tr>
-		{% else %}
-			<tr>
-				<td colspan="5">Žádné předepsané leky</td>
-			</tr>
-		{% endfor %}
-	</tbody>
-</table>
-{% endif %}
+			</thead>
+			<tbody>
+				{% for prescription in prescriptions %}
+					<tr>
+						<td><a href="{{ path('app_prescription_show', { 'id': prescription.id }) }}">{{ prescription.id }}</a></td>
+						<td>{{ prescription.periodOfApplication }}</td>
+						<td>{{ prescription.delivery }}</td>
+						<td>{{ prescription.amount }}</td>
+						<td>
+							<a href="{{ path('app_prescription_show', { 'id': prescription.id }) }}" class="btn--show" title="Detail"></a>
+							<a href="{{ path('app_prescription_edit', { 'id': prescription.id }) }}" class="btn--edit" title="Upravit"></a>
+						</td>
+					</tr>
+			{% else %}
+				<tr>
+					<td colspan="5">Žádné předepsané leky</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	{% endif %}
+</div>

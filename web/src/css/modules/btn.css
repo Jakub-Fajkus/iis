@@ -28,6 +28,7 @@ $(el) {
   }
 
   &--back {
+    margin-bottom: 45px;
     color: $link-color;
     border: 1px solid $link-color;
     background: #fff;

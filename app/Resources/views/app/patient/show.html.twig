@@ -83,7 +83,9 @@
 			{#todo: move to a separate page?#}
 			{{ form_start(examineForm, {'attr' : {'class': 'fm'}}) }}
 				<div class="fm__wrapper">
-					{{ form_row(examineForm.report, { 'label': 'Zapis z vyšetření' }) }}
+					<div class="fm__item--full">
+						{{ form_row(examineForm.report, { 'label': 'Zápis z vyšetření'}) }}
+					</div>
 					{{ form_widget(examineForm) }}
 					<div class="fm__btn">
 						<input type="submit" value="Přidat vyšetření" class="btn" />

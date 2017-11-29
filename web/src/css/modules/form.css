@@ -2,7 +2,7 @@ $el: .fm;
 
 $(el) {
   max-width: 680px;
-  margin: 46px auto;
+  margin: 46px auto 26px auto;
 
   &:after {
     content: '';
@@ -19,6 +19,15 @@ $(el) {
   }
 
   &__item {
+
+    &--full {
+      width: 100% !important;
+
+      div {
+        width: 100% !important;
+      }
+    }
+
     &--date {
       width: 100% !important;
 
@@ -34,6 +43,7 @@ $(el) {
 
       div {
         width: 100% !important;
+        margin-bottom: 0;
       }
 
       select {
@@ -43,12 +53,17 @@ $(el) {
       &:after {
         content: '';
         position: absolute;
-        top: 50px;
+        top: 46px;
         right: 10px;
         display: block;
-        border-top: solid 6px $default-text-color;
+        transition: .3s;
+        border-top: solid 6px $border-color;
         border-right: solid 6px transparent;
         border-left: solid 6px transparent;
+      }
+
+      &:hover:after {
+        border-top-color: $default-text-color;
       }
     }
   }
@@ -112,7 +127,7 @@ $(el) {
   }
 
   select {
-    height: 54px;
+    /* height: 54px; */
     cursor: pointer;
   }
 

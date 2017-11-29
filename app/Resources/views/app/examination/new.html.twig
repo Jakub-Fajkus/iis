@@ -6,10 +6,18 @@
 		<h1>Nové vyšetření</h1>
 
 		{{ form_start(form, {'attr' : {'class': 'fm'}}) }}
-			{{ form_widget(form, {'attr' : {'class': 'fm__wrapper'}}) }}
+
+			<div class="fm__wrapper">
+				{{ form_row(form.drug, { 'label': 'Název léku' }) }}
+				{{ form_row(form.amount, { 'label': 'Množství' }) }}
+				{{ form_row(form.delivery, { 'label': 'Zůsob podávání' }) }}
+				{{ form_row(form.periodOfApplication, { 'label': 'Doba podávání' }) }}
+
 				<div class="fm__btn">
 					<input type="submit" value="Vytvořit" class="btn" />
 				</div>
+			</div>
+
 		{{ form_end(form) }}
 
 		<a href="{{ path('app_examination_index') }}" class="btn btn--back">Zpět na výpis</a>

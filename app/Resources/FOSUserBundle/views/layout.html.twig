@@ -29,6 +29,7 @@
 			label {
 				margin-bottom: 8px;
 				display: block;
+				font-family: Arial, Helvetica, sans-serif;
 				font-size: 14px;
 				font-weight: 700;
 			}
@@ -36,10 +37,21 @@
 			label[for="remember_me"] {
 				display: inline-block;
 				cursor: pointer;
+				font-size: 12px;
+				font-weight: 500;
+				vertical-align: middle;
 			}
 
 			input {
+				background: #fff;
+				font-family: Arial, Helvetica, sans-serif;
+				border: 1px solid #ececec;
 				outline: 0 none;
+			}
+
+			input[type="checkbox"] {
+				margin: 0 3px;
+				vertical-align: top;
 			}
 
 			input:not([type="checkbox"]) {
@@ -52,10 +64,20 @@
 			input[type="submit"] {
 				-webkit-appearance: none;
 				display: block;
+				cursor: pointer;
+				transition: .3s;
 				max-width: 50%;
-				margin: 0 auto;
+				margin: 10px auto;
 				line-height: 24px;
+				border-radius: 3px;
+				background: #01a4e2;
+				color: #fff;
 			}
+
+			input[type="submit"]:hover {
+				background: #5dcdf8;
+			}
+
 
 			img {
 				height: 80px;

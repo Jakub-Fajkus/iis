@@ -23,10 +23,13 @@ $(el) {
     border: 1px solid #ccd4da;
     background: #fff;
 
-    tr:nth-child(even) th {
+    tr th {
       width: 40%;
-      /* background-color: #f9f9f9; */
       border-bottom: 1px solid #e5eaef;
+    }
+
+    tr:hover td {
+      background-color: #fff;
     }
   }
 
@@ -47,8 +50,8 @@ $(el) {
   tr:hover td {
     background-color: #f9f9f9;
 
-    a {
-      opacity: .86;
+    .btn--edit, .btn--show {
+      opacity: .6;
     }
   }
 
@@ -68,10 +71,17 @@ $(el) {
 
   a {
     display: inline-block;
-    float: right;
     transition: .3s;
     text-decoration: underline;
+  }
+
+  .btn--edit, .btn--show {
+    float: right;
     opacity: .3;
+
+    &:hover {
+      opacity: 1;
+    }
   }
 
   ul {

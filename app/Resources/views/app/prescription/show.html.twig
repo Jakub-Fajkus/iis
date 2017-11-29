@@ -25,18 +25,13 @@
 		</table>
 		<ul>
 			<li>
+				<a href="{{ path('app_prescription_index') }}"class="btn btn--back">Zpět na výpis</a>
+				<a href="{{ path('app_patient_show', {'id': prescription.examination.hospitalization.patient.id}) }}" class="btn btn--back">Zpátky k pacientovi</a>
 				<a href="{{ path('app_prescription_edit', { 'id': prescription.id }) }}" class="btn">Upravit</a>
-			</li>
-			<li>
 				<a href="{{ path('app_drug_application_new', { 'id': prescription.id }) }}" class="btn">Zaznamenat podání</a>
 			</li>
-			<li>
-				<a href="{{ path('app_prescription_index') }}"class="btn btn--back">Zpět na výpis</a>
-			</li>
-			<li>
-				<a href="{{ path('app_patient_show', {'id': prescription.examination.hospitalization.patient.id}) }}">Zpátky k pacientovi</a>
-			</li>
 		</ul>
+
 		<h2>Všechna podání léku</h2>
 		{% include ":app/drugApplication:list.html.twig" with {'applications': prescription.applications} only %}
 	</div>

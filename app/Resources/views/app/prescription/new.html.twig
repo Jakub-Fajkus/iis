@@ -2,11 +2,22 @@
 
 {% block body %}
 	<div class="container">
-		{#TODO: PRIDAT NEJAKE VYHLEDAVANI? leku muze byt dost...#}
-		<h1>Předepsání léku</h1>
+
 		{{ form_start(form, {'attr' : {'class': 'fm'}}) }}
-			{{ form_widget(form, {'attr' : {'class': 'fm__wrapper'}}) }}
-			<input type="submit" value="Vytvořit" />
+
+			<div class="fm__wrapper">
+				<div class="fm__item--select">
+					{{ form_row(form.drug, { 'label': 'Název léku' }) }}
+				</div>
+				{{ form_row(form.amount, { 'label': 'Množství' }) }}
+				{{ form_row(form.delivery, { 'label': 'Zůsob podávání' }) }}
+				{{ form_row(form.periodOfApplication, { 'label': 'Doba podávání' }) }}
+
+				<div class="fm__btn">
+					<input type="submit" value="Vytvořit" class="btn" />
+				</div>
+			</div>
+
 		{{ form_end(form) }}
 
 		<a href="{{ path('app_prescription_index') }}"class="btn btn--back">Zpět na výpis</a>

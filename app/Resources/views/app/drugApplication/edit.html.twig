@@ -6,17 +6,23 @@
 		<h1>Upravení podání léku</h1>
 
 		{{ form_start(edit_form, {'attr' : {'class': 'fm'}}) }}
-			{{ form_widget(edit_form, {'attr' : {'class': 'fm__wrapper'}}) }}
-			<div class="fm__btn">
-				<input type="submit" value="Upravit" class="btn" />
+
+			<div class="fm__wrapper">
+				{{ form_row(edit_form.time, { 'label': 'Datum od', 'attr' : {'class': 'fm__item--date'}}) }}
+				<div class="fm__item--select">
+					{{ form_row(edit_form.appliedBy, { 'label': 'Aplikoval' }) }}
+				</div>
+
+				<div class="fm__btn">
+					<input type="submit" value="Upravit" class="btn" />
+				</div>
 			</div>
+
 		{{ form_end(edit_form) }}
 
 		<ul>
 			<li>
 				<a href="{{ path('app_drug_application_index') }}"class="btn btn--back">Zpět na všechna podání léků</a>
-			</li>
-			<li>
 				<a href="{{ path('app_patient_show', {'id': drugApplication.prescription.examination.hospitalization.patient.id}) }}" class="btn btn--back">Zpět
 				na pacienta</a>
 			</li>

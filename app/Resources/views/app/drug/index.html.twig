@@ -23,7 +23,7 @@
 				<tbody>
 					{% for drug in drugs %}
 						<tr>
-							<td><a href="{{ path('app_drug_show', { 'id': drug.id }) }}">{{ drug.id }}</a></td>
+							<td>{{ drug.id }}</td>
 							<td>{{ drug.name }}</td>
 							<td>{{ drug.mainSubstance }}</td>
 							<td>{{ drug.contraindication }}</td>

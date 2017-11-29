@@ -6,11 +6,21 @@
 		<h1>Zaznamenání podání léku</h1>
 
 		{{ form_start(form, {'attr' : {'class': 'fm'}}) }}
-			{{ form_widget(form, {'attr' : {'class': 'fm__wrapper'}}) }}
-			<div class="fm__btn">
-				<input type="submit" value="Zaznamenat" class="btn" />
+
+			<div class="fm__wrapper">
+				{{ form_row(form.time, { 'label': 'Datum od', 'attr' : {'class': 'fm__item--date'}}) }}
+
+				<div class="fm__item--select">
+					{{ form_row(form.appliedBy, { 'label': 'Aplikoval' }) }}
+				</div>
+
+				<div class="fm__btn">
+					<input type="submit" value="Zaznamenat" class="btn" />
+				</div>
 			</div>
+
 		{{ form_end(form) }}
+
 
 		<a href="{{ path('app_drug_application_index') }}" class="btn btn--back">Zpět na všechna podání léků</a>
 	</div>

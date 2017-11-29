@@ -1,15 +1,15 @@
-{% block body %}
+
 	<div class="container">
 
 		{% if examinations|length == 0 %}
-			<p class="grid--ampty">Žádná vyšetření</p>
+			<p class="grid--empty">Žádná vyšetření</p>
 		{% else %}
 			<table class="grid">
 				<thead>
 					<tr>
 						<th>Id</th>
-						<th>Date</th>
-						<th>Report</th>
+						<th>Datum</th>
+						<th>Záznam</th>
 						<th>&nbsp;</th>
 					</tr>
 				</thead>
@@ -26,8 +26,7 @@
 										<a href="{{ path('app_examination_edit', { 'id': examination.id }) }}" class="btn--edit" title="Upravit"></a>
 									</li>
 									<li>
-										<a href="{{ path('app_prescription_new', {'id': examination.id }) }}">Create a new
-										prescription</a>
+										<a href="{{ path('app_prescription_new', {'id': examination.id }) }}">Nový předpis</a>
 									</li>
 								</ul>
 							</td>
@@ -38,4 +37,4 @@
 		{% endif %}
 
 	</div>
-{% endblock %}
+
