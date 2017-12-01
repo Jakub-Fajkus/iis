@@ -190,7 +190,7 @@ class Employment
     /**
      * @return string
      */
-    public function getTelephone(): string
+    public function getTelephone(): ?string
     {
         return $this->telephone;
     }
