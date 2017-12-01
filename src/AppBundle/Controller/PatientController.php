@@ -8,10 +8,10 @@ use AppBundle\Entity\Patient;
 use AppBundle\Form\ExaminePatientType;
 use AppBundle\Form\HospitalizePatientType;
 use AppBundle\Form\PatientType;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
  * Patient controller.
@@ -140,6 +140,8 @@ class PatientController extends BaseAppController
     }
 
     /**
+     * @IsGranted("ROLE_DOCTOR")
+     *
      * @Route("/{id}/hospitalize", name="app_patient_hospitalize")
      * @Method({"POST"})
      * @throws \Exception
@@ -152,9 +154,6 @@ class PatientController extends BaseAppController
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $doctor = $this->getUser();
             if (!$doctor instanceof Doctor) {
-                //todo add the annotation role check:
-//                throw new \Exception('Only doctor can hospitalize a patient!');
-
                 $doctor = $this->getDoctrine()->getRepository(Doctor::class)->findAll()[0];
             }
 
@@ -170,6 +169,8 @@ class PatientController extends BaseAppController
     }
 
     /**
+     * @IsGranted("ROLE_DOCTOR")
+     *
      * @Route("/{id}/examine", name="app_patient_examine")
      * @Method({"POST"})
      * @throws \Exception
@@ -181,14 +182,7 @@ class PatientController extends BaseAppController
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $doctor = $this->getUser();
-            if (!$doctor instanceof Doctor) {
-                //todo add the annotation role check:
-//                throw new \Exception('Only doctor can examine a patient!');
 
-                $doctor = $this->getDoctrine()->getRepository(Doctor::class)->findAll()[0];
-            }
-
-            //todo: refactor to the doctor entity
             $examination = (new Examination())
                 ->setDoctor($doctor)
                 ->setHospitalization($patient->getCurrentHospitalization())

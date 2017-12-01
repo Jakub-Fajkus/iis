@@ -396,8 +396,6 @@ class Patient
     /**
      * Hospitalize the patient on the department.
      *
-     * //todo: refactor to the doctor entity
-     *
      * If the patient is already hospitalized, the current hospitalization is closed and the new one is created.
      *
      * @param Doctor     $doctor
