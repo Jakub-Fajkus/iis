@@ -5,6 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Pacient
@@ -29,12 +30,18 @@ class Patient
     /**
      * @var string
      *
+     * @Assert\NotBlank()
+     * @Assert\Length(min = 1, max = 40)
+     *
      * @ORM\Column(name="name", type="string", length=40, nullable=false)
      */
     private $name;
 
     /**
      * @var string
+     *
+     * @Assert\NotBlank()
+     * @Assert\Length(min = 1, max = 40)
      *
      * @ORM\Column(name="surname", type="string", length=40, nullable=false)
      */
@@ -43,6 +50,10 @@ class Patient
     /**
      * @var string "Rodne cislo" or "Social Security number"
      *
+     * @Assert\NotBlank()
+     * @Assert\Length(min=10, max=11)
+     * @Assert\Regex("/^[0-9]{6}\/[0-9]{3,4}$/", message="Zadejte ve tvaru 901028/5341", htmlPattern="")
+     *
      * @ORM\Column(name="personal_identification_number", type="string", length=30,  nullable=false)
      */
     private $personalIdentificationNumber;
@@ -50,12 +61,17 @@ class Patient
     /**
      * @var string
      *
+     * @Assert\NotBlank()
+     * @Assert\Length(min=1, max=50)
+     *
      * @ORM\Column(name="street", type="string", length=50, nullable=false)
      */
     private $street;
 
     /**
      * @var string
+     * @Assert\NotBlank()
+     * @Assert\Length(min=1, max=20)
      *
      * @ORM\Column(name="house_number", type="string", length=20, nullable=false)
      */
@@ -64,6 +80,9 @@ class Patient
     /**
      * @var string
      *
+     * @Assert\NotBlank()
+     * @Assert\Length(min=1, max=50)
+     *
      * @ORM\Column(name="city", type="string", length=50, nullable=false)
      */
     private $city;
@@ -71,12 +90,19 @@ class Patient
     /**
      * @var integer
      *
+     * @Assert\NotBlank()
+     * @Assert\Length(min=5, max=20)
+     *
      * @ORM\Column(name="zip", type="string", length=20, nullable=false)
      */
     private $zip;
 
     /**
      * @var string "Cislo pojistence"
+     *
+     * @Assert\NotBlank()
+     * @Assert\Length(min=10, max=30)
+     * @Assert\Regex("/^[0-9]{6}\/[0-9]{3,4}$/", message="Zadejte ve tvaru 901028/5341", htmlPattern="")
      *
      * @ORM\Column(name="medical_identification_number", type="string", length=30, nullable=false)
      */
@@ -86,6 +112,8 @@ class Patient
      * @var integer
      *
      * @ORM\Column(name="insurance_company_id", type="integer", nullable=false)
+     * @Assert\NotBlank()
+     * @Assert\Length(min=3, max=3)
      */
     private $insuranceCompanyId;
 
@@ -94,7 +122,7 @@ class Patient
      *
      * @ORM\Column(name="gender", type="string", length=2, nullable=false)
      */
-    private $gender; //todo: select WO,MA,OT,...
+    private $gender;
 
     /**
      * @var Collection
@@ -325,11 +353,17 @@ class Patient
         return $this;
     }
 
+    /**
+     * @return bool
+     */
     public function isMaleGender()
     {
         return $this->gender === self::GENDER_MALE;
     }
 
+    /**
+     * @param bool $isMale
+     */
     public function setMaleGender(bool $isMale)
     {
         if ($isMale) {
@@ -362,7 +396,7 @@ class Patient
     /**
      * Hospitalize the patient on the department.
      *
-    * //todo: refactor to the doctor entity
+     * //todo: refactor to the doctor entity
      *
      * If the patient is already hospitalized, the current hospitalization is closed and the new one is created.
      *
@@ -387,8 +421,6 @@ class Patient
 
         return $new;
     }
-
-
 
 
     /**

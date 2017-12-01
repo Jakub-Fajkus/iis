@@ -5,6 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Drug
@@ -25,6 +26,8 @@ class Drug
 
     /**
      * @var string
+     * @Assert\NotBlank()
+     * @Assert\Length(min=3, max=70)
      *
      * @ORM\Column(name="name", type="string", length=70, nullable=false)
      */
@@ -33,12 +36,17 @@ class Drug
     /**
      * @var string
      *
+     * @Assert\NotBlank()
+     * @Assert\Length(min=2, max=100)
+     *
      * @ORM\Column(name="main_substance", type="string", length=100, nullable=false)
      */
     private $mainSubstance;
 
     /**
      * @var string Reasons to not to give the drug
+     *
+     * @Assert\Length(min=0, max=3000)
      *
      * @ORM\Column(name="contraindication", type="string", length=3000, nullable=true)
      */
@@ -47,12 +55,18 @@ class Drug
     /**
      * @var string Amount of the main substance
      *
+     * @Assert\NotBlank()
+     * @Assert\Length(min=1, max=20)
+     *
      * @ORM\Column(name="substance_amount", type="string", length=20, nullable=false)
      */
     private $substanceAmount;
 
     /**
      * @var string
+     *
+     * @Assert\NotBlank()
+     * @Assert\Length(min=2, max=30)
      *
      * @ORM\Column(name="recommended_dosage", type="string", length=30, nullable=false)
      */

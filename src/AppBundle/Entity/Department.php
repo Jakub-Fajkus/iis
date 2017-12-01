@@ -5,6 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Department
@@ -25,6 +26,8 @@ class Department
 
     /**
      * @var string
+     * @Assert\NotBlank()
+     * @Assert\Length(min=1, max=8)
      *
      * @ORM\Column(name="shortcut", type="string", length=8, nullable=false)
      */
@@ -32,6 +35,8 @@ class Department
 
     /**
      * @var string
+     * @Assert\NotBlank()
+     * @Assert\Length(min=5, max=70)
      *
      * @ORM\Column(name="name", type="string", length=70, nullable=false)
      */
@@ -39,6 +44,9 @@ class Department
 
     /**
      * @var string
+     *
+     * @Assert\NotBlank()
+     * @Assert\Length(min=4, max=20)
      *
      * @ORM\Column(name="telephone", type="string", length=20, nullable=false)
      */
