@@ -18,7 +18,7 @@ use Symfony\Component\HttpFoundation\Request;
  *
  * @Route("patient")
  */
-class PatientController extends Controller
+class PatientController extends BaseAppController
 {
     /**
      * Lists all patient entities.
@@ -63,6 +63,8 @@ class PatientController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($patient);
             $em->flush();
+
+            $this->addSuccessfullySavedFlash();
 
             return $this->redirectToRoute('app_patient_show', ['id' => $patient->getId()]);
         }
@@ -121,6 +123,8 @@ class PatientController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
+            $this->addSuccessfullySavedFlash();
+
             return $this->redirectToRoute('app_patient_edit', ['id' => $patient->getId()]);
         }
 
@@ -153,6 +157,8 @@ class PatientController extends Controller
 
             $this->getDoctrine()->getManager()->persist($hospitalization);
             $this->getDoctrine()->getManager()->flush();
+
+            $this->addSuccessfullySavedFlash();
         }
 
         return $this->redirectToRoute('app_patient_show', ['id' => $patient->getId()]);
@@ -185,6 +191,8 @@ class PatientController extends Controller
 
             $this->getDoctrine()->getManager()->persist($examination);
             $this->getDoctrine()->getManager()->flush();
+
+            $this->addSuccessfullySavedFlash();
         }
 
         return $this->redirectToRoute('app_patient_show', ['id' => $patient->getId()]);

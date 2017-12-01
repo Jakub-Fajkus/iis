@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
  *
  * @Route("drug")
  */
-class DrugController extends Controller
+class DrugController extends BaseAppController
 {
     /**
      * Lists all drug entities.

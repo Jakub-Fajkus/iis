@@ -18,7 +18,7 @@ use Symfony\Component\HttpFoundation\Request;
  *
  * @Route("doctor")
  */
-class DoctorController extends Controller
+class DoctorController extends BaseAdminController
 {
 //    /** todo Chceme výpis doktorů
 //     * Lists all doctor entities.

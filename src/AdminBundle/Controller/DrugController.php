@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\Request;
  *
  * @Route("drug")
  */
-class DrugController extends Controller
+class DrugController extends BaseAdminController
 {
     /**
      * Lists all drug entities.
@@ -52,6 +52,8 @@ class DrugController extends Controller
             $em->persist($drug);
             $em->flush();
 
+            $this->addSuccessfullySavedFlash();
+
             return $this->redirectToRoute('admin_drug_show', ['id' => $drug->getId()]);
         }
 
@@ -87,6 +89,8 @@ class DrugController extends Controller
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
+
+            $this->addSuccessfullySavedFlash();
 
             return $this->redirectToRoute('admin_drug_edit', ['id' => $drug->getId()]);
         }

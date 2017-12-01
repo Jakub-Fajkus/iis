@@ -3,7 +3,6 @@
 namespace AdminBundle\Controller;
 
 use AppBundle\Entity\Employee;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -13,7 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
  *
  * @Route("employee")
  */
-class EmployeeController extends Controller
+class EmployeeController extends BaseAdminController
 {
     /**
      * Lists all employee entities.
@@ -36,7 +35,6 @@ class EmployeeController extends Controller
         if (\array_key_exists('redirectPage', $res)) {
             return $this->redirectToRoute('admin_employee_index', $pagination->getRedirectParams($request));
         }
-
 
         return $this->render('admin/employee/index.html.twig', $res);
     }

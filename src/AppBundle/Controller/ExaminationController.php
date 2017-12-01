@@ -13,7 +13,7 @@ use AppBundle\Form\ExaminePatientType;
  *
  * @Route("examination")
  */
-class ExaminationController extends Controller
+class ExaminationController extends BaseAppController
 {
     /**
      * Lists all examination entities.
@@ -55,6 +55,8 @@ class ExaminationController extends Controller
             $em->persist($examination);
             $em->flush();
 
+            $this->addSuccessfullySavedFlash();
+
             return $this->redirectToRoute('app_examination_show', ['id' => $examination->getId()]);
         }
 
@@ -91,6 +93,8 @@ class ExaminationController extends Controller
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
+
+            $this->addSuccessfullySavedFlash();
 
             return $this->redirectToRoute('app_examination_edit', ['id' => $examination->getId()]);
         }

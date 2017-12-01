@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\Request;
  *
  * @Route("department")
  */
-class DepartmentController extends Controller
+class DepartmentController extends BaseAdminController
 {
     /**
      * Lists all department entities.
@@ -56,6 +56,8 @@ class DepartmentController extends Controller
             $em->persist($department);
             $em->flush();
 
+            $this->addSuccessfullySavedFlash();
+
             return $this->redirectToRoute('admin_department_show', array('id' => $department->getId()));
         }
 
@@ -91,6 +93,8 @@ class DepartmentController extends Controller
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
+
+            $this->addSuccessfullySavedFlash();
 
             return $this->redirectToRoute('admin_department_edit', array('id' => $department->getId()));
         }

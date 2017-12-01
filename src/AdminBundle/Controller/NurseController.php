@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\Request;
  *
  * @Route("nurse")
  */
-class NurseController extends Controller
+class NurseController extends BaseAdminController
 {
     /**
      * Creates a new nurse entity.
@@ -35,6 +35,8 @@ class NurseController extends Controller
             $nurse->addRole(Employee::ROLE_NURSE);
 
             $this->get('fos_user.user_manager')->updateUser($nurse);
+
+            $this->addSuccessfullySavedFlash();
 
             return $this->redirectToRoute('admin_nurse_show', ['id' => $nurse->getId()]);
         }
@@ -76,6 +78,8 @@ class NurseController extends Controller
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->get('fos_user.user_manager')->updateUser($nurse);
+
+            $this->addSuccessfullySavedFlash();
 
             return $this->redirectToRoute('admin_nurse_edit', ['id' => $nurse->getId()]);
         }

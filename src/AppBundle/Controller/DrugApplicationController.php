@@ -15,7 +15,7 @@ use AppBundle\Form\DrugApplicationType;
  *
  * @Route("drug-application")
  */
-class DrugApplicationController extends Controller
+class DrugApplicationController extends BaseAppController
 {
     /**
      * Lists all drugApplication entities.
@@ -59,6 +59,8 @@ class DrugApplicationController extends Controller
             $em->persist($drugApplication);
             $em->flush();
 
+            $this->addSuccessfullySavedFlash();
+
             return $this->redirectToRoute('app_drug_application_show', ['id' => $drugApplication->getId()]);
         }
 
@@ -99,6 +101,8 @@ class DrugApplicationController extends Controller
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
+
+            $this->addSuccessfullySavedFlash();
 
             return $this->redirectToRoute('app_drug_application_edit', ['id' => $drugApplication->getId()]);
         }

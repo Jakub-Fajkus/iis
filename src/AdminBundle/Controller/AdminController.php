@@ -4,7 +4,6 @@ namespace AdminBundle\Controller;
 
 use AdminBundle\Form\EmployeeType;
 use AppBundle\Entity\Employee;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,7 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
  *
  * @Route("admin")
  */
-class AdminController extends Controller
+class AdminController extends BaseAdminController
 {
     /**
      * Creates a new admin.
@@ -37,6 +36,8 @@ class AdminController extends Controller
             $employee->addRole(Employee::ROLE_ADMIN);
 
             $this->get('fos_user.user_manager')->updateUser($employee);
+
+            $this->addSuccessfullySavedFlash();
 
             return $this->redirectToRoute('admin_admin_show', ['id' => $employee->getId()]);
         }
@@ -78,6 +79,8 @@ class AdminController extends Controller
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->get('fos_user.user_manager')->updateUser($employee);
+
+            $this->addSuccessfullySavedFlash();
 
             return $this->redirectToRoute('admin_admin_edit', ['id' => $employee->getId()]);
         }

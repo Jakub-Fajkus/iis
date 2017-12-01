@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\Request;
  *
  * @Route("prescription")
  */
-class PrescriptionController extends Controller
+class PrescriptionController extends BaseAppController
 {
     /**
      * Lists all prescription entities.
@@ -58,6 +58,8 @@ class PrescriptionController extends Controller
             $em->persist($prescription);
             $em->flush();
 
+            $this->addSuccessfullySavedFlash();
+
             return $this->redirectToRoute('app_prescription_show', ['id' => $prescription->getId()]);
         }
 
@@ -98,6 +100,8 @@ class PrescriptionController extends Controller
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
+
+            $this->addSuccessfullySavedFlash();
 
             return $this->redirectToRoute(
                 'app_prescription_edit',

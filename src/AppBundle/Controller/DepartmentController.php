@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
  *
  * @Route("department")
  */
-class DepartmentController extends Controller
+class DepartmentController extends BaseAppController
 {
     /**
      * Lists all department entities.

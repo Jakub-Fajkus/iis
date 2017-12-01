@@ -17,7 +17,7 @@ use Symfony\Component\HttpFoundation\Request;
  * @Route("doctor/{doctor_id}/employment")
  * @ParamConverter("doctor", class="AppBundle:Doctor",  options={"id" = "doctor_id"}))
  */
-class EmploymentController extends Controller
+class EmploymentController extends BaseAdminController
 {
     /**
      * Creates a new employment entity.
@@ -41,6 +41,8 @@ class EmploymentController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($employment);
             $em->flush();
+
+            $this->addSuccessfullySavedFlash();
 
             return $this->redirectToRoute(
                 'admin_employment_show',
@@ -97,6 +99,8 @@ class EmploymentController extends Controller
             $employment->setDoctor($doctor);
             $this->getDoctrine()->getManager()->flush();
 
+            $this->addSuccessfullySavedFlash();
+
             return $this->redirectToRoute(
                 'admin_employment_edit',
                 ['id' => $employment->getId(), 'doctor_id' => $doctor->getId()]
@@ -132,8 +136,11 @@ class EmploymentController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->remove($employment);
             $em->flush();
+
+            $this->addSuccessFlash('Úspěšně smazáno');
         }
 
+        //todo: missing route
         return $this->redirectToRoute('admin_employment_index');
     }
 
