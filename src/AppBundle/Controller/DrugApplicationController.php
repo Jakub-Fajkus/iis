@@ -66,6 +66,7 @@ class DrugApplicationController extends BaseAppController
 
         return $this->render('app/drugApplication/new.html.twig', [
             'drugApplication' => $drugApplication,
+            'patientId' => $prescription->getExamination()->getHospitalization()->getPatient()->getId(),
             'form' => $form->createView(),
         ]);
     }

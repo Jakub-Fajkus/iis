@@ -22,6 +22,11 @@
 		{{ form_end(form) }}
 
 
-		<a href="{{ path('app_drug_application_index') }}" class="btn btn--back">Zpět na všechna podání léků</a>
+		<ul>
+			<li>
+				<a href="{{ path('app_drug_application_index') }}" class="btn btn--back">Zpět na všechna podání léků</a>
+				<a href="{{ path('app_patient_show', {'id': patientId}) }}" class="btn btn--back">Zpět na pacienta</a>
+			</li>
+		</ul>
 	</div>
 {% endblock %}
