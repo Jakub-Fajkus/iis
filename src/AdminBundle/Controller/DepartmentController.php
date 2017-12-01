@@ -22,15 +22,20 @@ class DepartmentController extends Controller
      * @Route("/", name="admin_department_index")
      * @Method("GET")
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
         $departments = $em->getRepository('AppBundle:Department')->findAll();
 
-        return $this->render('admin/department/index.html.twig', array(
-            'departments' => $departments,
-        ));
+        $pagination = $this->get('app.pagination');
+        $res = $pagination->handlePageWithPagination($departments, (int)$request->query->get('page', 1), 'departments');
+        if (\array_key_exists('redirectPage', $res)) {
+            return $this->redirectToRoute('admin_department_index', $pagination->getRedirectParams($request));
+        }
+
+
+        return $this->render('admin/department/index.html.twig', $res);
     }
 
     /**

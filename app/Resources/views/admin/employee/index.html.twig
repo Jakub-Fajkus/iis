@@ -30,6 +30,8 @@
 			</tbody>
 		</table>
 
+        {% include 'include/pagination.html.twig' with {'pathName': 'admin_employee_index'}%}
+
 		<ul>
 			<li>
 				<a href="{{ path('admin_nurse_new') }}" class="btn">Přidat novou sestru</a>

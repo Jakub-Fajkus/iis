@@ -25,21 +25,26 @@ class PatientController extends Controller
      *
      * @Route("/", name="app_patient_index")
      * @Method("GET")
+     * @throws \LogicException
      */
     public function indexAction(Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
+        $repo = $this->getDoctrine()->getRepository(Patient::class);
 
         if ($request->query->has('q')) {
             $query = $request->query->get('q');
-            $patients = $this->getDoctrine()->getRepository(Patient::class)->getMatching($query);
+            $patients = $repo->getMatching($query);
         } else {
-            $patients = $em->getRepository('AppBundle:Patient')->findAll();
+            $patients = $repo->findAll();
         }
 
-        return $this->render('app/patient/index.html.twig', [
-            'patients' => $patients,
-        ]);
+        $pagination = $this->get('app.pagination');
+        $res = $pagination->handlePageWithPagination($patients, (int)$request->query->get('page', 1), 'patients');
+        if (\array_key_exists('redirectPage', $res)) {
+            return $this->redirectToRoute('app_patient_index', $pagination->getRedirectParams($request));
+        }
+
+        return $this->render('app/patient/index.html.twig', $res);
     }
 
     /**

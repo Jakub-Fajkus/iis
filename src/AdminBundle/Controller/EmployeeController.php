@@ -31,9 +31,13 @@ class EmployeeController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $employees = $em->getRepository(Employee::class)->findAll();
+        $pagination = $this->get('app.pagination');
+        $res = $pagination->handlePageWithPagination($employees, (int)$request->query->get('page', 1), 'employees');
+        if (\array_key_exists('redirectPage', $res)) {
+            return $this->redirectToRoute('admin_employee_index', $pagination->getRedirectParams($request));
+        }
 
-        return $this->render('admin/employee/index.html.twig', [
-            'employees' => $employees,
-        ]);
+
+        return $this->render('admin/employee/index.html.twig', $res);
     }
 }

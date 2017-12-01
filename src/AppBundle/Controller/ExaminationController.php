@@ -20,16 +20,22 @@ class ExaminationController extends Controller
      *
      * @Route("/", name="app_examination_index")
      * @Method("GET")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
         $examinations = $em->getRepository('AppBundle:Examination')->findAll();
 
-        return $this->render('app/examination/index.html.twig', [
-            'examinations' => $examinations,
-        ]);
+        $pagination = $this->get('app.pagination');
+        $res = $pagination->handlePageWithPagination($examinations, (int)$request->query->get('page', 1), 'examinations');
+        if (\array_key_exists('redirectPage', $res)) {
+            return $this->redirectToRoute('app_examination_index', $pagination->getRedirectParams($request));
+        }
+
+        return $this->render('app/examination/index.html.twig', $res);
     }
 
     /**

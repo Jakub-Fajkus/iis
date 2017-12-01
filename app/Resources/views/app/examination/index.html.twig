@@ -7,6 +7,8 @@
 
 		{% include ':app/examination:list.html.twig' with {'examinations': examinations} %}
 
+        {% include 'include/pagination.html.twig' with {'pathName': 'app_examination_index'}%}
+
 		<a href="{{ path('app_examination_new') }}" class="btn">Vytvořit nové vyšetření</a>
 	</div>
 {% endblock %}

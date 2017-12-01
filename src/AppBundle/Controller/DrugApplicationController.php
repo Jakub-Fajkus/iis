@@ -23,15 +23,23 @@ class DrugApplicationController extends Controller
      * @Route("/", name="app_drug_application_index")
      * @Method("GET")
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
         $drugApplications = $em->getRepository('AppBundle:DrugApplication')->findAll();
 
-        return $this->render(':app/drugApplication:index.html.twig', [
-            'applications' => $drugApplications,
-        ]);
+        $pagination = $this->get('app.pagination');
+        $res = $pagination->handlePageWithPagination(
+            $drugApplications,
+            (int)$request->query->get('page', 1),
+            'applications'
+        );
+        if (\array_key_exists('redirectPage', $res)) {
+            return $this->redirectToRoute('app_drug_application_index', $pagination->getRedirectParams($request));
+        }
+
+        return $this->render(':app/drugApplication:index.html.twig', $res);
     }
 
     /**

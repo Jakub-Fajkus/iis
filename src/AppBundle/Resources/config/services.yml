@@ -25,3 +25,6 @@ services:
         autowire: true
         tags:
              - {name: form.type}
+
+    app.pagination:
+      class: AppBundle\Service\PaginationService

@@ -37,6 +37,7 @@
 				{% endfor %}
 				</tbody>
 			</table>
+            {% include 'include/pagination.html.twig' with {'pathName': 'admin_drug_index'}%}
 		{% endif %}
 		<a href="{{ path('admin_drug_new') }}" class="btn">Přidat nový lék</a>
 	</div>

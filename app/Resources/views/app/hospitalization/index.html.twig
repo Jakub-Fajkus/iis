@@ -3,5 +3,6 @@
 {% block body %}
 	<div class="container">
     {% include ':app/hospitalization:list.html.twig' with {'hospitalizations': hospitalizations} %}
+        {% include 'include/pagination.html.twig' with {'pathName': 'app_hospitalization_index'}%}
   </div>
 {% endblock %}

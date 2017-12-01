@@ -33,6 +33,7 @@
 				{% endfor %}
 			</tbody>
 		</table>
+            {% include 'include/pagination.html.twig' with {'pathName': 'app_department_index'}%}
 	{% endif %}
 </div>
 {% endblock %}

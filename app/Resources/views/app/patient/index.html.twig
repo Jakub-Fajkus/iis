@@ -57,37 +57,11 @@
 				</tbody>
 			</table>
 
-{# @TODO strankovani #}
-{# 	neco jako - foreach na stranky, pro current hodit 'pagging__item--active'
-		a pak nejake podminky do toho na to, kdyz current bude ob 4 treba,
-		tak hodit separator, dopredu ci dozadu a prvni a posledni bych vypsal vzdycky #}
-		{# na sipky jsem se vysral nejak mi ted nedavaly smysl:D #}
-
-{# 			<div class="grid__pagginator">
-				<ul class="pagging ca">
-					<li class="pagging__item pagging__item--active">
-						<a href="#">1</a>
-					</li>
-					<li class="pagging__item">
-						<a href="#">2</a>
-					</li>
-					<li class="pagging__item">
-						<a href="#">3</a>
-					</li>
-					<li class="pagging__item">
-						<a href="#">4</a>
-					</li>
-					<li class="pagging__item pagging__item--separator">
-						...
-					</li>
-					<li class="pagging__item">
-						<a href="#">5</a>
-					</li>
-				</ul>
-			</div> #}
+            {% include 'include/pagination.html.twig' with {'pathName': 'app_patient_index'}%}
 
 
-		{% endif %}
+
+        {% endif %}
 
 		<a href="{{ path('app_patient_new') }}" class="btn">Vytvořit nového pacienta</a>
 

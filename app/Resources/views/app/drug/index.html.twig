@@ -36,6 +36,8 @@
 					{% endfor %}
 				</tbody>
 			</table>
+
+            {% include 'include/pagination.html.twig' with {'pathName': 'app_drug_index'}%}
 		{% endif %}
 
 	</div>

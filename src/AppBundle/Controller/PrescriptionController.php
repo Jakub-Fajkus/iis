@@ -23,15 +23,18 @@ class PrescriptionController extends Controller
      * @Route("/", name="app_prescription_index")
      * @Method("GET")
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
         $prescriptions = $em->getRepository('AppBundle:Prescription')->findAll();
+        $pagination = $this->get('app.pagination');
+        $res = $pagination->handlePageWithPagination($prescriptions, (int)$request->query->get('page', 1), 'prescriptions');
+        if (\array_key_exists('redirectPage', $res)) {
+            return $this->redirectToRoute('app_prescription_index', $pagination->getRedirectParams($request));
+        }
 
-        return $this->render('app/prescription/index.html.twig', [
-            'prescriptions' => $prescriptions,
-        ]);
+        return $this->render('app/prescription/index.html.twig', $res);
     }
 
     /**

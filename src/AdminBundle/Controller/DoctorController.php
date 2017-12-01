@@ -20,22 +20,22 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class DoctorController extends Controller
 {
-    /**
-     * Lists all doctor entities.
-     *
-     * @Route("/", name="admin_doctor_index")
-     * @Method("GET")
-     */
-    public function indexAction()
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $doctors = $em->getRepository(Doctor::class)->findAll();
-
-        return $this->render('admin/doctor/index.html.twig', [
-            'doctors' => $doctors,
-        ]);
-    }
+//    /** todo Chceme výpis doktorů
+//     * Lists all doctor entities.
+//     *
+//     * @Route("/", name="admin_doctor_index")
+//     * @Method("GET")
+//     */
+//    public function indexAction(Request $request)
+//    {
+//        $em = $this->getDoctrine()->getManager();
+//
+//        $doctors = $em->getRepository(Doctor::class)->findAll();
+//
+//        return $this->render('admin/doctor/index.html.twig', [
+//            'doctors' => $doctors,
+//        ]);
+//    }
 
     /**
      * Creates a new doctor entity.

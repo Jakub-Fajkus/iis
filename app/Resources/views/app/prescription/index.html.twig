@@ -4,6 +4,7 @@
 	<div class="container">
 		<h1>Seznam předpisů</h1>
 		{% include ":app/prescription:list.html.twig" with {'prescriptions': prescriptions} %}
+        {% include 'include/pagination.html.twig' with {'pathName': 'app_prescription_index'}%}
 		{#<ul>#}
 			{#<li>#}
 				{#<a href="{{ path('app_prescription_new') }}">Create a new prescription</a>#}

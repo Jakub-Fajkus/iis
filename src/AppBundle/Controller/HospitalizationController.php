@@ -6,6 +6,7 @@ use AppBundle\Entity\Hospitalization;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Hospitalization controller.
@@ -19,17 +20,23 @@ class HospitalizationController extends Controller
      *
      * @Route("/", name="app_hospitalization_index")
      * @Method("GET")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         //todo: pro sestru vypsat jen informace pro jeji oddeleni
         $em = $this->getDoctrine()->getManager();
 
         $hospitalizations = $em->getRepository('AppBundle:Hospitalization')->findAll();
 
-        return $this->render('app/hospitalization/index.html.twig', [
-            'hospitalizations' => $hospitalizations,
-        ]);
+        $pagination = $this->get('app.pagination');
+        $res = $pagination->handlePageWithPagination($hospitalizations, (int)$request->query->get('page', 1), 'hospitalizations');
+        if (\array_key_exists('redirectPage', $res)) {
+            return $this->redirectToRoute('app_hospitalization_index', $pagination->getRedirectParams($request));
+        }
+
+        return $this->render('app/hospitalization/index.html.twig', $res);
     }
 
     /**

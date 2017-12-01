@@ -6,5 +6,8 @@
 		<h1>Seznam podání léků</h1>
 
 		{% include ":app/drugApplication:list.html.twig" with {'applications': applications} only %}
+		{% if applications|length > 0%}
+        {% include 'include/pagination.html.twig' with {'pathName': 'app_drug_application_index'}%}
+		{% endif %}
 	</div>
 {% endblock %}
