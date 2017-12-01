@@ -38,6 +38,9 @@ RUN pecl install xdebug \
     && echo "xdebug.profiler_output_dir=/var/app/var/xdebug/" >> /usr/local/etc/php/php.ini \
     && echo "xdebug.profiler_enable_trigger=1" >> /usr/local/etc/php/php.ini
 
+#prepiseme defaultni apache config
+RUN cat docker/apache2.conf > /etc/apache2/apache2.conf
+
 EXPOSE 80
 
 #ENTRYPOINT ["sh", "docker/entrypoint.sh"]
