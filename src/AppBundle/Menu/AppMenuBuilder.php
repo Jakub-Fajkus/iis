@@ -63,6 +63,8 @@ class AppMenuBuilder
             $menu->addChild('Léky', ['route' => 'app_drug_index']);
             $menu->addChild('Podání léku', ['route' => 'app_drug_application_index']);
             $menu->addChild('Hospitalizace', ['route' => 'app_hospitalization_index']);
+            $menu->addChild('Oddělení', ['route' => 'app_department_index']);
+
         }
 
         return $menu;
