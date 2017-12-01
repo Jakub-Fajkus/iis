@@ -20,7 +20,6 @@ class EmploymentType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('type') //todo: wtf???
             ->add('dateFrom')
             ->add('dateTo')
             ->add('telephone')

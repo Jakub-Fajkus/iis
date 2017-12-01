@@ -10,8 +10,8 @@ use AppBundle\Form\HospitalizePatientType;
 use AppBundle\Form\PatientType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\HttpFoundation\Request;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
  * Patient controller.
@@ -140,7 +140,7 @@ class PatientController extends BaseAppController
     }
 
     /**
-     * @IsGranted("ROLE_DOCTOR")
+     * @Security("is_granted('ROLE_DOCTOR') and not is_granted('ROLE_ADMIN')")
      *
      * @Route("/{id}/hospitalize", name="app_patient_hospitalize")
      * @Method({"POST"})
@@ -169,7 +169,7 @@ class PatientController extends BaseAppController
     }
 
     /**
-     * @IsGranted("ROLE_DOCTOR")
+     * @Security("is_granted('ROLE_DOCTOR') and not is_granted('ROLE_ADMIN')")
      *
      * @Route("/{id}/examine", name="app_patient_examine")
      * @Method({"POST"})
