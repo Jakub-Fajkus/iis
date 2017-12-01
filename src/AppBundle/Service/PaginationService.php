@@ -16,7 +16,7 @@ use Symfony\Component\HttpFoundation\Request;
 class PaginationService
 {
 
-    const PAGE_SIZE = 4;
+    const PAGE_SIZE = 10;
 
     private $lastPage;
 

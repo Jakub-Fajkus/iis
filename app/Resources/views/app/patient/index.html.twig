@@ -6,9 +6,9 @@
 	{% if patients|length != 0 %}
 		<form method="GET" class="fm fm--search">
 			<label>
-				<input type="text" name="q" placeholder="Vyhledávejte např. Jan Novák">
+				<input type="text" name="q" placeholder="Vyhledávejte např. Jan Novák" value="{{ searchValue }}">
 				<button type="submit"><span>Vyhledávat</span></button>
-				{# <a href="{{ path('app_patient_index') }}">Clear search</a> #}
+				 <a href="{{ path('app_patient_index') }}">Clear search</a>
 			</label>
 		</form>
 	{% endif %}

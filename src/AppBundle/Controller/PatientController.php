@@ -44,6 +44,11 @@ class PatientController extends BaseAppController
             return $this->redirectToRoute('app_patient_index', $pagination->getRedirectParams($request));
         }
 
+        $res['searchValue'] = $request->query->get('q', '');
+        if ($request->query->has('q')) {
+            $res['showRemoveSearchButton'] = true;
+        }
+
         return $this->render('app/patient/index.html.twig', $res);
     }
 
