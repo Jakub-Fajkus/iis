@@ -9,6 +9,7 @@ use AppBundle\Transformer\EntityToNumberTransformer;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -36,7 +37,18 @@ class PrescriptionType extends AbstractType
     {
         $builder
             ->add('drug', EntityType::class, ['class' => Drug::class, 'choice_label' => 'name'])
-            ->add('delivery')//todo: add select list?
+            ->add(
+                'delivery',
+                ChoiceType::class,
+                [
+                    'choices' => [
+                        'Perorální', 'Sublinguální', 'Bukální', 'Rektální', 'Dermální',
+                        'Subkutální', 'Intramuskulární', 'Intravenózní', 'Inhalačně'],
+                    'choice_label' => function ($value) {
+                        return $value;
+                    },
+                ]
+            )
             ->add('amount')
             ->add('periodOfApplication')
             ->add('examination', HiddenType::class, [

@@ -140,8 +140,7 @@ class EmploymentController extends BaseAdminController
             $this->addSuccessFlash('Úspěšně smazáno');
         }
 
-        //todo: missing route
-        return $this->redirectToRoute('admin_employment_index');
+        return $this->redirectToRoute('admin_doctor_show', ['id' => $doctor->getId()]);
     }
 
     /**
