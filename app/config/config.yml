@@ -4,23 +4,10 @@ imports:
     - { resource: services.yml }
     - { resource: "@AdminBundle/Resources/config/services.yml" }
 
-#TODO::: POKUD PRIJDE ADMIN DO FRONTU, NEBO FRONT DO ADMINA, TAK NEHODIT 403, ALE PRESMEROVAT NA SPRAVNE MISTO
-
 #todo: pridat do frontu menu pro oddeleni: pro lekare bude vypis, pro sestru bude jeji oddeleni
 #   zde bude vypis vsech hospitalizaci a vsech podani leku na konkretni den: napr v tabulce! - radky by byly pacienti, sloupce hodiny... v bunkach by byly leky k podani!
 
-#todo: pridat do vsech vypisu hlasku o tom,ze tam nejsou data! ted se ukazuje jen header tabulky a je to osklive
-
 #todo: integritni omezeni!
-
-#todo: strankovani! (statisice pacientu? 10000 zamestnancu, zatracene mnoho predepsanych a podanych leku)
-
-
-# @TODO: Pridat do editacnich formularu hlasky o spravnem provedeni staci nejake, v editaci pacienta jsou pripravene
-#  takze vlozit jednu nebo druhou...
-#  - selectbox u datumu bych dal do hajzlu teda
-#  preklad menu, nebo nekde natvdo to prepsat
-#  - dodat tlacitko zpet pro vyhledavani pacientu
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -59,6 +46,8 @@ framework:
 twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
+    form_themes:
+        - 'form/fields.html.twig'
 
     cache:  false
 
