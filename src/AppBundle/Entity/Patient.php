@@ -14,6 +14,9 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Patient
 {
+    const GENDER_MALE = 'M';
+    const GENDER_FEMALE = 'F';
+
     /**
      * @var integer
      *
@@ -313,9 +316,27 @@ class Patient
      */
     public function setGender(string $gender): Patient
     {
+        if (!($gender !== self::GENDER_MALE || $gender !== self::GENDER_FEMALE)) {
+            $gender = self::GENDER_MALE;
+        }
+
         $this->gender = $gender;
 
         return $this;
+    }
+
+    public function isMaleGender()
+    {
+        return $this->gender === self::GENDER_MALE;
+    }
+
+    public function setMaleGender(bool $isMale)
+    {
+        if ($isMale) {
+            $this->gender = self::GENDER_MALE;
+        } else {
+            $this->gender = self::GENDER_FEMALE;
+        }
     }
 
     /**
@@ -366,6 +387,8 @@ class Patient
 
         return $new;
     }
+
+
 
 
     /**

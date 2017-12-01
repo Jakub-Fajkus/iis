@@ -48,7 +48,13 @@
 				</tr>
 				<tr>
 					<th>Pohlaví</th>
-					<td>{{ patient.gender }}</td>
+					<td>
+						{% if patient.maleGender %}
+						Muž
+						{% else %}
+						Žena
+						{% endif %}
+						</td>
 				</tr>
 			</tbody>
 		</table>

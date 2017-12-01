@@ -47,7 +47,12 @@
 							<td>{{ patient.zip }}</td>
 							<td>{{ patient.medicalIdentificationNumber }}</td>
 							<td>{{ patient.insuranceCompanyId }}</td>
-							<td>{{ patient.gender }}</td>
+							<td>
+								{% if patient.maleGender %}
+									Muž
+                                {% else %}
+									Žena
+                                {% endif %}</td>
 							<td>
 								<a href="{{ path('app_patient_show', { 'id': patient.id }) }}" class="btn--show" title="Detail"></a>
 								<a href="{{ path('app_patient_edit', { 'id': patient.id }) }}" class="btn--edit" title="Upravit"></a>
