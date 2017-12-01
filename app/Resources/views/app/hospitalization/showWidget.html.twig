@@ -16,7 +16,7 @@
 		<td>{% if hospitalization.dateTo %}{{ hospitalization.dateTo|date('Y-m-d H:i:s') }}{% endif %}</td>
 	</tr>
 	<tr>
-		<th>Doktor</th>
+		<th>Lékař</th>
 		<td>
 			{% if app.user.isAdmin() %}
 				<a href="{{ path('admin_doctor_show', {'id': hospitalization.getDoctor().getId()}) }}">{{ hospitalization.getDoctor().getFullName() }}</a>

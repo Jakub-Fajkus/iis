@@ -38,13 +38,13 @@ class AppMenuBuilder
         $menu = $this->factory->createItem('root');
 
         if ($this->user->isNurse() || $this->user->isDoctor()) {
-            $menu->addChild('Front', ['route' => 'app_patient_index']);
+            $menu->addChild('Uživatelská část', ['route' => 'app_patient_index']);
         }
 
         if ($this->user->isAdmin()) {
-            $menu->addChild('Departments', ['route' => 'admin_department_index',]);
-            $menu->addChild('Drugs', ['route' => 'admin_drug_index']);
-            $menu->addChild('Employees', ['route' => 'admin_employee_index']);
+            $menu->addChild('Oddělení', ['route' => 'admin_department_index',]);
+            $menu->addChild('Léky', ['route' => 'admin_drug_index']);
+            $menu->addChild('Zaměstnanci', ['route' => 'admin_employee_index']);
         }
 
         return $menu;
@@ -55,14 +55,14 @@ class AppMenuBuilder
         $menu = $this->factory->createItem('root');
 
         if ($this->user->isAdmin()) {
-            $menu->addChild('Admin', ['route' => 'admin_department_index']);
+            $menu->addChild('Admin část', ['route' => 'admin_department_index']);
         }
 
         if ($this->user->isDoctor() || $this->user->isNurse()) {
-            $menu->addChild('Patients', ['route' => 'app_patient_index']);
-            $menu->addChild('Drugs', ['route' => 'app_drug_index']);
-            $menu->addChild('Drug application', ['route' => 'app_drug_application_index']);
-            $menu->addChild('Hospitalizations', ['route' => 'app_hospitalization_index']);
+            $menu->addChild('Pacienti', ['route' => 'app_patient_index']);
+            $menu->addChild('Léky', ['route' => 'app_drug_index']);
+            $menu->addChild('Podání léku', ['route' => 'app_drug_application_index']);
+            $menu->addChild('Hospitalizace', ['route' => 'app_hospitalization_index']);
         }
 
         return $menu;

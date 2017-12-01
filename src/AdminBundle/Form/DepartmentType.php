@@ -15,9 +15,9 @@ class DepartmentType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('shortcut')
-            ->add('name')
-            ->add('telephone');
+            ->add('shortcut', null, ['label' => 'Zkratka'])
+            ->add('name', null, ['label' => 'Jméno'])
+            ->add('telephone', null, ['label' => 'Telefon']);
     }
 
     /**

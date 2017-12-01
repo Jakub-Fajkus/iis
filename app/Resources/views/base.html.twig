@@ -33,8 +33,12 @@
 						<div class="h__wrapper">
 							<div class="h">
 								<div class="h__item h__item--logo">
-									{# @TODO some baseUrl #}
-									<a href="{{ path('admin_drug_index') }}">
+									{% if app.user.isAdmin() %}
+										{% set url = path('admin_employee_index')  %}
+									{% else %}
+                                        {% set url = path('app_patient_index')  %}
+									{% endif %}
+									<a href="{{ url }}">
 										<img src="{{ asset('images/logo.png') }}" alt="Nemocnice">
 									</a>
 								</div>
