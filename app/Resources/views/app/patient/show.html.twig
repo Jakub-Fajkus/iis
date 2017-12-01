@@ -66,24 +66,25 @@
 			</li>
 		</ul>
 
-		<div>
-			<h2>Hospitalizace</h2>
-			{{ form_start(hospitalizeForm, {'attr' : {'class': 'fm'}}) }}
-				<div class="fm__wrapper">
-					<div class="fm__item--select">
-						{{ form_row(hospitalizeForm.department, { 'label': 'Oddělení'}) }}
+		{% if app.user.isDoctor() and not app.user.isAdmin()%}
+			<div>
+				<h2>Hospitalizace</h2>
+				{{ form_start(hospitalizeForm, {'attr' : {'class': 'fm'}}) }}
+					<div class="fm__wrapper">
+						<div class="fm__item--select">
+							{{ form_row(hospitalizeForm.department, { 'label': 'Oddělení'}) }}
+						</div>
+						{{ form_row(hospitalizeForm.dateFrom, { 'label': 'Datum od', 'attr' : {'class': 'fm__item--date'}}) }}
+						<div class="fm__item--select">
+							{{ form_row(hospitalizeForm.doctor, { 'label': 'Lékař'}) }}
+						</div>
+						{{ form_widget(hospitalizeForm) }}
+						<div class="fm__btn">
+							<input type="submit" value="Přidat hospitalizaci" class="btn" />
+						</div>
 					</div>
-					{{ form_row(hospitalizeForm.dateFrom, { 'label': 'Datum od', 'attr' : {'class': 'fm__item--date'}}) }}
-					<div class="fm__item--select">
-						{{ form_row(hospitalizeForm.doctor, { 'label': 'Lékař'}) }}
-					</div>
-					{{ form_widget(hospitalizeForm) }}
-					<div class="fm__btn">
-						<input type="submit" value="Přidat hospitalizaci" class="btn" />
-					</div>
-				</div>
-			{{ form_end(hospitalizeForm) }}
-		</div>
+				{{ form_end(hospitalizeForm) }}
+			</div>
 
 			<h2>Vyšetření</h2>
 			{#todo: move to a separate page?#}
@@ -98,6 +99,8 @@
 					</div>
 				</div>
 			{{ form_end(examineForm) }}
+
+		{% endif %}
 
 		{% set currentHospitalization = patient.getCurrentHospitalization() %}
 		{% if currentHospitalization %}
