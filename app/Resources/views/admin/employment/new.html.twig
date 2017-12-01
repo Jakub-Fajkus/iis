@@ -2,7 +2,7 @@
 
 {% block body %}
 	<div class="container">
-		<h1>Nový zaměstnanec</h1>
+		<h1>Zařazení lékaře na oddělení</h1>
 
 		{{ form_start(form, {'attr' : {'class': 'fm'}}) }}
 			{{ form_widget(form, {'attr' : {'class': 'fm__wrapper'}}) }}
@@ -13,7 +13,7 @@
 
 		<ul>
 			<li>
-				<a href="{{ path('admin_doctor_show', {'id': doctorId}) }}" class="btn btn--back">Zpět na výpis</a>
+				<a href="{{ path('admin_doctor_show', {'id': doctorId}) }}" class="btn btn--back">Zpět na lékaře</a>
 			</li>
 		</ul>
 	</div>
