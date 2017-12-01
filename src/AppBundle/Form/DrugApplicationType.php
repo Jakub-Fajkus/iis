@@ -42,7 +42,7 @@ class DrugApplicationType extends AbstractType
 
         $builder
             ->add('time', DateTimeType::class)
-            ->add('appliedBy', ChoiceType::class, ['choices' => $employees, 'choice_label' => function ($value, $key) {
+            ->add('appliedBy', ChoiceType::class, ['choices' => $employees, 'choice_label' => function ($value) {
                 return ($value->getFullName()) == ' ' ? $value->getUsername() : $value->getFullName();
             }])
             ->add('prescription', HiddenType::class, [
