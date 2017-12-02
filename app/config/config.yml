@@ -4,13 +4,6 @@ imports:
     - { resource: services.yml }
     - { resource: "@AdminBundle/Resources/config/services.yml" }
 
-#todo: prava v cele aplikaci! -
-#  doktor muze vse;
-#  sestra nemuze hospitalizovat(ani dehospitalizovat);
-#  sestra nemuze vysetrovat;
-#  sestra nemuze predepisovat leky;
-#  doktor muze i podvat leky
-
 #todo: integritni omezeni!
 
 #todo: opravit checkbox u pacientu
