@@ -278,7 +278,7 @@
 {%- endblock repeated_row -%}
 
 {%- block form_row -%}
-    <div class="fm__item--required">
+    <div class="{%- if required %}fm__item--required{% endif -%}">
         {{- form_label(form) -}}
         {{- form_errors(form) -}}
         {{- form_widget(form) -}}
