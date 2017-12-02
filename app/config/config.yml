@@ -4,9 +4,6 @@ imports:
     - { resource: services.yml }
     - { resource: "@AdminBundle/Resources/config/services.yml" }
 
-#todo: pridat do frontu menu pro oddeleni: pro lekare bude vypis, pro sestru bude jeji oddeleni
-#   zde bude vypis vsech hospitalizaci a vsech podani leku na konkretni den: napr v tabulce! - radky by byly pacienti, sloupce hodiny... v bunkach by byly leky k podani!
-
 #todo: prava v cele aplikaci! -
 #  doktor muze vse;
 #  sestra nemuze hospitalizovat(ani dehospitalizovat);
