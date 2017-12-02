@@ -65,6 +65,9 @@ class PatientController extends BaseAppController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            if (!$patient->getGender()) {
+                $patient->setGender(Patient::GENDER_FEMALE);
+            }
             $em = $this->getDoctrine()->getManager();
             $em->persist($patient);
             $em->flush();

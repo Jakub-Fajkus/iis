@@ -2,7 +2,7 @@
 
 {% block body %}
 	<div class="container">
-
+		<h1>Předepsání léku</h1>
 		{{ form_start(form, {'attr' : {'class': 'fm'}}) }}
 
 			<div class="fm__wrapper">
@@ -15,6 +15,10 @@
 
 				<div class="fm__btn">
 					<input type="submit" value="Vytvořit" class="btn" />
+				</div>
+
+				<div class="fm__btn">
+					<button type="button" id="generator" data-js="prescription" class="btn" >Generovat pro testy</button>
 				</div>
 			</div>
 
