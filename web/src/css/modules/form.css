@@ -24,6 +24,23 @@ $(el) {
     }
   }
 
+  ul {
+    position: absolute;
+    bottom: -22px;
+    width: 100%;
+    margin: 0;
+    color: $red-color;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: -3px;
+      width: 100%;
+      height: 1px;
+      background-color: $red-color;
+    }
+  }
+
   &:after {
     content: '';
     display: table;
@@ -35,7 +52,8 @@ $(el) {
   }
 
   div {
-    margin-bottom: 16px;
+    position: relative;
+    margin-bottom: 18px;
   }
 
   &__item {
