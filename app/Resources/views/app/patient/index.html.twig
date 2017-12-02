@@ -20,7 +20,6 @@
 			<table class="grid">
 				<thead>
 					<tr>
-						<th>Id</th>
 						<th>Jméno</th>
 						<th>Příjmení</th>
 						<th>uid</th>
@@ -37,7 +36,6 @@
 				<tbody>
 					{% for patient in patients %}
 						<tr>
-							<td><a href="{{ path('app_patient_show', { 'id': patient.id }) }}">{{ patient.id }}</a></td>
 							<td>{{ patient.name }}</td>
 							<td>{{ patient.surname }}</td>
 							<td>{{ patient.personalIdentificationNumber }}</td>

@@ -63,6 +63,9 @@
 			<li>
 				<a href="{{ path('app_patient_index') }}" class="btn btn--back">Zpět na výpis</a>
 				<a href="{{ path('app_patient_edit', { 'id': patient.id }) }}" class="btn">Upravit</a>
+                {% if app.user.isDoctor()%}
+					<a href="{{ path('app_patient_hospitalize', { 'id': patient.id }) }}" class="btn">Hospitalizovat</a>
+				{% endif %}
 			</li>
 		</ul>
 
@@ -73,42 +76,5 @@
 			<h2>Aktuální hospitalizace s vyšetřeními a předepsanými léky</h2>
             {% include ':app/hospitalization:showWidget.html.twig' with {'hospitalization': currentHospitalization} %}
         {% endif %}
-
-		{% if app.user.isDoctor()%}
-			{# todo: @RichardBures vytvorit novou stranku#}
-			<div>
-				<h2>Hospitalizace</h2>
-				{{ form_start(hospitalizeForm, {'attr' : {'class': 'fm'}}) }}
-					<div class="fm__wrapper">
-						<div class="fm__item--select">
-							{{ form_row(hospitalizeForm.department, { 'label': 'Oddělení'}) }}
-						</div>
-						{{ form_row(hospitalizeForm.dateFrom, { 'label': 'Datum od', 'attr' : {'class': 'fm__item--date'}}) }}
-						<div class="fm__item--select">
-							{{ form_row(hospitalizeForm.doctor, { 'label': 'Lékař'}) }}
-						</div>
-						{{ form_widget(hospitalizeForm) }}
-						<div class="fm__btn">
-							<input type="submit" value="Přidat hospitalizaci" class="btn" />
-						</div>
-					</div>
-				{{ form_end(hospitalizeForm) }}
-			</div>
-
-            {# todo: @RichardBures vytvorit novou stranku#}
-			<h2>Vyšetření</h2>
-			{{ form_start(examineForm, {'attr' : {'class': 'fm'}}) }}
-				<div class="fm__wrapper">
-					<div class="fm__item--full">
-						{{ form_row(examineForm.report, { 'label': 'Zápis z vyšetření'}) }}
-					</div>
-					{{ form_widget(examineForm) }}
-					<div class="fm__btn">
-						<input type="submit" value="Přidat vyšetření" class="btn" />
-					</div>
-				</div>
-			{{ form_end(examineForm) }}
-
-		{% endif %}
 	</div>
 {% endblock %}

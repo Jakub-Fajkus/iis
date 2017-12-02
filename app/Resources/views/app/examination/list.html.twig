@@ -7,7 +7,6 @@
 			<table class="grid">
 				<thead>
 					<tr>
-						<th>Id</th>
 						<th>Datum</th>
 						<th>Záznam</th>
 						<th>&nbsp;</th>
@@ -16,7 +15,6 @@
 				<tbody>
 					{% for examination in examinations %}
 						<tr>
-							<td><a href="{{ path('app_examination_show', { 'id': examination.id }) }}">{{ examination.id }}</a></td>
 							<td>{% if examination.date %}{{ examination.date|date('Y-m-d H:i:s') }}{% endif %}</td>
 							<td>{{ examination.report }}</td>
 							<td>

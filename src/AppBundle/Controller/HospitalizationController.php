@@ -3,9 +3,11 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Hospitalization;
+use AppBundle\Form\HospitalizePatientType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -37,6 +39,23 @@ class HospitalizationController extends BaseAppController
         }
 
         return $this->render('app/hospitalization/index.html.twig', $res);
+    }
+
+    /**
+     * Finds and displays a hospitalization entity.
+     *
+     * @Route("/{id}/stop", name="app_hospitalization_stop")
+     * @Method("GET")
+     * @param Hospitalization $hospitalization
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function stopHospitalizationAction(Hospitalization $hospitalization): RedirectResponse
+    {
+        $hospitalization->setDateTo(new \DateTime());
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($hospitalization);
+        $em->flush();
+        return $this->redirectToRoute('app_patient_show', ['id' => $hospitalization->getPatient()->getId()]);
     }
 
     /**

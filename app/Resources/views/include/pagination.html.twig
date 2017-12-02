@@ -1,51 +1,52 @@
 {% set params = app.request.query.all %}
+{% if pages > 1 %}
+    <div class="grid__pagginator">
+        <ul class="pagging ca">
+            {% if page > 1 %}
 
-<div class="grid__pagginator">
-    <ul class="pagging ca">
-        {% if page > 1 %}
-
-            <li class="pagging__item">
-                <a href="{{ path(pathName, params|merge({'page': page-1})) }}"><</a>
-            </li>
-        {% endif %}
-        {% if pages <=5 %}
-            {% for i in 1..pages %}
-                <li class="pagging__item {% if i == page %} pagging__item--active {% endif %}">
-                    <a href="{{ path(pathName, params|merge({'page': i})) }}">{{ i }}</a>
-                </li>
-            {% endfor %}
-        {% else %}
-            <li class="pagging__item {% if 1 == page %} pagging__item--active {% endif %}">
-                <a href="{{ path(pathName, params|merge({'page': 1})) }}">1</a>
-            </li>
-            {% if page >4 %}
-                <li class="pagging__item pagging__item--separator">
-                ...
+                <li class="pagging__item">
+                    <a href="{{ path(pathName, params|merge({'page': page-1})) }}"><</a>
                 </li>
             {% endif %}
-
-            {% for i in (page-2)..(page+2) %}
-                {% if i > 1 and i < pages %}
+            {% if pages <=5 %}
+                {% for i in 1..pages %}
                     <li class="pagging__item {% if i == page %} pagging__item--active {% endif %}">
                         <a href="{{ path(pathName, params|merge({'page': i})) }}">{{ i }}</a>
                     </li>
+                {% endfor %}
+            {% else %}
+                <li class="pagging__item {% if 1 == page %} pagging__item--active {% endif %}">
+                    <a href="{{ path(pathName, params|merge({'page': 1})) }}">1</a>
+                </li>
+                {% if page >4 %}
+                    <li class="pagging__item pagging__item--separator">
+                        ...
+                    </li>
                 {% endif %}
-            {% endfor %}
 
-            {% if page < pages-3 %}
-                <li class="pagging__item pagging__item--separator">
-                    ...
+                {% for i in (page-2)..(page+2) %}
+                    {% if i > 1 and i < pages %}
+                        <li class="pagging__item {% if i == page %} pagging__item--active {% endif %}">
+                            <a href="{{ path(pathName, params|merge({'page': i})) }}">{{ i }}</a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+
+                {% if page < pages-3 %}
+                    <li class="pagging__item pagging__item--separator">
+                        ...
+                    </li>
+                {% endif %}
+                <li class="pagging__item {% if pages == page %} pagging__item--active {% endif %}">
+                    <a href="{{ path(pathName, params|merge({'page': pages})) }}">{{ pages }}</a>
                 </li>
             {% endif %}
-            <li class="pagging__item {% if pages == page %} pagging__item--active {% endif %}">
-                <a href="{{ path(pathName, params|merge({'page': pages})) }}">{{ pages }}</a>
-            </li>
-        {% endif %}
-        {% if page < pages %}
+            {% if page < pages %}
 
-            <li class="pagging__item">
-                <a href="{{ path(pathName, params|merge({'page': page +1})) }}">></a>
-            </li>
-        {% endif %}
-    </ul>
-</div>
+                <li class="pagging__item">
+                    <a href="{{ path(pathName, params|merge({'page': page +1})) }}">></a>
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+{% endif %}

@@ -1,0 +1,24 @@
+{% extends 'app/appBase.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div>
+            <h2>Hospitalizace</h2>
+            {{ form_start(form, {'attr' : {'class': 'fm'}}) }}
+            <div class="fm__wrapper">
+                <div class="fm__item--select">
+                    {{ form_row(form.department, { 'label': 'Oddělení'}) }}
+                </div>
+                {{ form_row(form.dateFrom, { 'label': 'Datum od', 'attr' : {'class': 'fm__item--date'}}) }}
+                <div class="fm__item--select">
+                    {{ form_row(form.doctor, { 'label': 'Lékař'}) }}
+                </div>
+                {{ form_widget(form) }}
+                <div class="fm__btn">
+                    <input type="submit" value="Přidat hospitalizaci" class="btn"/>
+                </div>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}

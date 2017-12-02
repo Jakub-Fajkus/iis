@@ -7,7 +7,6 @@
 	<table class="grid">
 		<thead>
 		<tr>
-			<th>Id</th>
 			<th>Type</th>
 			<th>Datefrom</th>
 			<th>Dateto</th>
@@ -18,9 +17,6 @@
 		<tbody>
 		{% for employment in doctor.employments %}
 			<tr>
-				<td>
-					<a href="{{ path('admin_employment_show', { 'id': employment.id, 'doctor_id': doctor.id }) }}">{{ employment.id }}</a>
-				</td>
 				<td>{{ employment.type }}</td>
 				<td>{% if employment.dateFrom %}{{ employment.dateFrom|date('Y-m-d H:i:s') }}{% endif %}</td>
 				<td>{% if employment.dateTo %}{{ employment.dateTo|date('Y-m-d H:i:s') }}{% endif %}</td>

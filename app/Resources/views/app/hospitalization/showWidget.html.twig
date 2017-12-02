@@ -27,7 +27,10 @@
 	</tr>
 	</tbody>
 </table>
-
+{% if app.user.isDoctor() and hospitalization.dateTo is null%}
+	<a class="btn" onclick="return confirm('Opravdu ukončit hospitalizaci?')" href="{{ path('app_hospitalization_stop', {'id': hospitalization.getId()}) }}">Ukončit hospitalizaci</a>
+	<a class="btn"  href="{{ path('app_patient_examine', {'id': hospitalization.patient.id}) }}">Vyšetřit</a>
+{% endif %}
 
 <h2>Vyšetření</h2>
 {% include ':app/examination:list.html.twig' with {'examinations': hospitalization.examinations} %}

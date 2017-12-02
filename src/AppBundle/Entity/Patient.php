@@ -393,33 +393,6 @@ class Patient
         return $this;
     }
 
-    /**
-     * Hospitalize the patient on the department.
-     *
-     * If the patient is already hospitalized, the current hospitalization is closed and the new one is created.
-     *
-     * @param Doctor     $doctor
-     * @param Department $department
-     *
-     * @return Hospitalization
-     */
-    public function hospitalize(Doctor $doctor, Department $department)
-    {
-        $current = $this->getCurrentHospitalization();
-
-        if ($current) {
-            $current->setDateTo(new \DateTime());
-        }
-
-        $new = new Hospitalization();
-        $new->setDateFrom(new \DateTime())
-            ->setDepartment($department)
-            ->setDoctor($doctor)
-            ->setPatient($this);
-
-        return $new;
-    }
-
 
     /**
      * Is there a current hospitalization

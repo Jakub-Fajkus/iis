@@ -11,7 +11,6 @@
 			<table class="grid">
 				<thead>
 				<tr>
-					<th>Id</th>
 					<th>Název</th>
 					<th>Hlavní látka</th>
 					<th>Kontraindikace</th>
@@ -23,7 +22,6 @@
 				<tbody>
 				{% for drug in drugs %}
 					<tr>
-						<td>{{ drug.id }}</td>
 						<td>{{ drug.name }}</td>
 						<td>{{ drug.mainSubstance }}</td>
 						<td>{{ drug.contraindication }}</td>

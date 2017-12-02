@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Doctor;
 use AppBundle\Entity\Examination;
+use AppBundle\Entity\Hospitalization;
 use AppBundle\Entity\Patient;
 use AppBundle\Form\ExaminePatientType;
 use AppBundle\Form\HospitalizePatientType;
@@ -57,6 +58,7 @@ class PatientController extends BaseAppController
      *
      * @Route("/new", name="app_patient_new")
      * @Method({"GET", "POST"})
+     * @throws \LogicException
      */
     public function newAction(Request $request)
     {
@@ -88,6 +90,7 @@ class PatientController extends BaseAppController
      *
      * @Route("/{id}", name="app_patient_show")
      * @Method("GET")
+     * @throws \LogicException
      */
     public function showAction(Patient $patient)
     {
@@ -122,6 +125,7 @@ class PatientController extends BaseAppController
      *
      * @Route("/{id}/edit", name="app_patient_edit")
      * @Method({"GET", "POST"})
+     * @throws \LogicException
      */
     public function editAction(Request $request, Patient $patient)
     {
@@ -142,61 +146,65 @@ class PatientController extends BaseAppController
         ]);
     }
 
+
+
+
+
     /**
      * @Security("is_granted('ROLE_DOCTOR')")
      *
      * @Route("/{id}/hospitalize", name="app_patient_hospitalize")
-     * @Method({"POST"})
+     * @Method({"GET","POST"})
      * @throws \Exception
      */
     public function hospitalizeAction(Request $request, Patient $patient)
     {
-        $editForm = $this->createForm(HospitalizePatientType::class, null);
-        $editForm->handleRequest($request);
+        $hospitalization = new Hospitalization();
+        $hospitalization->setPatient($patient);
+        $form = $this->createForm(HospitalizePatientType::class, $hospitalization);
+        $form->handleRequest($request);
 
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $doctor = $this->getUser();
-            if (!$doctor instanceof Doctor) {
-                $doctor = $this->getDoctrine()->getRepository(Doctor::class)->findAll()[0];
-            }
-
-            $hospitalization = $patient->hospitalize($doctor, $editForm->get('department')->getData());
-
+        if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->persist($hospitalization);
             $this->getDoctrine()->getManager()->flush();
 
             $this->addSuccessfullySavedFlash();
+            return $this->redirectToRoute('app_patient_show', ['id' => $patient->getId()]);
         }
 
-        return $this->redirectToRoute('app_patient_show', ['id' => $patient->getId()]);
+        return $this->render('app/hospitalization/new.html.twig', [
+            'form' => $form->createView(),
+        ]);
     }
 
     /**
      * @Security("is_granted('ROLE_DOCTOR')")
      *
      * @Route("/{id}/examine", name="app_patient_examine")
-     * @Method({"POST"})
-     * @throws \Exception
+     * @Method({"GET", "POST"})
+     * @param Request $request
+     * @param Patient $patient
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @throws \OutOfBoundsException
+     * @throws \LogicException
      */
     public function examineAction(Request $request, Patient $patient)
     {
-        $editForm = $this->createForm(ExaminePatientType::class, null);
-        $editForm->handleRequest($request);
+        $examination = new Examination();
+        $form = $this->createForm(ExaminePatientType::class, $examination);
+        $form->handleRequest($request);
 
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $doctor = $this->getUser();
-
-            $examination = (new Examination())
-                ->setDoctor($doctor)
-                ->setHospitalization($patient->getCurrentHospitalization())
-                ->setReport($editForm->get('report')->getData());
+        if ($form->isSubmitted() && $form->isValid()) {
+            $examination->setHospitalization($patient->getCurrentHospitalization());
 
             $this->getDoctrine()->getManager()->persist($examination);
             $this->getDoctrine()->getManager()->flush();
 
             $this->addSuccessfullySavedFlash();
+            return $this->redirectToRoute('app_patient_show', ['id' => $patient->getId()]);
         }
-
-        return $this->redirectToRoute('app_patient_show', ['id' => $patient->getId()]);
+        return $this->render(':app/examination:new.html.twig', [
+            'form' => $form->createView(),
+        ]);
     }
 }

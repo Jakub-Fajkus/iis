@@ -60,7 +60,7 @@ class PrescriptionController extends BaseAppController
 
             $this->addSuccessfullySavedFlash();
 
-            return $this->redirectToRoute('app_prescription_show', ['id' => $prescription->getId()]);
+            return $this->redirectToRoute('app_patient_show', ['id' => $examination->getHospitalization()->getPatient()->getId()]);
         }
 
         return $this->render('app/prescription/new.html.twig', [

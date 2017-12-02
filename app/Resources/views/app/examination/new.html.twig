@@ -3,23 +3,17 @@
 {% block body %}
 	<div class="container">
 
-		<h1>Nové vyšetření</h1>
-
-		{{ form_start(form, {'attr' : {'class': 'fm'}}) }}
-
-			<div class="fm__wrapper">
-				{{ form_row(form.drug, { 'label': 'Název léku' }) }}
-				{{ form_row(form.amount, { 'label': 'Množství' }) }}
-				{{ form_row(form.delivery, { 'label': 'Zůsob podávání' }) }}
-				{{ form_row(form.periodOfApplication, { 'label': 'Perioda podávání (hodin)' }) }}
-
-				<div class="fm__btn">
-					<input type="submit" value="Vytvořit" class="btn" />
-				</div>
+		<h2>Vyšetření</h2>
+        {{ form_start(form, {'attr' : {'class': 'fm'}}) }}
+		<div class="fm__wrapper">
+			<div class="fm__item--full">
+                {{ form_row(form.report, { 'label': 'Zápis z vyšetření'}) }}
 			</div>
-
-		{{ form_end(form) }}
-
-		<a href="{{ path('app_examination_index') }}" class="btn btn--back">Zpět na výpis</a>
+            {{ form_widget(form) }}
+			<div class="fm__btn">
+				<input type="submit" value="Přidat vyšetření" class="btn" />
+			</div>
+		</div>
+        {{ form_end(form) }}
 	</div>
 {% endblock %}

@@ -44,10 +44,10 @@ var generators = {
         document.getElementById('appbundle_patient_surname').value = 'generatedPatientSurname';
         document.getElementById('appbundle_patient_street').value = 'StreetXXX';
         document.getElementById('appbundle_patient_houseNumber').value = '205';
-        document.getElementById('appbundle_patient_personalIdentificationNumber').value = '8921896216';
+        document.getElementById('appbundle_patient_personalIdentificationNumber').value = '112233/4455';
         document.getElementById('appbundle_patient_city').value = 'City';
         document.getElementById('appbundle_patient_zip').value = '60308';
-        document.getElementById('appbundle_patient_medicalIdentificationNumber').value = '741852963';
+        document.getElementById('appbundle_patient_medicalIdentificationNumber').value = '112233/4455';
         document.getElementById('appbundle_patient_insuranceCompanyId').value = '147258369';
         document.getElementById('appbundle_patient_gender').value = '1';
     },

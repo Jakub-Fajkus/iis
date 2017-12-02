@@ -4,7 +4,6 @@
 	<table class="grid">
 		<thead>
 			<tr>
-				<th>Id</th>
 				<th>Datum a čas podání</th>
 				<th>Aplikováno osobou</th>
 				<th>Akce</th>
@@ -13,9 +12,6 @@
 		<tbody>
 			{% for drugApplication in applications %}
 				<tr>
-					<td>
-						<a href="{{ path('app_drug_application_show', { 'id': drugApplication.id }) }}">{{ drugApplication.id }}</a>
-					</td>
 					<td>{% if drugApplication.time %}{{ drugApplication.time|date('d.m.Y H:i:s') }}{% endif %}</td>
 					<td>{{ drugApplication.appliedBy }}</td>
 					<td>
