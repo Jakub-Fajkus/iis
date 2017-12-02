@@ -53,7 +53,7 @@ var generators = {
     },
     prescription: function () {
         document.getElementById('appbundle_prescription_amount').value = '200mg';
-        document.getElementById('appbundle_prescription_periodOfApplication').value = '6xdenně';
+        document.getElementById('appbundle_prescription_periodOfApplication').value = '6';
     }
 };
 
