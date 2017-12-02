@@ -19,7 +19,10 @@
 						<td>{{ prescription.amount }}</td>
 						<td>
 							<a href="{{ path('app_prescription_show', { 'id': prescription.id }) }}" class="btn--show" title="Detail"></a>
+
+                            {% if app.user.isDoctor %}
 							<a href="{{ path('app_prescription_edit', { 'id': prescription.id }) }}" class="btn--edit" title="Upravit"></a>
+							{% endif %}
 							<a href="{{ path('app_drug_application_new', {'id': prescription.id }) }}">Zaznamenat podání léku</a>
 						</td>
 					</tr>

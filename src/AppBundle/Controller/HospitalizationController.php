@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Hospitalization;
 use AppBundle\Form\HospitalizePatientType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -46,6 +47,7 @@ class HospitalizationController extends BaseAppController
      *
      * @Route("/{id}/stop", name="app_hospitalization_stop")
      * @Method("GET")
+     * @Security("is_granted('ROLE_DOCTOR')")
      * @param Hospitalization $hospitalization
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
