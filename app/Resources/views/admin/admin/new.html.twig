@@ -14,11 +14,13 @@
 				{{ form_row(form.email, { 'label': 'Email' }) }}
 				{{ form_row(form.plainPassword, { 'label': 'Heslo' }) }}
 
-				<div class="fm__btn">
-					<input type="submit" value="Vytvořit" class="btn" />
+				<div class="chb">
+					{{ form_row(form.enabled, { 'label': 'Aktivní' }) }}
 				</div>
+
 				<div class="fm__btn">
-					<button type="button" id="generator" data-js="admin" class="btn" >Generovat pro testy</button>
+					<button type="button" id="generator" data-js="admin" class="btn btn--generate">Generovat pro testy</button>
+					<input type="submit" value="Vytvořit" class="btn" />
 				</div>
 			</div>
 

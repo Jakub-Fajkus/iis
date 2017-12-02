@@ -69,10 +69,6 @@ $(el) {
     }
   }
 
-  /* tr:nth-child(even) td {
-    background-color: #f9f9f9;
-  } */
-
   a {
     display: inline-block;
     transition: .3s;
