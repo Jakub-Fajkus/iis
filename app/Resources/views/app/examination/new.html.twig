@@ -4,16 +4,18 @@
 	<div class="container">
 
 		<h2>Vyšetření</h2>
-        {{ form_start(form, {'attr' : {'class': 'fm'}}) }}
-		<div class="fm__wrapper">
-				<div class="fm__item--full">
-					{{ form_row(form.report, { 'label': 'Zpráva' }) }}
+
+		{{ form_start(form, {'attr' : {'class': 'fm'}}) }}
+			<div class="fm__wrapper">
+					<div class="fm__item--full">
+						{{ form_row(form.report, { 'label': 'Zpráva' }) }}
+					</div>
+					{{ form_widget(form) }}
+				<div class="fm__btn">
+					<input type="submit" value="Přidat vyšetření" class="btn" />
 				</div>
-            {{ form_widget(form) }}
-			<div class="fm__btn">
-				<input type="submit" value="Přidat vyšetření" class="btn" />
 			</div>
-		</div>
-        {{ form_end(form) }}
+	{{ form_end(form) }}
+
 	</div>
 {% endblock %}
