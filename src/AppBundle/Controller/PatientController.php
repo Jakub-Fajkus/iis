@@ -140,7 +140,7 @@ class PatientController extends BaseAppController
     }
 
     /**
-     * @Security("is_granted('ROLE_DOCTOR') and not is_granted('ROLE_ADMIN')")
+     * @Security("is_granted('ROLE_DOCTOR')")
      *
      * @Route("/{id}/hospitalize", name="app_patient_hospitalize")
      * @Method({"POST"})
@@ -169,7 +169,7 @@ class PatientController extends BaseAppController
     }
 
     /**
-     * @Security("is_granted('ROLE_DOCTOR') and not is_granted('ROLE_ADMIN')")
+     * @Security("is_granted('ROLE_DOCTOR')")
      *
      * @Route("/{id}/examine", name="app_patient_examine")
      * @Method({"POST"})

@@ -66,7 +66,8 @@
 			</li>
 		</ul>
 
-		{% if app.user.isDoctor() and not app.user.isAdmin()%}
+		{% if app.user.isDoctor()%}
+			{# todo: @RichardBures vytvorit novou stranku#}
 			<div>
 				<h2>Hospitalizace</h2>
 				{{ form_start(hospitalizeForm, {'attr' : {'class': 'fm'}}) }}
@@ -86,8 +87,8 @@
 				{{ form_end(hospitalizeForm) }}
 			</div>
 
+            {# todo: @RichardBures vytvorit novou stranku#}
 			<h2>Vyšetření</h2>
-			{#todo: move to a separate page?#}
 			{{ form_start(examineForm, {'attr' : {'class': 'fm'}}) }}
 				<div class="fm__wrapper">
 					<div class="fm__item--full">
