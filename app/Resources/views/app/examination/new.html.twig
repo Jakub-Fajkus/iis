@@ -6,9 +6,9 @@
 		<h2>Vyšetření</h2>
         {{ form_start(form, {'attr' : {'class': 'fm'}}) }}
 		<div class="fm__wrapper">
-			<div class="fm__item--full">
-                {{ form_row(form.report, { 'label': 'Zápis z vyšetření'}) }}
-			</div>
+				<div class="fm__item--full">
+					{{ form_row(form.report, { 'label': 'Zpráva' }) }}
+				</div>
             {{ form_widget(form) }}
 			<div class="fm__btn">
 				<input type="submit" value="Přidat vyšetření" class="btn" />

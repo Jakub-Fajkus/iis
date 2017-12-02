@@ -5,19 +5,28 @@
 		<h1>Zařazení lékaře na oddělení</h1>
 
 		{{ form_start(form, {'attr' : {'class': 'fm'}}) }}
-			{{ form_widget(form, {'attr' : {'class': 'fm__wrapper'}}) }}
-			<div class="fm__btn">
-				<input type="submit" value="Vytvořit" class="btn" />
+
+			<div class="fm__wrapper">
+				{{ form_row(form.type, { 'label': 'Role' }) }}
+				{{ form_row(form.telephone, { 'label': 'Telefon' }) }}
+				{{ form_row(form.dateFrom, { 'label': 'Datum od', 'attr' : {'class': 'fm__item--date'}}) }}
+				{{ form_row(form.dateTo, { 'label': 'Datum do', 'attr' : {'class': 'fm__item--date'}}) }}
+
+				<div class="fm__item--select">
+					{{ form_row(form.department, { 'label': 'Oddělení'}) }}
+				</div>
+
+				<div class="fm__btn">
+					<input type="submit" value="Vytvořit" class="btn" />
+				</div>
 			</div>
 
-			<div class="fm__btn">
-				<button type="button" id="generator" data-js="employment" class="btn" >Generovat pro testy</button>
-			</div>
 		{{ form_end(form) }}
 
 		<ul>
 			<li>
 				<a href="{{ path('admin_doctor_show', {'id': doctorId}) }}" class="btn btn--back">Zpět na lékaře</a>
+				<button type="button" id="generator" data-js="employment" class="btn" >Generovat pro testy</button>
 			</li>
 		</ul>
 	</div>

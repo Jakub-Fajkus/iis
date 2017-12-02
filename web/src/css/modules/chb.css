@@ -1,0 +1,60 @@
+$el: .chb;
+
+$(el) {
+  position: relative;
+
+  label {
+    position: relative;
+    display: block;
+    padding: 34px;
+    cursor: pointer;
+    transition: $transition-time $transition-easing;
+    transition-property: box-shadow, border-color, background-color;
+
+    &:hover {
+      &:before {
+        border-color: $link-color;
+      }
+    }
+  }
+
+  .fm__checkbox {
+    top: 0;
+    display: block;
+    pointer-events: none;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 34px;
+      left: 0px;
+      width: 18px;
+      height: 18px;
+      transition: border-color $transition-time $transition-easing;
+      border: 2px solid $border-color;
+      background-color: #fff;
+    }
+
+    &:after {
+      position: absolute;
+      top: 35px;
+      left: 5px;
+      display: none;
+    }
+  }
+
+  input[type=checkbox], input[type=radio] {
+    display: none;
+
+    &:checked + .fm__checkbox {
+      &:before, &:hover:before {
+        border-color: $link-color;
+      }
+
+      &:after {
+        content: "\2713";
+        display: block;
+      }
+    }
+  }
+}

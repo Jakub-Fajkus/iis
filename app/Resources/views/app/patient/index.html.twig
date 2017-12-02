@@ -8,7 +8,6 @@
 			<label>
 				<input type="text" name="q" placeholder="Vyhledávejte např. Jan Novák" value="{{ searchValue }}">
 				<button type="submit"><span>Vyhledávat</span></button>
-				 <a href="{{ path('app_patient_index') }}">Clear search</a>
 			</label>
 		</form>
 	{% endif %}
@@ -46,11 +45,7 @@
 							<td>{{ patient.medicalIdentificationNumber }}</td>
 							<td>{{ patient.insuranceCompanyId }}</td>
 							<td>
-								{% if patient.isWoman %}
-									Žena
-                                {% else %}
-									Muž
-                                {% endif %}</td>
+								{% if patient.isWoman %}Žena{% else %}Muž{% endif %}</td>
 							<td>
 								<a href="{{ path('app_patient_show', { 'id': patient.id }) }}" class="btn--show" title="Detail"></a>
 								<a href="{{ path('app_patient_edit', { 'id': patient.id }) }}" class="btn--edit" title="Upravit"></a>
@@ -60,13 +55,14 @@
 				</tbody>
 			</table>
 
-            {% include 'include/pagination.html.twig' with {'pathName': 'app_patient_index'}%}
-
-
-
-        {% endif %}
+			{% include 'include/pagination.html.twig' with {'pathName': 'app_patient_index'}%}
+		{% endif %}
 
 		<a href="{{ path('app_patient_new') }}" class="btn">Vytvořit nového pacienta</a>
+
+		{% if searchValue is not empty %}
+			<a href="{{ path('app_patient_index') }}" class="btn btn--back">Zpět</a>
+		{% endif %}
 
 	</div>
 {% endblock %}

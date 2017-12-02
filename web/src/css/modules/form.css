@@ -4,6 +4,15 @@ $(el) {
   max-width: 680px;
   margin: 46px auto 26px auto;
 
+  &__item {
+    &--required {
+      label:after {
+        content: '*';
+        color: $link-color;
+      }
+    }
+  }
+
   &:after {
     content: '';
     display: table;
@@ -30,6 +39,7 @@ $(el) {
 
     &--date {
       width: 100% !important;
+      margin-bottom: 0 !important;
 
       select {
         width: 33%;
@@ -192,6 +202,8 @@ $(el) {
       background-color: $red-color;
     }
   }
+
+
 
 }
 

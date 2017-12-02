@@ -18,14 +18,13 @@
 				{{ form_row(form.city, { 'label': 'Město' }) }}
 				{{ form_row(form.medicalIdentificationNumber, { 'label': 'Číslo pojišťence' }) }}
 				{{ form_row(form.insuranceCompanyId, { 'label': 'Číslo pojišťovny' }) }}
-				{{ form_row(form.isWoman, { 'label': 'Žena' }) }}
+				<div class="chb">
+					{{ form_row(edit_form.isWoman, { 'label': 'Žena' }) }}
+				</div>
 
 
 				<div class="fm__btn">
 					<input type="submit" value="Vytvořit" class="btn" />
-				</div>
-				<div class="fm__btn">
-					<button type="button" id="generator" data-js="patient" class="btn" >Generovat pro testy</button>
 				</div>
 			</div>
 

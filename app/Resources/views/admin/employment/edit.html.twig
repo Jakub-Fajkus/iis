@@ -5,10 +5,22 @@
 		<h1>Úvazek na oddělení - úpravy</h1>
 
 		{{ form_start(edit_form, {'attr' : {'class': 'fm'}}) }}
-			{{ form_widget(edit_form, {'attr' : {'class': 'fm__wrapper'}}) }}
-			<div class="fm__btn">
-				<input type="submit" value="Upravit" class="btn" />
+
+			<div class="fm__wrapper">
+				{{ form_row(edit_form.type, { 'label': 'Role' }) }}
+				{{ form_row(edit_form.telephone, { 'label': 'Role' }) }}
+				{{ form_row(edit_form.dateFrom, { 'label': 'Datum od', 'attr' : {'class': 'fm__item--date'}}) }}
+				{{ form_row(edit_form.dateTo, { 'label': 'Datum do', 'attr' : {'class': 'fm__item--date'}}) }}
+
+				<div class="fm__item--select">
+					{{ form_row(edit_form.department, { 'label': 'Oddělení'}) }}
+				</div>
+
+				<div class="fm__btn">
+					<input type="submit" value="Vytvořit" class="btn" />
+				</div>
 			</div>
+
 		{{ form_end(edit_form) }}
 
 		<ul>
