@@ -26,6 +26,7 @@ class NurseType extends AbstractType
             ->add('telephone')
             ->add('username')
             ->add('email')
+            ->add('enabled')
             ->add('plainPassword', PasswordType::class, ['label' => 'Password', 'required' => false])
             ->add('department', EntityType::class, [
                 'class' => Department::class,
@@ -34,7 +35,7 @@ class NurseType extends AbstractType
                 }
             ]);
     }
-    
+
     /**
      * {@inheritdoc}
      */

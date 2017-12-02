@@ -15,6 +15,10 @@
 				{{ form_row(edit_form.email, { 'label': 'Email' }) }}
 				{{ form_row(edit_form.plainPassword, { 'label': 'Heslo' }) }}
 
+				<div class="chb">
+					{{ form_row(edit_form.enabled, { 'label': 'Aktivní' }) }}
+				</div>
+
 				<div class="fm__btn">
 					<input type="submit" value="Upravit" class="btn" />
 				</div>
