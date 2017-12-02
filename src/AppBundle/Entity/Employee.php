@@ -40,7 +40,7 @@ class Employee extends User
      * @Assert\NotBlank()
      * @Assert\Length(min=1, max=40)
      *
-     * @ORM\Column(name="name", type="string", length=40, nullable=false)
+     * @ORM\Column(name="name", type="string", length=40, nullable=true)
      */
     private $name;
 
@@ -50,7 +50,7 @@ class Employee extends User
      * @Assert\NotBlank()
      * @Assert\Length(min=1, max=40)
      *
-     * @ORM\Column(name="surname", type="string", length=40, nullable=false)
+     * @ORM\Column(name="surname", type="string", length=40, nullable=true)
      */
     private $surname;
 
@@ -60,7 +60,7 @@ class Employee extends User
      * @Assert\NotBlank()
      * @Assert\Length(min=1, max=20)
      *
-     * @ORM\Column(name="telephone", type="string", length=20, nullable=false)
+     * @ORM\Column(name="telephone", type="string", length=20, nullable=true)
      */
     private $telephone;
 

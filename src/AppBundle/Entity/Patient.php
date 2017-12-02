@@ -15,9 +15,6 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Patient
 {
-    const GENDER_MALE = 'M';
-    const GENDER_FEMALE = 'F';
-
     /**
      * @var integer
      *
@@ -120,9 +117,9 @@ class Patient
     /**
      * @var string
      *
-     * @ORM\Column(name="gender", type="string", length=2, nullable=false)
+     * @ORM\Column(name="isWoman", type="boolean", nullable=false)
      */
-    private $gender;
+    private $isWoman;
 
     /**
      * @var Collection
@@ -138,6 +135,7 @@ class Patient
     public function __construct()
     {
         $this->hospitalizations = new ArrayCollection();
+        $this->isWoman = false;
     }
 
     /**
@@ -331,46 +329,19 @@ class Patient
     }
 
     /**
-     * @return string|null
-     */
-    public function getGender(): ?string
-    {
-        return $this->gender;
-    }
-
-    /**
-     * @param string $gender
-     * @return Patient
-     */
-    public function setGender(string $gender): Patient
-    {
-        if (!($gender !== self::GENDER_MALE || $gender !== self::GENDER_FEMALE)) {
-            $gender = self::GENDER_MALE;
-        }
-
-        $this->gender = $gender;
-
-        return $this;
-    }
-
-    /**
      * @return bool
      */
-    public function isMaleGender()
+    public function isWoman(): bool
     {
-        return $this->gender === self::GENDER_MALE;
+        return $this->isWoman;
     }
 
     /**
-     * @param bool $isMale
+     * @param bool $isWoman
      */
-    public function setMaleGender(bool $isMale)
+    public function setIsWoman(bool $isWoman)
     {
-        if ($isMale) {
-            $this->gender = self::GENDER_MALE;
-        } else {
-            $this->gender = self::GENDER_FEMALE;
-        }
+        $this->isWoman = $isWoman;
     }
 
     /**

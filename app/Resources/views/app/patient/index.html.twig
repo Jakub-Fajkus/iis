@@ -48,10 +48,10 @@
 							<td>{{ patient.medicalIdentificationNumber }}</td>
 							<td>{{ patient.insuranceCompanyId }}</td>
 							<td>
-								{% if patient.maleGender %}
-									Muž
-                                {% else %}
+								{% if patient.isWoman %}
 									Žena
+                                {% else %}
+									Muž
                                 {% endif %}</td>
 							<td>
 								<a href="{{ path('app_patient_show', { 'id': patient.id }) }}" class="btn--show" title="Detail"></a>

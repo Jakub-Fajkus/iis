@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use AppBundle\Entity\Patient;
 
 class PatientType extends AbstractType
 {
@@ -23,7 +24,7 @@ class PatientType extends AbstractType
             ->add('zip')
             ->add('medicalIdentificationNumber')
             ->add('insuranceCompanyId')
-            ->add('gender', CheckboxType::class, ['property_path' => 'maleGender', 'required' => false]);
+            ->add('isWoman', CheckboxType::class, ['required' => false]);
     }
     
     /**
@@ -32,7 +33,7 @@ class PatientType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Patient'
+            'data_class' => Patient::class
         ));
     }
 
