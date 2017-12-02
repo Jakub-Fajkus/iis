@@ -74,6 +74,14 @@ class Employee extends User
     }
 
     /**
+     * @return array
+     */
+    public function getDepartments(): array
+    {
+        return [];
+    }
+
+    /**
      * @return mixed
      */
     public function getId()

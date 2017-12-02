@@ -32,6 +32,14 @@ class Nurse extends Employee
     }
 
     /**
+     * @return array
+     */
+    public function getDepartments(): array
+    {
+        return [$this->department];
+    }
+
+    /**
      * @param Department $department
      * @return Nurse
      */

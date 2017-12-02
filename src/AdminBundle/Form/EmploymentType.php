@@ -6,6 +6,7 @@ use AppBundle\Entity\Department;
 use AppBundle\Entity\Employment;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -23,11 +24,21 @@ class EmploymentType extends AbstractType
             ->add('dateFrom')
             ->add('dateTo')
             ->add('telephone')
+            ->add(
+                'type',
+                ChoiceType::class,
+                [
+                    'choices' => ['Plný', 'Částečný',],
+                    'choice_label' => function ($value) {
+                        return $value;
+                    },
+                ]
+            )
             ->add('department', EntityType::class, [
                 'class' => Department::class,
                 'choice_label' => function (Department $department) {
                     return $department->getShortcut();
-                }
+                },
             ]);
     }
 

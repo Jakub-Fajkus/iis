@@ -27,12 +27,12 @@ class DepartmentController extends BaseAppController
      */
     public function indexAction(Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
-
-//        $user = $this->getUser();
-//        if ($)
-
-        $departments = $em->getRepository('AppBundle:Department')->findAll();
+        $user = $this->getUser();
+        if ($user->isAdmin()) {
+            $departments = $this->getDoctrine()->getRepository(Department::class)->findAll();
+        } else {
+            $departments = $user->getDepartments();
+        }
 
         $pagination = $this->get('app.pagination');
         $res = $pagination->handlePageWithPagination($departments, (int)$request->query->get('page', 1), 'departments');

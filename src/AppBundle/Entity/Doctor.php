@@ -36,6 +36,22 @@ class Doctor extends Employee
     private $hospitalizations;
 
     /**
+     * @return array
+     */
+    public function getDepartments(): array
+    {
+        $departments = [];
+
+        /** @var Employment $employment */
+        foreach ($this->employments as $employment) {
+            $departments[] = $employment->getDepartment();
+        }
+
+        return $departments;
+    }
+
+
+    /**
      * @return Collection
      */
     public function getEmployments(): ?Collection
