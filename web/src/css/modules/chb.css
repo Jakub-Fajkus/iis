@@ -7,6 +7,7 @@ $(el) {
     position: relative;
     display: block;
     padding: 34px;
+    padding-bottom: 0;
     cursor: pointer;
     transition: $transition-time $transition-easing;
     transition-property: box-shadow, border-color, background-color;
@@ -16,6 +17,10 @@ $(el) {
         border-color: $link-color;
       }
     }
+  }
+
+  div {
+    margin-bottom: 12px;
   }
 
   .fm__checkbox {

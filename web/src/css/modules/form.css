@@ -13,6 +13,17 @@ $(el) {
     }
   }
 
+  &__required-info {
+    margin: 0;
+    font-weight: 500;
+    font-style: italic;
+
+    span {
+      font-weight: 600;
+      color: $link-color;
+    }
+  }
+
   &:after {
     content: '';
     display: table;
