@@ -7,11 +7,13 @@ imports:
 #todo: pridat do frontu menu pro oddeleni: pro lekare bude vypis, pro sestru bude jeji oddeleni
 #   zde bude vypis vsech hospitalizaci a vsech podani leku na konkretni den: napr v tabulce! - radky by byly pacienti, sloupce hodiny... v bunkach by byly leky k podani!
 
+#todo: prava v cele aplikaci!
+
 #todo: integritni omezeni!
 
-#todo: deaktivace uzivatele
 #todo: opravit checkbox u pacientu
 #todo: overit, zda funguje Aktivni u zamestnancu
+#todo: roztahnout textareu http://localhost/app_dev.php/examination/1
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration

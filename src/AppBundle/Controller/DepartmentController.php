@@ -3,6 +3,8 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Department;
+use AppBundle\Entity\Hospitalization;
+use AppBundle\Entity\Patient;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -27,6 +29,9 @@ class DepartmentController extends BaseAppController
     {
         $em = $this->getDoctrine()->getManager();
 
+//        $user = $this->getUser();
+//        if ($)
+
         $departments = $em->getRepository('AppBundle:Department')->findAll();
 
         $pagination = $this->get('app.pagination');
@@ -46,8 +51,10 @@ class DepartmentController extends BaseAppController
      */
     public function showAction(Department $department)
     {
+        $hospitalizations = $this->getDoctrine()->getRepository(Hospitalization::class)->getAllHospitalizationsOn($department);
 
         return $this->render('app/department/show.html.twig', array(
+            'hospitalizations' => $hospitalizations,
             'department' => $department,
         ));
     }

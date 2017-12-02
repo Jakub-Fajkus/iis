@@ -18,7 +18,7 @@
 						<tr>
 							<td><a href="{{ path('app_examination_show', { 'id': examination.id }) }}">{{ examination.id }}</a></td>
 							<td>{% if examination.date %}{{ examination.date|date('Y-m-d H:i:s') }}{% endif %}</td>
-							<td>{{ examination.report }}</td>
+							<td>{{ examination.report|slice(0, 50) }} ... </td>
 							<td>
 								<ul>
 									<li>
