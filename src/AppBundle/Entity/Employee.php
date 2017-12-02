@@ -163,7 +163,9 @@ class Employee extends User
      */
     public function getFullName(): string
     {
-        return $this->name . ' ' . $this->surname;
+        $fullName = $this->name . ' ' . $this->surname;
+
+        return $fullName === ' ' ? $this->username : $fullName;
     }
 
     /**
