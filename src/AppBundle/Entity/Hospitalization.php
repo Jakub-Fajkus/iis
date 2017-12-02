@@ -12,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="hospitalization", indexes={@ORM\Index(name="fk_doctor_hospitalization", columns={"doctor_id"}),
  *     @ORM\Index(name="fk_department_hospitalization", columns={"department_id"}),
  *     @ORM\Index(name="fk_patient_hospitalization", columns={"patient_id"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="HospitalizationRepository")
  */
 class Hospitalization
 {

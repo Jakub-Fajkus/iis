@@ -19,9 +19,10 @@
 				</tr>
 			</tbody>
 		</table>
-		{#todo: all current patients#}
-		{#todo: all examinations?#}
-		{#todo: all current prescriptions?#}
+
+
+        {% include ':app/hospitalization:list.html.twig' with {'hospitalizations': hospitalizations} %}
+
 		<ul>
 			<li>
 				<a href="{{ path('app_department_index') }}"class="btn btn--back">Zpět na výpis</a>

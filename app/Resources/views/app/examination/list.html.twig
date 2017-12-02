@@ -16,7 +16,7 @@
 					{% for examination in examinations %}
 						<tr>
 							<td>{% if examination.date %}{{ examination.date|date('Y-m-d H:i:s') }}{% endif %}</td>
-							<td>{{ examination.report }}</td>
+							<td>{{ examination.report|slice(0, 50) }} ... </td>
 							<td>
 								<ul>
 									<li>

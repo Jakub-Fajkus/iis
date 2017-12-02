@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Employee;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class BaseAppController extends Controller
@@ -20,4 +21,18 @@ class BaseAppController extends Controller
     {
         $this->addFlash('error', $message);
     }
+
+    protected function getUser()
+    {
+        /** @var Employee $user */
+        $user = parent::getUser();
+
+        if ($user->isNurse()) {
+
+        }
+
+        return $user;
+    }
+
+
 }
