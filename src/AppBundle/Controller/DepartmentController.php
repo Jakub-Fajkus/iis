@@ -34,6 +34,10 @@ class DepartmentController extends BaseAppController
             $departments = $user->getDepartments();
         }
 
+        if (\count($departments) === 1) {
+            return $this->redirectToRoute('app_department_show', ['id' => $user->getDepartment()->getId()]);
+        }
+
         $pagination = $this->get('app.pagination');
         $res = $pagination->handlePageWithPagination($departments, (int)$request->query->get('page', 1), 'departments');
         if (\array_key_exists('redirectPage', $res)) {
