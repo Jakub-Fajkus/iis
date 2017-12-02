@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Examination;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
@@ -30,7 +31,8 @@ class ExaminationController extends BaseAppController
         $examinations = $em->getRepository('AppBundle:Examination')->findAll();
 
         $pagination = $this->get('app.pagination');
-        $res = $pagination->handlePageWithPagination($examinations, (int)$request->query->get('page', 1), 'examinations');
+        $res =
+            $pagination->handlePageWithPagination($examinations, (int)$request->query->get('page', 1), 'examinations');
         if (\array_key_exists('redirectPage', $res)) {
             return $this->redirectToRoute('app_examination_index', $pagination->getRedirectParams($request));
         }
@@ -38,33 +40,6 @@ class ExaminationController extends BaseAppController
         return $this->render('app/examination/index.html.twig', $res);
     }
 
-    /**
-     * Creates a new examination entity.
-     *
-     * @Route("/new", name="app_examination_new")
-     * @Method({"GET", "POST"})
-     */
-    public function newAction(Request $request)
-    {
-        $examination = new Examination();
-        $form = $this->createForm(ExaminePatientType::class, $examination);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($examination);
-            $em->flush();
-
-            $this->addSuccessfullySavedFlash();
-
-            return $this->redirectToRoute('app_examination_show', ['id' => $examination->getId()]);
-        }
-
-        return $this->render('app/examination/new.html.twig', [
-            'examination' => $examination,
-            'form' => $form->createView(),
-        ]);
-    }
 
     /**
      * Finds and displays a examination entity.
@@ -82,7 +57,7 @@ class ExaminationController extends BaseAppController
 
     /**
      * Displays a form to edit an existing examination entity.
-     *
+     * @Security("is_granted('ROLE_DOCTOR')")
      * @Route("/{id}/edit", name="app_examination_edit")
      * @Method({"GET", "POST"})
      */

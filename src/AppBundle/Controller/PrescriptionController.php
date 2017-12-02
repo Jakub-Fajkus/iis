@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Examination;
 use AppBundle\Entity\Prescription;
 use AppBundle\Form\PrescriptionType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -39,7 +40,7 @@ class PrescriptionController extends BaseAppController
 
     /**
      * Creates a new prescription entity.
-     *
+     * @Security("is_granted('ROLE_DOCTOR')")
      * @Route("/examination/{id}/new", name="app_prescription_new")
      * @Method({"GET", "POST"})
      *
@@ -84,7 +85,7 @@ class PrescriptionController extends BaseAppController
 
     /**
      * Displays a form to edit an existing prescription entity.
-     *
+     * @Security("is_granted('ROLE_DOCTOR')")
      * @Route("/{id}/edit", name="app_prescription_edit")
      * @Method({"GET", "POST"})
      */

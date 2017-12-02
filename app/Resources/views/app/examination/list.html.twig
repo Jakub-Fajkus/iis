@@ -21,11 +21,15 @@
 								<ul>
 									<li>
 										<a href="{{ path('app_examination_show', { 'id': examination.id }) }}" class="btn--show" title="Detail"></a>
+                                        {% if app.user.isDoctor %}
 										<a href="{{ path('app_examination_edit', { 'id': examination.id }) }}" class="btn--edit" title="Upravit"></a>
+										{% endif %}
 									</li>
-									<li>
-										<a href="{{ path('app_prescription_new', {'id': examination.id }) }}">Nový předpis</a>
-									</li>
+									{% if app.user.isDoctor() %}
+										<li>
+											<a href="{{ path('app_prescription_new', {'id': examination.id }) }}">Nový předpis</a>
+										</li>
+									{% endif %}
 								</ul>
 							</td>
 						</tr>
