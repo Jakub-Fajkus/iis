@@ -162,6 +162,10 @@ class PatientController extends BaseAppController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $current = $patient->getCurrentHospitalization();
+            if ($current) {
+                $current->setDateTo(new \DateTime());
+            }
             $this->getDoctrine()->getManager()->persist($hospitalization);
             $this->getDoctrine()->getManager()->flush();
 
