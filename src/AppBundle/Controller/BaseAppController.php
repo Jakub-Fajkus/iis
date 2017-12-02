@@ -30,6 +30,8 @@ class BaseAppController extends Controller
         if ($user->isNurse()) {
 
         }
+
+        return $user;
     }
 
 
