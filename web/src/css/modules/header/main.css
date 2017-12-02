@@ -28,9 +28,15 @@ $(el) {
     &--user {
       margin-left: auto;
 
+      span {
+        float: left;
+        padding: 10px 36px 10px 0;
+        color: #fff;
+      }
+
       a {
         position: relative;
-        display: block;
+        float: left;
         height: $nav-height;
 
         &:after {
@@ -57,6 +63,10 @@ $(el) {
         img {
           max-height: 80px;
         }
+      }
+
+      &--user {
+
       }
     }
   }
