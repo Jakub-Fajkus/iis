@@ -66,6 +66,14 @@
 			</li>
 		</ul>
 
+        {% include ':app/hospitalization:list.html.twig' with {'hospitalizations': patient.getHospitalizations()} %}
+
+        {% set currentHospitalization = patient.getCurrentHospitalization() %}
+        {% if currentHospitalization %}
+			<h2>Aktuální hospitalizace s vyšetřeními a předepsanými léky</h2>
+            {% include ':app/hospitalization:showWidget.html.twig' with {'hospitalization': currentHospitalization} %}
+        {% endif %}
+
 		{% if app.user.isDoctor()%}
 			{# todo: @RichardBures vytvorit novou stranku#}
 			<div>
@@ -102,12 +110,5 @@
 			{{ form_end(examineForm) }}
 
 		{% endif %}
-
-		{% set currentHospitalization = patient.getCurrentHospitalization() %}
-		{% if currentHospitalization %}
-			<h2>Aktuální hospitalizace s vyšetřeními a předepsanými léky</h2>
-			{% include ':app/hospitalization:showWidget.html.twig' with {'hospitalization': currentHospitalization} %}
-		{% endif %}
-			{% include ':app/hospitalization:list.html.twig' with {'hospitalizations': patient.getHospitalizations()} %}
 	</div>
 {% endblock %}
