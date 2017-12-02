@@ -28,6 +28,10 @@ $(el) {
     &--user {
       margin-left: auto;
 
+      span {
+        display: none;
+      }
+
       a {
         position: relative;
         display: block;
@@ -56,6 +60,14 @@ $(el) {
 
         img {
           max-height: 80px;
+        }
+      }
+
+      &--user {
+        span {
+          display: inline-block;
+          padding: 10px 36px 10px 0;
+          color: #fff;
         }
       }
     }

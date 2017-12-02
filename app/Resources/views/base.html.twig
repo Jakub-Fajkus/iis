@@ -34,9 +34,9 @@
 							<div class="h">
 								<div class="h__item h__item--logo">
 									{% if app.user.isAdmin() %}
-										{% set url = path('admin_employee_index')  %}
+										{% set url = path('admin_employee_index') %}
 									{% else %}
-                                        {% set url = path('app_patient_index')  %}
+										{% set url = path('app_patient_index') %}
 									{% endif %}
 									<a href="{{ url }}">
 										<img src="{{ asset('images/logo.png') }}" alt="Nemocnice">
@@ -50,18 +50,20 @@
 								</div>
 
 								<div class="h__item h__item--user">
-									<a href="{{ path('fos_user_security_logout') }}" title="Odhlásit se"></a>
+									<a href="{{ path('fos_user_security_logout') }}" title="Odhlásit se">
+										<span>{{ app.user.email }}</span>
+									</a>
 								</div>
 							</div>
 						</div>
 					</header>
 				{% endblock %}
 
-                {% for label, messages in app.flashes %}
+				{% for label, messages in app.flashes %}
 					<p class="fm__info fm__info--{{ label }} vam">
 						<span>{{ messages|join(", ") }}</span>
 					</p>
-                {% endfor %}
+				{% endfor %}
 
 				{% block body %}{% endblock %}
 			</div>
