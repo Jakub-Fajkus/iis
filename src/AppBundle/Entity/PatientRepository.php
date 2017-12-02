@@ -24,7 +24,6 @@ class PatientRepository extends EntityRepository
                         OR p.zip LIKE :param
                         OR p.medicalIdentificationNumber LIKE :param
                         OR p.insuranceCompanyId = :intParam
-                        OR p.gender LIKE :param
                      ORDER BY p.id ASC'
             )
             ->setParameter('param', '%'.$param.'%')
