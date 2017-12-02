@@ -52,6 +52,10 @@ $(el) {
 
     .btn--edit, .btn--show {
       opacity: .6;
+
+      &:hover {
+        opacity: 1;
+      }
     }
   }
 
@@ -78,10 +82,6 @@ $(el) {
   .btn--edit, .btn--show {
     float: right;
     opacity: .3;
-
-    &:hover {
-      opacity: 1;
-    }
   }
 
   ul {
