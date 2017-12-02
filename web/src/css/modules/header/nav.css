@@ -13,6 +13,24 @@ $(el) {
   li {
     display: inline-block;
 
+    &.nav__s {
+      &--user a {
+        color: #00ff6a;
+        &:after {
+          height: 0;
+          background-color: #00ff6a;
+        }
+      }
+      &--admin a {
+        color: #00fdea;
+
+        &:after {
+          height: 0;
+          background-color: #00fdea;
+        }
+      }
+    }
+
     &.current {
       a:after {
         width: 100%;

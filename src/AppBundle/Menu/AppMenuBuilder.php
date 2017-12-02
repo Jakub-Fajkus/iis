@@ -38,7 +38,7 @@ class AppMenuBuilder
         $menu = $this->factory->createItem('root');
 
         if ($this->user->isNurse() || $this->user->isDoctor()) {
-            $menu->addChild('Uživatelská část', ['route' => 'app_patient_index']);
+            $menu->addChild('Uživatelská část', ['route' => 'app_patient_index'])->setAttribute('class', 'nav__s--user')->setAttribute('title', 'Přepnout na admin část');
         }
 
         if ($this->user->isAdmin()) {
@@ -55,7 +55,7 @@ class AppMenuBuilder
         $menu = $this->factory->createItem('root');
 
         if ($this->user->isAdmin()) {
-            $menu->addChild('Admin část', ['route' => 'admin_department_index']);
+            $menu->addChild('Admin část', ['route' => 'admin_department_index'])->setAttribute('class', 'nav__s--admin')->setAttribute('title', 'Přepnout na uživatelskou část');
         }
 
         if ($this->user->isDoctor() || $this->user->isNurse()) {
