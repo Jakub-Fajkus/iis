@@ -68,11 +68,8 @@ class EmploymentController extends BaseAdminController
      */
     public function showAction(Employment $employment, Doctor $doctor)
     {
-        $deleteForm = $this->createDeleteForm($employment, $doctor->getId());
-
         return $this->render('admin/employment/show.html.twig', [
             'employment'  => $employment,
-            'delete_form' => $deleteForm->createView(),
             'doctorId'   => $doctor->getId(),
         ]);
     }

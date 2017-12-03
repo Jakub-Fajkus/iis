@@ -1,0 +1,231 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title>Projekt IIS</title>
+    <style type="text/css">
+        table {
+            border-collapse: collapse;
+        }
+
+        td, th {
+            border: 1px solid black;
+            padding: 0.3em 0.5em;
+            text-align: left;
+        }
+
+        dt {
+            font-weight: bold;
+            margin-top: 0.5em;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Nemocnice</h1>
+
+<dl>
+    <dt>Autoři</dt>
+    <dd>Jakub Fajkus
+        <a href="mailto:xfajku06@stud.fit.vutbr.cz">xfajku06@stud.fit.vutbr.cz</a> -
+        databáze, backend, nasazení aplikace
+    </dd>
+    <dd>Daviz Czernin
+        <a href="mailto:xczern01@stud.fit.vutbr.cz">xczern01@stud.fit.vutbr.cz</a> -
+        frontend
+    </dd>
+    <dd>Richard Bureš
+        <a href="mailto:xbures29@stud.fit.vutbr.cz">xbures29@stud.fit.vutbr.cz</a> -
+        backend, databáze
+    </dd>
+    <dt>URL aplikace</dt>
+    <dd><a href="http://iis.jakubfajkus.cz">http://iis.jakubfajkus.cz</a></dd>
+</dl>
+
+<h2>Uživatelé systému pro testování</h2>
+<p>Uveďte prosím existující zástupce <strong>všech rolí uživatelů</strong>.</p>
+<table>
+    <tr>
+        <th>Login</th>
+        <th>Heslo</th>
+        <th>Role</th>
+    </tr>
+    <tr>
+        <td>admin</td>
+        <td>7R=ivwNs83</td>
+        <td>Administrátor</td>
+    </tr>
+    <tr>
+        <td>superAdmin</td>
+        <td>aMu+xr77yT</td>
+        <td>Super administrátor(má přístup všude, určen pro vývoj)</td>
+    </tr>
+    <tr>
+        <td>nurse</td>
+        <td>nurse</td>
+        <td>Sestra</td>
+    </tr>
+    <tr>
+        <td>doctor</td>
+        <td>doctor</td>
+        <td>Lékař</td>
+    </tr>
+</table>
+
+<h2>Testování</h2>
+<p>Pro účely testování jsou u některých formulářů tlačítka pro geneorvání dat.</p>
+
+<h2>Implementace</h2>
+<p>
+    V UC diagramu jsou případy užití, které popisují mazání záznamů. Mazání ve výsledné aplikaci není implementováno.
+    Je to proto, že v systému jako je tento, není mazání žádoucí, protože je nutné udržovat historii.
+    Zaměstnance je možné deaktivovat tak, že se nebudou schopni přihlásit do systému.
+</p>
+<p>UC z diagramu užití, které popisují mazání, jsou tedy z tabulky níže vynechány.</p>
+<h3>Implementace UC</h3>
+<table>
+    <tr>
+        <th>UC</th>
+        <th>Controller</th>
+        <th>Metoda(popis)</th>
+    </tr>
+
+    <tr>
+        <td>Vyhledat pacienta</td>
+        <td>AppBundle/Controller/PatientController.php</td>
+        <td>indexAction</td>
+    </tr>
+    <tr>
+        <td>Umístit pacienta na oddělení(hospitalizovat)</td>
+        <td>AppBundle/Controller/PatientController.php</td>
+        <td>hospitalizeAction</td>
+    </tr>
+    <tr>
+        <td>Vyšetřit pacienta</td>
+        <td>AppBundle/Controller/PatientController.php</td>
+        <td>examineAction</td>
+    </tr>
+    <tr>
+        <td>Vyhledat lék</td>
+        <td></td>
+        <td>Probíhá výběrem ze select boxu</td>
+    </tr>
+    <tr>
+        <td>Předepsat lék</td>
+        <td>AppBundle/Controller/PrescriptionController.php</td>
+        <td>newAction</td>
+    </tr>
+    <tr>
+        <td>Přidat pacienta</td>
+        <td>AppBundle/Controller/PatientController.php</td>
+        <td>newAction</td>
+    </tr>
+    <tr>
+        <td>Editovat pacienta</td>
+        <td>AppBundle/Controller/PatientController.php</td>
+        <td>editAction</td>
+    </tr>
+    <tr>
+        <td>Zobrazit informace o pacientovi</td>
+        <td>AppBundle/Controller/PatientController.php</td>
+        <td>showAction</td>
+    </tr>
+    <tr>
+        <td>Vyhledat paceintovy léky</td>
+        <td>AppBundle/Controller/PatientController.php</td>
+        <td>showAction</td>
+    </tr>
+    <tr>
+        <td>Zapsat podání léku</td>
+        <td>AppBundle/Controller/PrescriptionController.php</td>
+        <td>newAction</td>
+    </tr>
+    <tr>
+        <td>Přidat lék</td>
+        <td>AdminBundle/Controller/DrugController.php</td>
+        <td>newAction</td>
+    </tr>
+    <tr>
+        <td>Editovat lék</td>
+        <td>AdminBundle/Controller/DrugController.php</td>
+        <td>editAction</td>
+    </tr>
+    <tr>
+        <td>Přidat zaměstnance - admin</td>
+        <td>AdminBundle/Controller/EmployeeController.php</td>
+        <td>createAction</td>
+    </tr>
+    <tr>
+        <td>Přidat zaměstnance - lékař</td>
+        <td>AdminBundle/Controller/DoctorController.php</td>
+        <td>createAction</td>
+    </tr>
+    <tr>
+        <td>Přidat zaměstnance - sestra</td>
+        <td>AdminBundle/Controller/NurseController.php</td>
+        <td>createAction</td>
+    </tr>
+    <tr>
+        <td>Editovat zaměstnance - admin</td>
+        <td>AdminBundle/Controller/EmployeeController.php</td>
+        <td>editAction</td>
+    </tr>
+    <tr>
+        <td>Editovat zaměstnance - lékař</td>
+        <td>AdminBundle/Controller/DoctorController.php</td>
+        <td>editAction</td>
+    </tr>
+    <tr>
+        <td>Editovat zaměstnance - sestra</td>
+        <td>AdminBundle/Controller/NurseController.php</td>
+        <td>editAction</td>
+    </tr>
+    <tr>
+        <td>Přemístit sestru na oddělení</td>
+        <td>AdminBundle/Controller/NurseController.php</td>
+        <td>editAction</td>
+    </tr>
+    <tr>
+        <td>Přidat úvazek lékaře</td>
+        <td>AdminBundle/Controller/EmploymentController.php</td>
+        <td>newAction</td>
+    </tr>
+    <tr>
+        <td>Editovat úvazek lékaře</td>
+        <td>AdminBundle/Controller/EmploymentController.php</td>
+        <td>editAction</td>
+    </tr>
+    <tr>
+        <td>Přidat oddělení</td>
+        <td>AdminBundle/Controller/DepartmentController.php</td>
+        <td>newAction</td>
+    </tr>
+    <tr>
+        <td>Editovat oddělení</td>
+        <td>AdminBundle/Controller/DepartmentController.php</td>
+        <td>editAction</td>
+    </tr>
+</table>
+
+<h3>Rozdíly v implementaci</h3>
+<p>Rodné číslo pacienta v návrhu IDS bylo datového typu celé číslo. Ve finální implementaci je datového typu string.
+    Je to kvůli snaze o použitelnosti aplikace i v jiných systémech, než je český.
+    Také pro možnost registrace cizinců, kteří mohou mít rodná čísla(nebo jejich ekvivalent) v jiném formátu.
+    Není díky toho implementována kontrola správnosti rodného čísla, kerá byla použita v projektu IDS.
+</p>
+
+<p>Telefonní čísla zaměstnanců byla v původním návrhu datového typu celé číslo. Ve finální implementaci jsou datového typu string.
+    To dovoluje čísla např. se znakem +
+</p>
+
+
+<h2>Instalace</h2>
+<ul>
+    <li>Aplikace byla je vyvijena pro technologii docker.</li>
+    <li>Ke spuštění aplikace je potřeba mít nainstalovány apliakce docker a docker-compose</li>
+    <li>Pro spuštění aplikace by mělo stačit v rozbalené složce s projektem spustit <b>docker-compose up</b>.</li>
+</ul>
+
+</body>
+</html>
