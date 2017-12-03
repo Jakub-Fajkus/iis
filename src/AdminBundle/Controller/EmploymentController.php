@@ -91,7 +91,6 @@ class EmploymentController extends BaseAdminController
      */
     public function editAction(Request $request, Employment $employment, Doctor $doctor)
     {
-        $deleteForm = $this->createDeleteForm($employment, $doctor->getId());
         $editForm = $this->createForm(EmploymentType::class, $employment);
         $editForm->handleRequest($request);
 
@@ -110,56 +109,7 @@ class EmploymentController extends BaseAdminController
         return $this->render('admin/employment/edit.html.twig', [
             'employment'  => $employment,
             'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
             'doctorId'   => $doctor->getId(),
         ]);
-    }
-
-    /**
-     * Deletes a employment entity.
-     *
-     * @Route("/{id}", name="admin_employment_delete")
-     * @Method("DELETE")
-     * @param Request $request
-     * @param Employment $employment
-     * @param Doctor $doctor
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
-     * @throws \LogicException
-     * @throws \InvalidArgumentException
-     */
-    public function deleteAction(Request $request, Employment $employment, Doctor $doctor)
-    {
-        $form = $this->createDeleteForm($employment, $doctor->getId());
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($employment);
-            $em->flush();
-
-            $this->addSuccessFlash('Úspěšně smazáno');
-        }
-
-        return $this->redirectToRoute('admin_doctor_show', ['id' => $doctor->getId()]);
-    }
-
-    /**
-     * Creates a form to delete a employment entity.
-     *
-     * @param Employment $employment The employment entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createDeleteForm(Employment $employment, int $doctorId)
-    {
-        return $this->createFormBuilder()
-            ->setAction(
-                $this->generateUrl(
-                    'admin_employment_delete',
-                    ['id' => $employment->getId(), 'doctor_id' => $doctorId]
-                )
-            )
-            ->setMethod('DELETE')
-            ->getForm();
     }
 }

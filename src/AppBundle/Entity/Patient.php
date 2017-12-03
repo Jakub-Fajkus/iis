@@ -52,8 +52,6 @@ class Patient
      * @var string "Rodne cislo" or "Social Security number"
      *
      * @Assert\NotBlank()
-     * @Assert\Length(min=10, max=11)
-     * @Assert\Regex("/^[0-9]{6}\/[0-9]{3,4}$/", message="Zadejte ve tvaru 901028/5341", htmlPattern="")
      *
      * @ORM\Column(name="personal_identification_number", type="string", unique=true, length=30,  nullable=false)
      */
@@ -102,8 +100,6 @@ class Patient
      * @var string "Cislo pojistence"
      *
      * @Assert\NotBlank()
-     * @Assert\Length(min=10, max=30)
-     * @Assert\Regex("/^[0-9]{6}\/[0-9]{3,4}$/", message="Zadejte ve tvaru 901028/5341", htmlPattern="")
      *
      * @ORM\Column(name="medical_identification_number", type="string", unique=true, length=30, nullable=false)
      */

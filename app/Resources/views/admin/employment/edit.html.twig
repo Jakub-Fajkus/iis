@@ -27,13 +27,6 @@
 			<li>
 				<a href="{{ path('admin_doctor_show', {'id': doctorId}) }}" class="btn btn--back">Zpět</a>
 			</li>
-			<li>
-				{{ form_start(delete_form) }}
-					<div class="fm__btn">
-						<input type="submit" value="Odstranit" class="btn btn--delete" />
-					</div>
-				{{ form_end(delete_form) }}
-			</li>
 		</ul>
 	</div>
 {% endblock %}
