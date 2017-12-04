@@ -214,7 +214,8 @@
     Není díky toho implementována kontrola správnosti rodného čísla, kerá byla použita v projektu IDS.
 </p>
 
-<p>Telefonní čísla zaměstnanců byla v původním návrhu datového typu celé číslo. Ve finální implementaci jsou datového typu string.
+<p>Telefonní čísla zaměstnanců byla v původním návrhu datového typu celé číslo. Ve finální implementaci jsou datového
+    typu string.
     To dovoluje čísla např. se znakem +
 </p>
 
@@ -226,6 +227,256 @@
     <li>Pro spuštění aplikace by mělo stačit v rozbalené složce s projektem spustit <b>docker-compose up</b>.</li>
     <li>Aplikace bude přístupná na portu 80. Mysql databáze byde naslouchat na portu 3306.</li>
 </ul>
+
+
+<h2>Použité knihovny</h2>
+<p>Aplikace je postavena nad frameworkem Symfony verze 3.3. Níže je tabulka s přehledem všech nainstalovaných php
+    knihoven.</p>
+
+<table>
+    <tr>
+        <th>Název</th>
+        <th>Verze</th>
+        <th>Popis</th>
+    </tr>
+
+    <tr>
+        <td>composer/ca-bundle</td>
+        <td>1.1.0</td>
+        <td>Lets you find a path to the system CA bundle, and includes a fallback to the Mozilla CA bundle.</td>
+    </tr>
+    <tr>
+        <td>doctrine/annotations</td>
+        <td>v1.5.0</td>
+        <td>Docblock Annotations Parser</td>
+    </tr>
+    <tr>
+        <td>doctrine/cache</td>
+        <td>v1.7.1</td>
+        <td>Caching library offering an object-oriented API for many cache backends</td>
+    </tr>
+    <tr>
+        <td>doctrine/collections</td>
+        <td>v1.5.0</td>
+        <td>Collections Abstraction library</td>
+    </tr>
+    <tr>
+        <td>doctrine/common</td>
+        <td>v2.8.1</td>
+        <td>Common Library for Doctrine projects</td>
+    </tr>
+    <tr>
+        <td>doctrine/dbal</td>
+        <td>v2.6.3</td>
+        <td>Database Abstraction Layer</td>
+    </tr>
+    <tr>
+        <td>doctrine/doctrine-bundle</td>
+        <td>1.8.1</td>
+        <td>Symfony DoctrineBundle</td>
+    </tr>
+    <tr>
+        <td>doctrine/doctrine-cache-bundle</td>
+        <td>1.3.2</td>
+        <td>Symfony Bundle for Doctrine Cache</td>
+    </tr>
+    <tr>
+        <td>doctrine/doctrine-migrations-bundle</td>
+        <td>v1.3.1</td>
+        <td>Symfony DoctrineMigrationsBundle</td>
+    </tr>
+    <tr>
+        <td>doctrine/inflector</td>
+        <td>v1.2.0</td>
+        <td>Common String Manipulations with regard to casing and singular/plural rules.</td>
+    </tr>
+    <tr>
+        <td>doctrine/instantiator</td>
+        <td>1.1.0</td>
+        <td>A small, lightweight utility to instantiate objects in PHP without invoking their constructors</td>
+    </tr>
+    <tr>
+        <td>doctrine/lexer</td>
+        <td>v1.0.1</td>
+        <td>Base library for a lexer that can be used in Top-Down, Recursive Descent Parsers.</td>
+    </tr>
+    <tr>
+        <td>doctrine/migrations</td>
+        <td>v1.6.2</td>
+        <td>Database Schema migrations using Doctrine DBAL</td>
+    </tr>
+    <tr>
+        <td>doctrine/orm</td>
+        <td>v2.5.13</td>
+        <td>Object-Relational-Mapper for PHP</td>
+    </tr>
+    <tr>
+        <td>fig/link-util</td>
+        <td>1.0.0</td>
+        <td>Common utility implementations for HTTP links</td>
+    </tr>
+    <tr>
+        <td>friendsofsymfony/user-bundle</td>
+        <td>v2.0.2</td>
+        <td>Symfony FOSUserBundle</td>
+    </tr>
+    <tr>
+        <td>incenteev/composer-parameter-handler</td>
+        <td>v2.1.2</td>
+        <td>Composer script handling your ignored parameter file</td>
+    </tr>
+    <tr>
+        <td>jdorn/sql-formatter</td>
+        <td>v1.2.17</td>
+        <td>a PHP SQL highlighting library</td>
+    </tr>
+    <tr>
+        <td>knplabs/knp-menu</td>
+        <td>2.3.0</td>
+        <td>An object oriented menu library</td>
+    </tr>
+    <tr>
+        <td>knplabs/knp-menu-bundle</td>
+        <td>v2.2.0</td>
+        <td>This bundle provides an integration of the KnpMenu library</td>
+    </tr>
+    <tr>
+        <td>monolog/monolog</td>
+        <td>1.23.0</td>
+        <td>Sends your logs to files, sockets, inboxes, databases and various web services</td>
+        </td>
+    <tr>
+        <td>ocramius/package-versions</td>
+        <td>1.2.0</td>
+        <td>Composer plugin that provides efficient querying for installed package versions (no runtime IO)</td>
+    </tr>
+    <tr>
+        <td>ocramius/proxy-manager</td>
+        <td>2.1.1</td>
+        <td>A library providing utilities to generate, instantiate and generally operate with Object Proxies</td>
+    </tr>
+    <tr>
+        <td>paragonie/random_compat</td>
+        <td>v2.0.11</td>
+        <td>PHP 5.x polyfill for random_bytes() and random_int() from PHP 7</td>
+    </tr>
+    <tr>
+        <td>psr/cache</td>
+        <td>1.0.1</td>
+        <td>Common interface for caching libraries</td>
+    </tr>
+    <tr>
+        <td>psr/container</td>
+        <td>1.0.0</td>
+        <td>Common Container Interface (PHP FIG PSR-11)</td>
+    </tr>
+    <tr>
+        <td>psr/link</td>
+        <td>1.0.0</td>
+        <td>Common interfaces for HTTP links</td>
+    </tr>
+    <tr>
+        <td>psr/log</td>
+        <td>1.0.2</td>
+        <td>Common interface for logging libraries</td>
+    </tr>
+    <tr>
+        <td>psr/simple-cache</td>
+        <td>1.0.0</td>
+        <td>Common interfaces for simple caching</td>
+    </tr>
+    <tr>
+        <td>sensio/distribution-bundle</td>
+        <td>v5.0.21</td>
+        <td>Base bundle for Symfony Distributions</td>
+    </tr>
+    <tr>
+        <td>sensio/framework-extra-bundle</td>
+        <td>v5.1.2</td>
+        <td>This bundle provides a way to configure your controllers with annotations</td>
+    </tr>
+    <tr>
+        <td>sensio/generator-bundle</td>
+        <td>v3.1.6</td>
+        <td>This bundle generates code for you</td>
+    </tr>
+    <tr>
+        <td>sensiolabs/security-checker</td>
+        <td>v4.1.6</td>
+        <td>A security checker for your composer.lock</td>
+    </tr>
+    <tr>
+        <td>swiftmailer/swiftmailer</td>
+        <td>v5.4.8</td>
+        <td>Swiftmailer, free feature-rich PHP mailer</td>
+    </tr>
+    <tr>
+        <td>symfony/monolog-bundle</td>
+        <td>v3.1.2</td>
+        <td>Symfony MonologBundle</td>
+    </tr>
+    <tr>
+        <td>symfony/phpunit-bridge</td>
+        <td>v3.4.0</td>
+        <td>Symfony PHPUnit Bridge</td>
+    </tr>
+    <tr>
+        <td>symfony/polyfill-apcu</td>
+        <td>v1.6.0</td>
+        <td>Symfony polyfill backporting apcu_* functions to lower PHP versions</td>
+    </tr>
+    <tr>
+        <td>symfony/polyfill-intl-icu</td>
+        <td>v1.6.0</td>
+        <td>Symfony polyfill for intl's ICU-related data and classes</td>
+    </tr>
+    <tr>
+        <td>symfony/polyfill-mbstring</td>
+        <td>v1.6.0</td>
+        <td>Symfony polyfill for the Mbstring extension</td>
+    </tr>
+    <tr>
+        <td>symfony/polyfill-php56</td>
+        <td>v1.6.0</td>
+        <td>Symfony polyfill backporting some PHP 5.6+ features to lower PHP versions</td>
+    </tr>
+    <tr>
+        <td>symfony/polyfill-php70</td>
+        <td>v1.6.0</td>
+        <td>Symfony polyfill backporting some PHP 7.0+ features to lower PHP versions</td>
+    </tr>
+    <tr>
+        <td>symfony/polyfill-util</td>
+        <td>v1.6.0</td>
+        <td>Symfony utilities for portability of PHP codes</td>
+    </tr>
+    <tr>
+        <td>symfony/swiftmailer-bundle</td>
+        <td>v2.6.7</td>
+        <td>Symfony SwiftmailerBundle</td>
+    </tr>
+    <tr>
+        <td>symfony/symfony</td>
+        <td>v3.3.13</td>
+        <td>The Symfony PHP framework</td>
+    </tr>
+    <tr>
+        <td>twig/twig</td>
+        <td>v2.4.4</td>
+        <td></td>
+        Twig, the flexible, fast, and secure template language for PHP </td></tr>
+    <tr>
+        <td>zendframework/zend-code</td>
+        <td>3.3.0</td>
+        <td>provides facilities to generate arbitrary code using an object oriented interface</td>
+    </tr>
+    <tr>
+        <td>zendframework/zend-eventmanager</td>
+        <td>3.2.0</td>
+        <td>Trigger and listen to events within a PHP application</td>
+    </tr>
+</table>
+
 
 </body>
 </html>
